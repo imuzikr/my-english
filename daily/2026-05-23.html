@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026-05-23 · 오늘의 생활 영어 — 학교 다녀온 후 숙제 시간</title>
+<meta name="description" content="오늘의 생활 영어: 학교 다녀온 후 간식, 숙제, 자유 시간까지 부모와 아이의 짧은 대화 3가지 상황.">
+<meta name="english-level" content="beginner">
+<meta name="english-topic" content="Daily Conversation">
+<style>
+  :root {
+    --color-background-primary: #ffffff;
+    --color-background-secondary: #f7f8f9;
+    --color-text-primary: #1a1a1a;
+    --color-text-secondary: #6b7280;
+    --color-border-tertiary: #e5e7eb;
+    --border-radius-lg: 12px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-background-primary: #1e1e1e;
+      --color-background-secondary: #2a2a2a;
+      --color-text-primary: #e5e7eb;
+      --color-text-secondary: #9ca3af;
+      --color-border-tertiary: #3a3a3a;
+    }
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: transparent;
+    padding: 16px;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  .header {
+    background: var(--color-background-primary);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-lg);
+    padding: 20px 22px 18px;
+    margin-bottom: 12px;
+  }
+  .top-badge {
+    display: inline-block;
+    background: #EAF3DE;
+    color: #3B6D11;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    letter-spacing: 0.3px;
+  }
+  .header-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: 3px;
+  }
+  .header-sub {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    font-style: italic;
+  }
+
+  /* Situation Card */
+  .card {
+    background: var(--color-background-primary);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-lg);
+    padding: 18px 20px;
+    margin-bottom: 10px;
+  }
+  .situation-badge {
+    display: inline-block;
+    background: #EAF3DE;
+    color: #3B6D11;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+    letter-spacing: 0.2px;
+  }
+  .line { margin-bottom: 12px; }
+  .line:last-child { margin-bottom: 0; }
+
+  .speaker {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 2px;
+  }
+  .speaker.parent { color: #185FA5; }
+  .speaker.child  { color: #993C1D; }
+
+  .en {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    line-height: 1.5;
+  }
+  .en.parent { color: #185FA5; }
+  .en.child  { color: #993C1D; }
+
+  .ko {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    margin-top: 1px;
+    line-height: 1.4;
+  }
+
+  /* Section Cards */
+  .section-card {
+    background: var(--color-background-secondary);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-lg);
+    padding: 18px 20px;
+    margin-bottom: 10px;
+  }
+  .section-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .section-title-dot {
+    width: 8px;
+    height: 8px;
+    background: #3B6D11;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* 핵심 표현 */
+  .expr-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .expr-row:last-child { margin-bottom: 0; }
+  .expr-dot {
+    color: #3B6D11;
+    font-size: 14px;
+    margin-top: 1px;
+    flex-shrink: 0;
+  }
+  .expr-en {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+  }
+  .expr-ko {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    margin-top: 1px;
+  }
+
+  /* 바꿔 말하기 */
+  .alt-row {
+    margin-bottom: 10px;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .alt-row:last-child { margin-bottom: 0; }
+  .alt-original { color: var(--color-text-secondary); }
+  .alt-arrow {
+    color: var(--color-text-secondary);
+    margin: 0 4px;
+  }
+  .alt-new {
+    color: #185FA5;
+    font-weight: 500;
+  }
+
+  /* 연습 포인트 */
+  .tip-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .tip-row:last-child { margin-bottom: 0; }
+  .tip-num {
+    width: 22px;
+    height: 22px;
+    background: #EAF3DE;
+    color: #3B6D11;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .tip-text {
+    font-size: 13px;
+    color: var(--color-text-primary);
+    line-height: 1.55;
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <div class="top-badge">오늘의 생활 영어</div>
+  <div class="header-title">학교 다녀온 후 — 숙제 시간</div>
+  <div class="header-sub">After school · Snack time · Homework routine</div>
+</div>
+
+<!-- 상황 1 -->
+<div class="card">
+  <div class="situation-badge">상황 1 — 간식 먹고 숙제 준비하기</div>
+
+  <div class="line">
+    <div class="speaker parent">Parent</div>
+    <div class="en parent">Welcome home! How was your day?</div>
+    <div class="ko">다 왔어! 오늘 어땠어?</div>
+  </div>
+
+  <div class="line">
+    <div class="speaker child">Child</div>
+    <div class="en child">Pretty good. I'm starving, though.</div>
+    <div class="ko">꽤 좋았어요. 근데 너무 배고파요.</div>
+  </div>
+
+  <div class="line">
+    <div class="speaker parent">Parent</div>
+    <div class="en parent">There's fruit on the table. Grab some and then start your homework.</div>
+    <div class="ko">테이블에 과일 있어. 먹고 나서 숙제 시작하자.</div>
+  </div>
+
+  <div class="line">
+    <div class="speaker child">Child</div>
+    <div class="en child">Can I watch TV first? Just for a little bit.</div>
+    <div class="ko">TV 먼저 봐도 돼요? 조금만요.</div>
+  </div>
+
+  <div class="line">
+    <div class="speaker parent">Parent</div>
+    <div class="en parent">Homework first, then TV. That's the rule.</div>
+    <div class="ko">숙제 먼저, 그다음 TV야. 그게 규칙이잖아.</div>
+  </div>
+</div>
+
+<!-- 상황 2 -->
+<div class="card">
+  <div class="situation-badge">상황 2 — 숙제하다가 막혔을 때</div>
+
+  <div class="line">
+    <div class="speaker child">Child</div>
+    <div class="en child">Mom, I don't get this problem.</div>
+    <div class="ko">엄마, 이 문제 모르겠어요.</div>
+  </div>
+
+  <div class="line">
+    <div class="speaker parent">Parent</div>
+    <div class="en parent">Which one? Show me.</div>
+    <div class="ko">어떤 거? 보여줘.</div>
+  </div>
+
+  <div class="line">
+    <div class="speaker child">Child</div>
+    <div class="en child">This one. I tried, but I keep getting it wrong.</div>
+    <div class="ko">이거요. 해봤는데 계속 틀려요.</div>
+  </div>
+
+  <div class="line">
+    <div class="speaker parent">Parent</div>
+    <div class="en parent">Let's read it together first. Sometimes that helps.</div>
+    <div class="ko">같이 먼저 읽어보자. 그러면 도움이 될 때 있어.</div>
+  </div>
+
+  <div class="line">
+    <div class="speaker child">Child</div>
+    <div class="en child">Oh! I think I get it now.</div>
+    <div class="ko">아! 이제 알 것 같아요.</div>
+  </div>
+</div>
+
+<!-- 상황 3 -->
+<div class="card">
+  <div class="situation-badge">상황 3 — 숙제 끝내고 자유 시간</div>
+
+  <div class="line">
+    <div class="speaker child">Child</div>
+    <div class="en child">I'm done with my homework!</div>
+    <div class="ko">숙제 다 했어요!</div>
+  </div>
+
+  <div class="line">
+    <div class="speaker parent">Parent</div>
+    <div class="en parent">Nice work! Let me check it real quick.</div>
+    <div class="ko">잘했어! 잠깐 확인해볼게.</div>
+  </div>
+
+  <div class="line">
+    <div class="speaker child">Child</div>
+    <div class="en child">Can I go outside after?</div>
+    <div class="ko">다음에 밖에 나가도 돼요?</div>
+  </div>
+
+  <div class="line">
+    <div class="speaker parent">Parent</div>
+    <div class="en parent">Sure, as long as you're back by six.</div>
+    <div class="ko">그럼, 6시까지는 들어와야 해.</div>
+  </div>
+
+  <div class="line">
+    <div class="speaker child">Child</div>
+    <div class="en child">Got it. Thanks, Mom!</div>
+    <div class="ko">알겠어요. 고마워요!</div>
+  </div>
+</div>
+
+<!-- 핵심 표현 -->
+<div class="section-card">
+  <div class="section-title">
+    <div class="section-title-dot"></div>
+    핵심 표현
+  </div>
+
+  <div class="expr-row">
+    <div class="expr-dot">●</div>
+    <div>
+      <div class="expr-en">I'm starving.</div>
+      <div class="expr-ko">너무 배고파요.</div>
+    </div>
+  </div>
+
+  <div class="expr-row">
+    <div class="expr-dot">●</div>
+    <div>
+      <div class="expr-en">Homework first, then TV.</div>
+      <div class="expr-ko">숙제 먼저, 그다음 TV야.</div>
+    </div>
+  </div>
+
+  <div class="expr-row">
+    <div class="expr-dot">●</div>
+    <div>
+      <div class="expr-en">I don't get this problem.</div>
+      <div class="expr-ko">이 문제 모르겠어요.</div>
+    </div>
+  </div>
+
+  <div class="expr-row">
+    <div class="expr-dot">●</div>
+    <div>
+      <div class="expr-en">As long as you're back by six.</div>
+      <div class="expr-ko">6시까지는 들어와야 해.</div>
+    </div>
+  </div>
+</div>
+
+<!-- 바꿔 말하기 -->
+<div class="section-card">
+  <div class="section-title">
+    <div class="section-title-dot"></div>
+    바꿔 말하기
+  </div>
+
+  <div class="alt-row">
+    <span class="alt-original">I'm starving.</span>
+    <span class="alt-arrow">→</span>
+    <span class="alt-new">I'm so hungry I could eat anything.</span>
+  </div>
+
+  <div class="alt-row">
+    <span class="alt-original">Homework first, then TV.</span>
+    <span class="alt-arrow">→</span>
+    <span class="alt-new">Finish your homework before you turn on the TV.</span>
+  </div>
+
+  <div class="alt-row">
+    <span class="alt-original">I don't get this problem.</span>
+    <span class="alt-arrow">→</span>
+    <span class="alt-new">I'm stuck on this one.</span>
+  </div>
+
+  <div class="alt-row">
+    <span class="alt-original">As long as you're back by six.</span>
+    <span class="alt-arrow">→</span>
+    <span class="alt-new">Just make sure you're home before six.</span>
+  </div>
+</div>
+
+<!-- 연습 포인트 -->
+<div class="section-card">
+  <div class="section-title">
+    <div class="section-title-dot"></div>
+    짧은 연습 포인트
+  </div>
+
+  <div class="tip-row">
+    <div class="tip-num">1</div>
+    <div class="tip-text">부모와 아이가 역할을 바꿔서 읽어보세요. 부모가 아이 대사를, 아이가 부모 대사를 맡으면 두 관점의 표현을 동시에 익힐 수 있습니다.</div>
+  </div>
+
+  <div class="tip-row">
+    <div class="tip-num">2</div>
+    <div class="tip-text">"I don't get this." / "I'm stuck."처럼 도움을 요청하는 표현을 오늘 실제 숙제 시간에 영어로 말해보세요. 일상에서 바로 쓸 수 있는 표현입니다.</div>
+  </div>
+
+  <div class="tip-row">
+    <div class="tip-num">3</div>
+    <div class="tip-text">"As long as ~" 패턴을 활용해 조건 문장을 만들어보세요. "As long as you eat dinner." / "As long as you brush your teeth." 처럼 응용할 수 있습니다.</div>
+  </div>
+</div>
+
+<a id="back-to-index" href="../index.html" aria-label="목록으로" title="목록으로"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path d="M8.5 15L3 10l5.5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 10h14" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></a>
+<style>
+#back-to-index{position:fixed;bottom:1.5rem;left:1.5rem;width:44px;height:44px;background:#3B6D11;color:#fff;border-radius:9999px;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 16px rgba(0,0,0,.18);transition:background .15s,transform .15s;z-index:800;}
+#back-to-index:hover{background:#2f580d;transform:translateX(-2px);}
+@media(max-width:600px){#back-to-index{bottom:1rem;left:1rem;}}
+</style>
+</body>
+</html>
