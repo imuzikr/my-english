@@ -4,353 +4,719 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>2026-05-23 · 오늘의 생활 영어 — 학교 다녀온 후 숙제 시간</title>
-<meta name="description" content="오늘의 생활 영어: 학교 다녀온 후 간식, 숙제, 자유 시간까지 부모와 아이의 짧은 대화 3가지 상황.">
+<meta name="description" content="부모와 아이의 짧은 대화 3가지 — 학교 다녀와 간식 먹기, 숙제하다 막혔을 때, 끝내고 자유 시간. 핵심 표현·바꿔 말하기·연습 포인트까지.">
 <meta name="english-level" content="beginner">
 <meta name="english-topic" content="Daily Conversation">
 <style>
-  :root {
-    --bg: #ffffff;
-    --fg: #111111;
-    --muted: #6b6b6b;
-    --faint: #a0a0a0;
-    --rule: #ececec;
-  }
+:root {
+  --color-bg:#f5f2ed; --color-bg-alt:#eceae4; --color-bg-card:#ffffff;
+  --color-bg-code:#1e1e1e;
+  --color-text:#1a1a18; --color-text-muted:#6b6a63; --color-text-faint:#a09f97;
+  --color-border:#dedad2; --color-border-strong:#b8b5ac;
+  --color-accent:#d95f2b; --color-accent-hover:#c2521f; --color-accent-soft:#faeee7;
+  --color-green:#3a6b4a; --color-green-soft:#e6f0e9;
+  --color-blue:#2d5a8e; --color-blue-soft:#e5eef7;
+  --color-yellow:#8a6a00; --color-yellow-soft:#fdf5d9;
+  --color-red:#b03a2e; --color-red-soft:#fdecea;
+  --font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --font-mono:"SF Mono","Fira Code",Consolas,"Liberation Mono",monospace;
+  --text-xs:0.75rem; --text-sm:0.875rem; --text-base:1rem; --text-lg:1.125rem;
+  --text-xl:1.25rem; --text-2xl:1.5rem; --text-3xl:1.875rem; --text-4xl:2.25rem;
+  --weight-normal:400; --weight-medium:500; --weight-semibold:600; --weight-bold:700;
+  --leading-tight:1.25; --leading-snug:1.4; --leading-normal:1.6; --leading-loose:1.8;
+  --space-1:0.25rem; --space-2:0.5rem; --space-3:0.75rem; --space-4:1rem;
+  --space-5:1.25rem; --space-6:1.5rem; --space-8:2rem; --space-10:2.5rem;
+  --space-12:3rem; --space-16:4rem;
+  --radius-sm:4px; --radius-md:8px; --radius-lg:12px; --radius-xl:16px; --radius-full:9999px;
+  --shadow-sm:0 1px 3px rgba(0,0,0,0.07),0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md:0 4px 12px rgba(0,0,0,0.08),0 2px 4px rgba(0,0,0,0.04);
+  --shadow-lg:0 10px 28px rgba(0,0,0,0.10),0 4px 8px rgba(0,0,0,0.05);
+  --transition-fast:100ms ease; --transition-base:180ms ease;
+}
 
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #111111;
-      --fg: #ededed;
-      --muted: #9a9a9a;
-      --faint: #6a6a6a;
-      --rule: #262626;
-    }
-  }
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { font-size:16px; scroll-behavior:smooth; }
+body {
+  background:var(--color-bg);
+  color:var(--color-text);
+  font-family:var(--font-sans);
+  font-size:var(--text-base);
+  line-height:var(--leading-normal);
+  -webkit-font-smoothing:antialiased;
+}
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+/* Scroll progress bar */
+#progress {
+  position:fixed; top:0; left:0; height:3px;
+  background:var(--color-accent);
+  width:0%; z-index:200;
+  transition:width 80ms linear;
+}
 
-  html { -webkit-text-size-adjust: 100%; }
+/* Hero */
+.hero {
+  background:linear-gradient(140deg,#2c2a26 0%,#3d3a33 100%);
+  color:#f5f2ed;
+  padding:var(--space-16) var(--space-6) var(--space-12);
+}
+.hero-inner { max-width:900px; margin:0 auto; }
+.hero-badge {
+  display:inline-block;
+  font-size:var(--text-xs);
+  font-weight:var(--weight-semibold);
+  text-transform:uppercase;
+  letter-spacing:0.12em;
+  color:var(--color-accent);
+  background:rgba(217,95,43,0.16);
+  padding:var(--space-1) var(--space-3);
+  border-radius:var(--radius-full);
+  margin-bottom:var(--space-5);
+}
+.hero-title {
+  font-size:var(--text-4xl);
+  font-weight:var(--weight-bold);
+  line-height:var(--leading-tight);
+  letter-spacing:-0.02em;
+  margin-bottom:var(--space-4);
+}
+.hero-lead {
+  font-size:var(--text-lg);
+  color:#cfcbc2;
+  font-weight:var(--weight-normal);
+  max-width:640px;
+  margin-bottom:var(--space-6);
+}
+.hero-meta {
+  display:flex; flex-wrap:wrap;
+  gap:var(--space-2) var(--space-4);
+  font-size:var(--text-sm);
+  color:#a8a59d;
+}
+.hero-meta span { display:inline-flex; align-items:center; }
+.hero-meta span + span::before {
+  content:""; display:inline-block; width:3px; height:3px;
+  background:#6b6a63; border-radius:50%;
+  margin-right:var(--space-4);
+}
 
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif;
-    background: var(--bg);
-    color: var(--fg);
-    line-height: 1.55;
-    -webkit-font-smoothing: antialiased;
-    font-feature-settings: "kern", "liga";
-  }
+/* Sticky TOC */
+.toc {
+  position:sticky; top:0; z-index:100;
+  background:rgba(245,242,237,0.92);
+  backdrop-filter:saturate(180%) blur(8px);
+  -webkit-backdrop-filter:saturate(180%) blur(8px);
+  border-bottom:1px solid var(--color-border);
+}
+.toc-inner {
+  max-width:900px; margin:0 auto;
+  padding:var(--space-3) var(--space-6);
+  display:flex; gap:var(--space-1);
+  overflow-x:auto; scrollbar-width:none;
+}
+.toc-inner::-webkit-scrollbar { display:none; }
+.toc a {
+  flex-shrink:0;
+  font-size:var(--text-sm);
+  color:var(--color-text-muted);
+  text-decoration:none;
+  padding:var(--space-2) var(--space-3);
+  border-radius:var(--radius-md);
+  transition:background var(--transition-fast), color var(--transition-fast);
+}
+.toc a:hover { background:var(--color-bg-alt); color:var(--color-text); }
+.toc a.active { background:var(--color-accent-soft); color:var(--color-accent); font-weight:var(--weight-semibold); }
 
-  main {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 64px 24px 96px;
-  }
+/* Main */
+main { max-width:900px; margin:0 auto; padding:var(--space-12) var(--space-6) var(--space-16); }
 
-  /* Header */
-  .eyebrow {
-    font-size: 11px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--faint);
-    margin-bottom: 18px;
-  }
-  h1 {
-    font-size: 22px;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    line-height: 1.3;
-    margin-bottom: 6px;
-  }
-  .lede {
-    font-size: 13px;
-    color: var(--muted);
-  }
+section { margin-bottom:var(--space-16); scroll-margin-top:80px; }
 
-  /* Sections */
-  section {
-    margin-top: 56px;
-  }
-  .section-label {
-    font-size: 11px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--faint);
-    margin-bottom: 20px;
-  }
-  h2 {
-    font-size: 15px;
-    font-weight: 600;
-    margin-bottom: 24px;
-    color: var(--fg);
-  }
+.section-num {
+  display:inline-flex; align-items:center; justify-content:center;
+  width:32px; height:32px;
+  font-size:var(--text-sm);
+  font-weight:var(--weight-bold);
+  color:var(--color-accent);
+  background:var(--color-accent-soft);
+  border-radius:var(--radius-full);
+  margin-right:var(--space-3);
+  font-variant-numeric:tabular-nums;
+}
+.section-header {
+  display:flex; align-items:center;
+  margin-bottom:var(--space-6);
+  padding-bottom:var(--space-4);
+  border-bottom:1px solid var(--color-border);
+}
+h2 {
+  font-size:var(--text-2xl);
+  font-weight:var(--weight-bold);
+  line-height:var(--leading-snug);
+  letter-spacing:-0.01em;
+}
+.section-sub {
+  font-size:var(--text-sm);
+  color:var(--color-text-muted);
+  margin-top:var(--space-1);
+}
+.section-intro {
+  font-size:var(--text-base);
+  color:var(--color-text-muted);
+  line-height:var(--leading-normal);
+  margin-bottom:var(--space-6);
+}
 
-  /* Dialogue */
-  .exchange {
-    padding: 14px 0;
-    border-top: 1px solid var(--rule);
-  }
-  .exchange:last-child {
-    border-bottom: 1px solid var(--rule);
-  }
-  .who {
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--faint);
-    margin-bottom: 4px;
-  }
-  .en {
-    font-size: 15px;
-    color: var(--fg);
-    line-height: 1.5;
-  }
-  .ko {
-    font-size: 13px;
-    color: var(--muted);
-    margin-top: 2px;
-    line-height: 1.5;
-  }
+/* Overview SVG card */
+.overview-card {
+  background:var(--color-bg-card);
+  border:1px solid var(--color-border);
+  border-radius:var(--radius-lg);
+  padding:var(--space-8) var(--space-6);
+  box-shadow:var(--shadow-sm);
+}
+.flow-svg { width:100%; height:auto; display:block; }
 
-  /* Key expressions */
-  .expr {
-    padding: 14px 0;
-    border-top: 1px solid var(--rule);
-  }
-  .expr:last-child {
-    border-bottom: 1px solid var(--rule);
-  }
-  .expr-en {
-    font-size: 15px;
-    color: var(--fg);
-  }
-  .expr-ko {
-    font-size: 13px;
-    color: var(--muted);
-    margin-top: 2px;
-  }
+/* Dialogue */
+.dialogue { display:flex; flex-direction:column; gap:var(--space-3); }
+.bubble-row { display:flex; }
+.bubble-row.parent { justify-content:flex-start; }
+.bubble-row.child  { justify-content:flex-end; }
+.bubble {
+  max-width:78%;
+  padding:var(--space-4) var(--space-5);
+  border-radius:var(--radius-lg);
+  background:var(--color-bg-card);
+  border:1px solid var(--color-border);
+  box-shadow:var(--shadow-sm);
+  position:relative;
+}
+.bubble.parent { border-bottom-left-radius:var(--radius-sm); }
+.bubble.child  { border-bottom-right-radius:var(--radius-sm); background:var(--color-accent-soft); border-color:#f4ddd0; }
+.bubble-speaker {
+  font-size:var(--text-xs);
+  font-weight:var(--weight-semibold);
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  margin-bottom:var(--space-2);
+}
+.bubble.parent .bubble-speaker { color:var(--color-blue); }
+.bubble.child  .bubble-speaker { color:var(--color-accent); }
+.bubble-en {
+  font-size:var(--text-base);
+  font-weight:var(--weight-medium);
+  color:var(--color-text);
+  line-height:var(--leading-snug);
+}
+.bubble-ko {
+  font-size:var(--text-sm);
+  color:var(--color-text-muted);
+  margin-top:var(--space-2);
+  line-height:var(--leading-normal);
+}
 
-  /* Paraphrase */
-  .alt {
-    padding: 14px 0;
-    border-top: 1px solid var(--rule);
-  }
-  .alt:last-child {
-    border-bottom: 1px solid var(--rule);
-  }
-  .alt-from {
-    font-size: 13px;
-    color: var(--muted);
-    margin-bottom: 2px;
-  }
-  .alt-to {
-    font-size: 15px;
-    color: var(--fg);
-  }
+/* Expressions grid */
+.expr-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:var(--space-4);
+}
+.expr-card {
+  background:var(--color-bg-card);
+  border:1px solid var(--color-border);
+  border-radius:var(--radius-lg);
+  padding:var(--space-5);
+  transition:all var(--transition-base);
+}
+.expr-card:hover {
+  border-color:var(--color-border-strong);
+  box-shadow:var(--shadow-md);
+  transform:translateY(-2px);
+}
+.expr-en {
+  font-size:var(--text-lg);
+  font-weight:var(--weight-semibold);
+  color:var(--color-text);
+  margin-bottom:var(--space-2);
+  line-height:var(--leading-snug);
+}
+.expr-ko {
+  font-size:var(--text-sm);
+  color:var(--color-text-muted);
+}
 
-  /* Practice tips */
-  .tip {
-    display: grid;
-    grid-template-columns: 28px 1fr;
-    gap: 4px;
-    padding: 14px 0;
-    border-top: 1px solid var(--rule);
-  }
-  .tip:last-child {
-    border-bottom: 1px solid var(--rule);
-  }
-  .tip-num {
-    font-size: 13px;
-    color: var(--faint);
-    font-variant-numeric: tabular-nums;
-  }
-  .tip-text {
-    font-size: 14px;
-    color: var(--fg);
-    line-height: 1.6;
-  }
+/* Paraphrases */
+.alt-list { display:flex; flex-direction:column; gap:var(--space-3); }
+.alt-row {
+  display:grid;
+  grid-template-columns:1fr 32px 1fr;
+  gap:var(--space-3);
+  align-items:center;
+  background:var(--color-bg-card);
+  border:1px solid var(--color-border);
+  border-radius:var(--radius-lg);
+  padding:var(--space-4) var(--space-5);
+}
+.alt-from {
+  font-size:var(--text-sm);
+  color:var(--color-text-muted);
+}
+.alt-arrow {
+  display:flex; align-items:center; justify-content:center;
+  color:var(--color-text-faint);
+  font-size:var(--text-lg);
+}
+.alt-to {
+  font-size:var(--text-base);
+  font-weight:var(--weight-medium);
+  color:var(--color-green);
+  background:var(--color-green-soft);
+  padding:var(--space-2) var(--space-3);
+  border-radius:var(--radius-md);
+}
 
-  /* Footer back link */
-  .back {
-    display: inline-block;
-    margin-top: 72px;
-    font-size: 12px;
-    letter-spacing: 0.04em;
-    color: var(--muted);
-    text-decoration: none;
-    border-bottom: 1px solid var(--rule);
-    padding-bottom: 2px;
-    transition: color .15s, border-color .15s;
-  }
-  .back:hover {
-    color: var(--fg);
-    border-color: var(--fg);
-  }
+/* Practice tips */
+.tip-list { display:flex; flex-direction:column; gap:var(--space-4); }
+.tip-card {
+  display:grid;
+  grid-template-columns:48px 1fr;
+  gap:var(--space-4);
+  background:var(--color-bg-card);
+  border:1px solid var(--color-border);
+  border-left:3px solid var(--color-accent);
+  border-radius:var(--radius-lg);
+  padding:var(--space-5) var(--space-6);
+}
+.tip-num {
+  font-size:var(--text-3xl);
+  font-weight:var(--weight-bold);
+  color:var(--color-accent);
+  font-variant-numeric:tabular-nums;
+  line-height:1;
+  padding-top:var(--space-1);
+}
+.tip-text {
+  font-size:var(--text-base);
+  color:var(--color-text);
+  line-height:var(--leading-normal);
+}
+.tip-text code {
+  font-family:var(--font-mono);
+  font-size:0.92em;
+  background:var(--color-bg-alt);
+  padding:1px 6px;
+  border-radius:var(--radius-sm);
+  color:var(--color-text);
+}
+
+/* Footer */
+footer {
+  max-width:900px; margin:0 auto;
+  padding:var(--space-8) var(--space-6) var(--space-12);
+  border-top:1px solid var(--color-border);
+  color:var(--color-text-faint);
+  font-size:var(--text-sm);
+  text-align:center;
+}
+
+/* Responsive */
+@media (max-width:768px) {
+  .hero { padding:var(--space-10) var(--space-5) var(--space-8); }
+  .hero-title { font-size:var(--text-3xl); }
+  .hero-lead { font-size:var(--text-base); }
+  main { padding:var(--space-8) var(--space-5) var(--space-12); }
+  section { margin-bottom:var(--space-12); }
+  h2 { font-size:var(--text-xl); }
+  .bubble { max-width:90%; }
+  .alt-row { grid-template-columns:1fr; gap:var(--space-2); }
+  .alt-arrow { transform:rotate(90deg); justify-self:start; }
+  .tip-card { grid-template-columns:1fr; gap:var(--space-2); padding:var(--space-5); }
+  .tip-num { font-size:var(--text-2xl); }
+}
 </style>
 </head>
 <body>
 
+<div id="progress"></div>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">오늘의 생활 영어</div>
+    <h1 class="hero-title">학교 다녀온 후 — 숙제 시간</h1>
+    <p class="hero-lead">간식 먹기, 숙제하다 막힐 때, 다 끝내고 자유 시간까지. 부모와 아이의 짧은 대화 세 가지를 통해 매일 쓰는 표현을 익혀봅니다.</p>
+    <div class="hero-meta">
+      <span>2026.05.23</span>
+      <span>Beginner</span>
+      <span>Daily Conversation</span>
+      <span>약 4분 분량</span>
+    </div>
+  </div>
+</header>
+
+<nav class="toc" id="toc">
+  <div class="toc-inner">
+    <a href="#overview">오늘의 흐름</a>
+    <a href="#situation-1">상황 1</a>
+    <a href="#situation-2">상황 2</a>
+    <a href="#situation-3">상황 3</a>
+    <a href="#expressions">핵심 표현</a>
+    <a href="#paraphrases">바꿔 말하기</a>
+    <a href="#tips">연습 포인트</a>
+  </div>
+</nav>
+
 <main>
 
-  <header>
-    <div class="eyebrow">오늘의 생활 영어 · 2026.05.23</div>
-    <h1>학교 다녀온 후 — 숙제 시간</h1>
-    <p class="lede">After school · Snack time · Homework routine</p>
-  </header>
+  <section id="overview">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <div>
+        <h2>오늘의 흐름</h2>
+        <div class="section-sub">After school routine, end to end</div>
+      </div>
+    </div>
+    <p class="section-intro">학교에서 돌아온 직후부터 자유 시간까지의 자연스러운 흐름을 따라갑니다. 각 단계마다 부모와 아이가 어떤 표현을 쓰는지 살펴보세요.</p>
 
-  <section>
-    <div class="section-label">상황 1</div>
-    <h2>간식 먹고 숙제 준비하기</h2>
+    <div class="overview-card">
+      <svg class="flow-svg" id="flow-diagram" viewBox="0 0 820 220" xmlns="http://www.w3.org/2000/svg" aria-label="학교 다녀온 후 흐름도">
+        <defs>
+          <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0,10 3.5,0 7" fill="#a09f97"/>
+          </marker>
+        </defs>
 
-    <div class="exchange">
-      <div class="who">Parent</div>
-      <div class="en">Welcome home! How was your day?</div>
-      <div class="ko">다 왔어! 오늘 어땠어?</div>
-    </div>
-    <div class="exchange">
-      <div class="who">Child</div>
-      <div class="en">Pretty good. I'm starving, though.</div>
-      <div class="ko">꽤 좋았어요. 근데 너무 배고파요.</div>
-    </div>
-    <div class="exchange">
-      <div class="who">Parent</div>
-      <div class="en">There's fruit on the table. Grab some and then start your homework.</div>
-      <div class="ko">테이블에 과일 있어. 먹고 나서 숙제 시작하자.</div>
-    </div>
-    <div class="exchange">
-      <div class="who">Child</div>
-      <div class="en">Can I watch TV first? Just for a little bit.</div>
-      <div class="ko">TV 먼저 봐도 돼요? 조금만요.</div>
-    </div>
-    <div class="exchange">
-      <div class="who">Parent</div>
-      <div class="en">Homework first, then TV. That's the rule.</div>
-      <div class="ko">숙제 먼저, 그다음 TV야. 그게 규칙이잖아.</div>
+        <!-- Step 1 -->
+        <g>
+          <rect x="20" y="60" width="220" height="100" rx="12" fill="#ffffff" stroke="#dedad2" stroke-width="1.5"/>
+          <text x="130" y="92" text-anchor="middle" font-size="13" font-weight="600" fill="#d95f2b" font-family="-apple-system,sans-serif">상황 1</text>
+          <text x="130" y="118" text-anchor="middle" font-size="14" font-weight="600" fill="#1a1a18" font-family="-apple-system,sans-serif">간식 + 숙제 준비</text>
+          <text x="130" y="140" text-anchor="middle" font-size="12" fill="#6b6a63" font-family="-apple-system,sans-serif">Welcome home → fruit → rules</text>
+        </g>
+
+        <!-- arrow 1 -->
+        <line x1="248" y1="110" x2="288" y2="110" stroke="#a09f97" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+        <!-- Step 2 -->
+        <g>
+          <rect x="300" y="60" width="220" height="100" rx="12" fill="#ffffff" stroke="#dedad2" stroke-width="1.5"/>
+          <text x="410" y="92" text-anchor="middle" font-size="13" font-weight="600" fill="#d95f2b" font-family="-apple-system,sans-serif">상황 2</text>
+          <text x="410" y="118" text-anchor="middle" font-size="14" font-weight="600" fill="#1a1a18" font-family="-apple-system,sans-serif">숙제하다 막힐 때</text>
+          <text x="410" y="140" text-anchor="middle" font-size="12" fill="#6b6a63" font-family="-apple-system,sans-serif">I don't get this → read together</text>
+        </g>
+
+        <!-- arrow 2 -->
+        <line x1="528" y1="110" x2="568" y2="110" stroke="#a09f97" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+        <!-- Step 3 -->
+        <g>
+          <rect x="580" y="60" width="220" height="100" rx="12" fill="#ffffff" stroke="#dedad2" stroke-width="1.5"/>
+          <text x="690" y="92" text-anchor="middle" font-size="13" font-weight="600" fill="#d95f2b" font-family="-apple-system,sans-serif">상황 3</text>
+          <text x="690" y="118" text-anchor="middle" font-size="14" font-weight="600" fill="#1a1a18" font-family="-apple-system,sans-serif">끝내고 자유 시간</text>
+          <text x="690" y="140" text-anchor="middle" font-size="12" fill="#6b6a63" font-family="-apple-system,sans-serif">All done → back by six</text>
+        </g>
+
+        <!-- bottom timeline -->
+        <line x1="20" y1="190" x2="800" y2="190" stroke="#dedad2" stroke-width="1"/>
+        <text x="20"  y="208" text-anchor="start"  font-size="11" fill="#a09f97" font-family="-apple-system,sans-serif">집 도착</text>
+        <text x="410" y="208" text-anchor="middle" font-size="11" fill="#a09f97" font-family="-apple-system,sans-serif">책상 앞</text>
+        <text x="800" y="208" text-anchor="end"    font-size="11" fill="#a09f97" font-family="-apple-system,sans-serif">밖에 나가기</text>
+      </svg>
     </div>
   </section>
 
-  <section>
-    <div class="section-label">상황 2</div>
-    <h2>숙제하다가 막혔을 때</h2>
+  <section id="situation-1">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <div>
+        <h2>상황 1 · 간식 먹고 숙제 준비하기</h2>
+        <div class="section-sub">집에 막 도착했을 때 주고받는 대화</div>
+      </div>
+    </div>
 
-    <div class="exchange">
-      <div class="who">Child</div>
-      <div class="en">Mom, I don't get this problem.</div>
-      <div class="ko">엄마, 이 문제 모르겠어요.</div>
-    </div>
-    <div class="exchange">
-      <div class="who">Parent</div>
-      <div class="en">Which one? Show me.</div>
-      <div class="ko">어떤 거? 보여줘.</div>
-    </div>
-    <div class="exchange">
-      <div class="who">Child</div>
-      <div class="en">This one. I tried, but I keep getting it wrong.</div>
-      <div class="ko">이거요. 해봤는데 계속 틀려요.</div>
-    </div>
-    <div class="exchange">
-      <div class="who">Parent</div>
-      <div class="en">Let's read it together first. Sometimes that helps.</div>
-      <div class="ko">같이 먼저 읽어보자. 그러면 도움이 될 때 있어.</div>
-    </div>
-    <div class="exchange">
-      <div class="who">Child</div>
-      <div class="en">Oh! I think I get it now.</div>
-      <div class="ko">아! 이제 알 것 같아요.</div>
+    <div class="dialogue">
+      <div class="bubble-row parent">
+        <div class="bubble parent">
+          <div class="bubble-speaker">Parent</div>
+          <div class="bubble-en">Welcome home! How was your day?</div>
+          <div class="bubble-ko">다 왔어! 오늘 어땠어?</div>
+        </div>
+      </div>
+      <div class="bubble-row child">
+        <div class="bubble child">
+          <div class="bubble-speaker">Child</div>
+          <div class="bubble-en">Pretty good. I'm starving, though.</div>
+          <div class="bubble-ko">꽤 좋았어요. 근데 너무 배고파요.</div>
+        </div>
+      </div>
+      <div class="bubble-row parent">
+        <div class="bubble parent">
+          <div class="bubble-speaker">Parent</div>
+          <div class="bubble-en">There's fruit on the table. Grab some and then start your homework.</div>
+          <div class="bubble-ko">테이블에 과일 있어. 먹고 나서 숙제 시작하자.</div>
+        </div>
+      </div>
+      <div class="bubble-row child">
+        <div class="bubble child">
+          <div class="bubble-speaker">Child</div>
+          <div class="bubble-en">Can I watch TV first? Just for a little bit.</div>
+          <div class="bubble-ko">TV 먼저 봐도 돼요? 조금만요.</div>
+        </div>
+      </div>
+      <div class="bubble-row parent">
+        <div class="bubble parent">
+          <div class="bubble-speaker">Parent</div>
+          <div class="bubble-en">Homework first, then TV. That's the rule.</div>
+          <div class="bubble-ko">숙제 먼저, 그다음 TV야. 그게 규칙이잖아.</div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section>
-    <div class="section-label">상황 3</div>
-    <h2>숙제 끝내고 자유 시간</h2>
+  <section id="situation-2">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <div>
+        <h2>상황 2 · 숙제하다가 막혔을 때</h2>
+        <div class="section-sub">도움을 청하고 같이 해결하기</div>
+      </div>
+    </div>
 
-    <div class="exchange">
-      <div class="who">Child</div>
-      <div class="en">I'm done with my homework!</div>
-      <div class="ko">숙제 다 했어요!</div>
-    </div>
-    <div class="exchange">
-      <div class="who">Parent</div>
-      <div class="en">Nice work! Let me check it real quick.</div>
-      <div class="ko">잘했어! 잠깐 확인해볼게.</div>
-    </div>
-    <div class="exchange">
-      <div class="who">Child</div>
-      <div class="en">Can I go outside after?</div>
-      <div class="ko">다음에 밖에 나가도 돼요?</div>
-    </div>
-    <div class="exchange">
-      <div class="who">Parent</div>
-      <div class="en">Sure, as long as you're back by six.</div>
-      <div class="ko">그럼, 6시까지는 들어와야 해.</div>
-    </div>
-    <div class="exchange">
-      <div class="who">Child</div>
-      <div class="en">Got it. Thanks, Mom!</div>
-      <div class="ko">알겠어요. 고마워요!</div>
+    <div class="dialogue">
+      <div class="bubble-row child">
+        <div class="bubble child">
+          <div class="bubble-speaker">Child</div>
+          <div class="bubble-en">Mom, I don't get this problem.</div>
+          <div class="bubble-ko">엄마, 이 문제 모르겠어요.</div>
+        </div>
+      </div>
+      <div class="bubble-row parent">
+        <div class="bubble parent">
+          <div class="bubble-speaker">Parent</div>
+          <div class="bubble-en">Which one? Show me.</div>
+          <div class="bubble-ko">어떤 거? 보여줘.</div>
+        </div>
+      </div>
+      <div class="bubble-row child">
+        <div class="bubble child">
+          <div class="bubble-speaker">Child</div>
+          <div class="bubble-en">This one. I tried, but I keep getting it wrong.</div>
+          <div class="bubble-ko">이거요. 해봤는데 계속 틀려요.</div>
+        </div>
+      </div>
+      <div class="bubble-row parent">
+        <div class="bubble parent">
+          <div class="bubble-speaker">Parent</div>
+          <div class="bubble-en">Let's read it together first. Sometimes that helps.</div>
+          <div class="bubble-ko">같이 먼저 읽어보자. 그러면 도움이 될 때 있어.</div>
+        </div>
+      </div>
+      <div class="bubble-row child">
+        <div class="bubble child">
+          <div class="bubble-speaker">Child</div>
+          <div class="bubble-en">Oh! I think I get it now.</div>
+          <div class="bubble-ko">아! 이제 알 것 같아요.</div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section>
-    <div class="section-label">핵심 표현</div>
+  <section id="situation-3">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <div>
+        <h2>상황 3 · 숙제 끝내고 자유 시간</h2>
+        <div class="section-sub">완료 보고와 외출 허락 받기</div>
+      </div>
+    </div>
 
-    <div class="expr">
-      <div class="expr-en">I'm starving.</div>
-      <div class="expr-ko">너무 배고파요.</div>
-    </div>
-    <div class="expr">
-      <div class="expr-en">Homework first, then TV.</div>
-      <div class="expr-ko">숙제 먼저, 그다음 TV야.</div>
-    </div>
-    <div class="expr">
-      <div class="expr-en">I don't get this problem.</div>
-      <div class="expr-ko">이 문제 모르겠어요.</div>
-    </div>
-    <div class="expr">
-      <div class="expr-en">As long as you're back by six.</div>
-      <div class="expr-ko">6시까지는 들어와야 해.</div>
+    <div class="dialogue">
+      <div class="bubble-row child">
+        <div class="bubble child">
+          <div class="bubble-speaker">Child</div>
+          <div class="bubble-en">I'm done with my homework!</div>
+          <div class="bubble-ko">숙제 다 했어요!</div>
+        </div>
+      </div>
+      <div class="bubble-row parent">
+        <div class="bubble parent">
+          <div class="bubble-speaker">Parent</div>
+          <div class="bubble-en">Nice work! Let me check it real quick.</div>
+          <div class="bubble-ko">잘했어! 잠깐 확인해볼게.</div>
+        </div>
+      </div>
+      <div class="bubble-row child">
+        <div class="bubble child">
+          <div class="bubble-speaker">Child</div>
+          <div class="bubble-en">Can I go outside after?</div>
+          <div class="bubble-ko">다음에 밖에 나가도 돼요?</div>
+        </div>
+      </div>
+      <div class="bubble-row parent">
+        <div class="bubble parent">
+          <div class="bubble-speaker">Parent</div>
+          <div class="bubble-en">Sure, as long as you're back by six.</div>
+          <div class="bubble-ko">그럼, 6시까지는 들어와야 해.</div>
+        </div>
+      </div>
+      <div class="bubble-row child">
+        <div class="bubble child">
+          <div class="bubble-speaker">Child</div>
+          <div class="bubble-en">Got it. Thanks, Mom!</div>
+          <div class="bubble-ko">알겠어요. 고마워요!</div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section>
-    <div class="section-label">바꿔 말하기</div>
+  <section id="expressions">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <div>
+        <h2>핵심 표현</h2>
+        <div class="section-sub">오늘 대화에서 가장 자주 쓰는 네 가지</div>
+      </div>
+    </div>
 
-    <div class="alt">
-      <div class="alt-from">I'm starving.</div>
-      <div class="alt-to">I'm so hungry I could eat anything.</div>
-    </div>
-    <div class="alt">
-      <div class="alt-from">Homework first, then TV.</div>
-      <div class="alt-to">Finish your homework before you turn on the TV.</div>
-    </div>
-    <div class="alt">
-      <div class="alt-from">I don't get this problem.</div>
-      <div class="alt-to">I'm stuck on this one.</div>
-    </div>
-    <div class="alt">
-      <div class="alt-from">As long as you're back by six.</div>
-      <div class="alt-to">Just make sure you're home before six.</div>
+    <div class="expr-grid">
+      <div class="expr-card">
+        <div class="expr-en">I'm starving.</div>
+        <div class="expr-ko">너무 배고파요. <em style="color:var(--color-text-faint)">— hungry보다 강한 표현</em></div>
+      </div>
+      <div class="expr-card">
+        <div class="expr-en">Homework first, then TV.</div>
+        <div class="expr-ko">숙제 먼저, 그다음 TV야. <em style="color:var(--color-text-faint)">— 순서를 정할 때</em></div>
+      </div>
+      <div class="expr-card">
+        <div class="expr-en">I don't get this problem.</div>
+        <div class="expr-ko">이 문제 모르겠어요. <em style="color:var(--color-text-faint)">— "이해 못 하겠다"의 자연스러운 말</em></div>
+      </div>
+      <div class="expr-card">
+        <div class="expr-en">As long as you're back by six.</div>
+        <div class="expr-ko">6시까지는 들어와야 해. <em style="color:var(--color-text-faint)">— "~하기만 하면 / ~인 한"</em></div>
+      </div>
     </div>
   </section>
 
-  <section>
-    <div class="section-label">짧은 연습 포인트</div>
+  <section id="paraphrases">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <div>
+        <h2>바꿔 말하기</h2>
+        <div class="section-sub">같은 의미, 다른 표현 — 어휘 폭을 넓혀봅니다</div>
+      </div>
+    </div>
 
-    <div class="tip">
-      <div class="tip-num">01</div>
-      <div class="tip-text">부모와 아이가 역할을 바꿔서 읽어보세요. 부모가 아이 대사를, 아이가 부모 대사를 맡으면 두 관점의 표현을 동시에 익힐 수 있습니다.</div>
-    </div>
-    <div class="tip">
-      <div class="tip-num">02</div>
-      <div class="tip-text">"I don't get this." / "I'm stuck."처럼 도움을 요청하는 표현을 오늘 실제 숙제 시간에 영어로 말해보세요.</div>
-    </div>
-    <div class="tip">
-      <div class="tip-num">03</div>
-      <div class="tip-text">"As long as ~" 패턴으로 조건 문장을 만들어보세요. "As long as you eat dinner." / "As long as you brush your teeth." 처럼 응용할 수 있습니다.</div>
+    <div class="alt-list">
+      <div class="alt-row">
+        <div class="alt-from">I'm starving.</div>
+        <div class="alt-arrow">→</div>
+        <div class="alt-to">I'm so hungry I could eat anything.</div>
+      </div>
+      <div class="alt-row">
+        <div class="alt-from">Homework first, then TV.</div>
+        <div class="alt-arrow">→</div>
+        <div class="alt-to">Finish your homework before you turn on the TV.</div>
+      </div>
+      <div class="alt-row">
+        <div class="alt-from">I don't get this problem.</div>
+        <div class="alt-arrow">→</div>
+        <div class="alt-to">I'm stuck on this one.</div>
+      </div>
+      <div class="alt-row">
+        <div class="alt-from">As long as you're back by six.</div>
+        <div class="alt-arrow">→</div>
+        <div class="alt-to">Just make sure you're home before six.</div>
+      </div>
     </div>
   </section>
 
-  <a class="back" href="../index.html">← 목록으로</a>
+  <section id="tips">
+    <div class="section-header">
+      <span class="section-num">07</span>
+      <div>
+        <h2>짧은 연습 포인트</h2>
+        <div class="section-sub">오늘 바로 입에 붙이는 세 가지 방법</div>
+      </div>
+    </div>
+
+    <div class="tip-list">
+      <div class="tip-card">
+        <div class="tip-num">01</div>
+        <div class="tip-text">부모와 아이가 <strong>역할을 바꿔서</strong> 읽어보세요. 두 관점의 표현을 동시에 익힐 수 있고, 평소 잘 안 쓰던 쪽 어휘가 자연스럽게 늘어납니다.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-num">02</div>
+        <div class="tip-text">도움을 요청하는 표현 — <code>I don't get this.</code> / <code>I'm stuck.</code> 을 오늘 실제 숙제 시간에 한 번이라도 영어로 말해보세요.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-num">03</div>
+        <div class="tip-text"><code>As long as ~</code> 패턴으로 조건 문장을 만들어보세요. 예: <code>As long as you eat dinner.</code> / <code>As long as you brush your teeth.</code></div>
+      </div>
+    </div>
+  </section>
 
 </main>
+
+<footer>
+  My English · 매일 영어 학습 · 2026-05-23
+</footer>
+
+<a id="back-to-index" href="../index.html" aria-label="목록으로" title="목록으로">
+  <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+    <path d="M8.5 15L3 10l5.5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M3 10h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+</a>
+<style>
+#back-to-index{
+  position:fixed; bottom:1.5rem; left:1.5rem;
+  width:44px; height:44px;
+  background:var(--color-bg-card);
+  color:var(--color-accent);
+  border:1px solid var(--color-border);
+  border-radius:9999px;
+  display:flex; align-items:center; justify-content:center;
+  text-decoration:none;
+  box-shadow:var(--shadow-md);
+  transition:all var(--transition-base);
+  z-index:300;
+}
+#back-to-index:hover{
+  background:var(--color-accent);
+  color:#fff;
+  border-color:var(--color-accent);
+  transform:translateX(-2px);
+}
+@media(max-width:600px){
+  #back-to-index{ bottom:1rem; left:1rem; }
+}
+</style>
+
+<script>
+(function() {
+  const progress = document.getElementById('progress');
+  const tocLinks = Array.from(document.querySelectorAll('#toc a'));
+  const sections = tocLinks
+    .map(a => document.querySelector(a.getAttribute('href')))
+    .filter(Boolean);
+
+  function onScroll() {
+    const h = document.documentElement;
+    const scrolled = h.scrollTop;
+    const max = h.scrollHeight - h.clientHeight;
+    progress.style.width = max > 0 ? (scrolled / max * 100) + '%' : '0%';
+
+    const offset = scrolled + 120;
+    let activeIdx = 0;
+    for (let i = 0; i < sections.length; i++) {
+      if (sections[i].offsetTop <= offset) activeIdx = i;
+    }
+    tocLinks.forEach((a, i) => a.classList.toggle('active', i === activeIdx));
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+</script>
 
 </body>
 </html>
