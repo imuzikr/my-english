@@ -1,0 +1,1695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Design System</title>
+  <style>
+    /* ============================================================
+       CSS VARIABLES — COPY THIS BLOCK INTO ANY OUTPUT FILE
+       ============================================================ */
+    :root {
+      /* Color palette */
+      --color-bg:           #f5f2ed;
+      --color-bg-alt:       #eceae4;
+      --color-bg-card:      #ffffff;
+      --color-bg-code:      #1e1e1e;
+
+      --color-text:         #1a1a18;
+      --color-text-muted:   #6b6a63;
+      --color-text-faint:   #a09f97;
+
+      --color-border:       #dedad2;
+      --color-border-strong:#b8b5ac;
+
+      --color-accent:       #d95f2b;   /* coral/orange */
+      --color-accent-hover: #c2521f;
+      --color-accent-soft:  #faeee7;
+
+      --color-green:        #3a6b4a;
+      --color-green-soft:   #e6f0e9;
+
+      --color-blue:         #2d5a8e;
+      --color-blue-soft:    #e5eef7;
+
+      --color-yellow:       #8a6a00;
+      --color-yellow-soft:  #fdf5d9;
+
+      --color-red:          #b03a2e;
+      --color-red-soft:     #fdecea;
+
+      /* Typography */
+      --font-sans:   -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      --font-mono:   "SF Mono", "Fira Code", "Cascadia Code", Consolas, "Liberation Mono", monospace;
+
+      --text-xs:     0.75rem;    /* 12px */
+      --text-sm:     0.875rem;   /* 14px */
+      --text-base:   1rem;       /* 16px */
+      --text-lg:     1.125rem;   /* 18px */
+      --text-xl:     1.25rem;    /* 20px */
+      --text-2xl:    1.5rem;     /* 24px */
+      --text-3xl:    1.875rem;   /* 30px */
+      --text-4xl:    2.25rem;    /* 36px */
+
+      --weight-normal:  400;
+      --weight-medium:  500;
+      --weight-semibold:600;
+      --weight-bold:    700;
+
+      --leading-tight:  1.25;
+      --leading-snug:   1.4;
+      --leading-normal: 1.6;
+      --leading-loose:  1.8;
+
+      /* Spacing scale */
+      --space-1:  0.25rem;   /*  4px */
+      --space-2:  0.5rem;    /*  8px */
+      --space-3:  0.75rem;   /* 12px */
+      --space-4:  1rem;      /* 16px */
+      --space-5:  1.25rem;   /* 20px */
+      --space-6:  1.5rem;    /* 24px */
+      --space-8:  2rem;      /* 32px */
+      --space-10: 2.5rem;    /* 40px */
+      --space-12: 3rem;      /* 48px */
+      --space-16: 4rem;      /* 64px */
+
+      /* Radii */
+      --radius-sm:  4px;
+      --radius-md:  8px;
+      --radius-lg:  12px;
+      --radius-xl:  16px;
+      --radius-full: 9999px;
+
+      /* Shadows */
+      --shadow-sm:  0 1px 3px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md:  0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+      --shadow-lg:  0 10px 28px rgba(0,0,0,0.10), 0 4px 8px rgba(0,0,0,0.05);
+
+      /* Transitions */
+      --transition-fast: 100ms ease;
+      --transition-base: 180ms ease;
+    }
+
+    /* ============================================================
+       BASE RESET & LAYOUT
+       ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      font-family: var(--font-sans);
+      font-size: var(--text-base);
+      line-height: var(--leading-normal);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ============================================================
+       DESIGN SYSTEM PAGE LAYOUT
+       ============================================================ */
+    .ds-layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      min-height: 100vh;
+    }
+
+    .ds-sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      background: var(--color-bg-alt);
+      border-right: 1px solid var(--color-border);
+      padding: var(--space-6) var(--space-4);
+    }
+
+    .ds-sidebar-logo {
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--color-text);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-6);
+      padding-bottom: var(--space-4);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .ds-sidebar-logo span {
+      color: var(--color-accent);
+    }
+
+    .ds-nav-section {
+      margin-bottom: var(--space-5);
+    }
+
+    .ds-nav-label {
+      font-size: var(--text-xs);
+      font-weight: var(--weight-semibold);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-text-faint);
+      margin-bottom: var(--space-2);
+      padding-left: var(--space-2);
+    }
+
+    .ds-nav-link {
+      display: block;
+      padding: var(--space-1) var(--space-2);
+      border-radius: var(--radius-sm);
+      color: var(--color-text-muted);
+      text-decoration: none;
+      font-size: var(--text-sm);
+      transition: background var(--transition-fast), color var(--transition-fast);
+    }
+
+    .ds-nav-link:hover {
+      background: var(--color-border);
+      color: var(--color-text);
+    }
+
+    .ds-main {
+      padding: var(--space-12) var(--space-10);
+      max-width: 900px;
+    }
+
+    /* ============================================================
+       SECTION HEADERS
+       ============================================================ */
+    .ds-section {
+      margin-bottom: var(--space-16);
+    }
+
+    .ds-section-header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-8);
+      padding-bottom: var(--space-4);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .ds-section-tag {
+      font-size: var(--text-xs);
+      font-weight: var(--weight-semibold);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-accent);
+      background: var(--color-accent-soft);
+      padding: var(--space-1) var(--space-2);
+      border-radius: var(--radius-sm);
+    }
+
+    h1 { font-size: var(--text-4xl); font-weight: var(--weight-bold); line-height: var(--leading-tight); }
+    h2 { font-size: var(--text-2xl); font-weight: var(--weight-semibold); line-height: var(--leading-tight); }
+    h3 { font-size: var(--text-xl);  font-weight: var(--weight-semibold); line-height: var(--leading-snug); }
+    h4 { font-size: var(--text-lg);  font-weight: var(--weight-medium); }
+    h5 { font-size: var(--text-base); font-weight: var(--weight-medium); }
+
+    p { margin-bottom: var(--space-4); color: var(--color-text-muted); }
+    p:last-child { margin-bottom: 0; }
+
+    /* ============================================================
+       HERO / INTRO
+       ============================================================ */
+    .ds-hero {
+      margin-bottom: var(--space-16);
+    }
+
+    .ds-hero-eyebrow {
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      color: var(--color-accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: var(--space-3);
+    }
+
+    .ds-hero h1 {
+      margin-bottom: var(--space-4);
+      color: var(--color-text);
+    }
+
+    .ds-hero p {
+      font-size: var(--text-lg);
+      max-width: 60ch;
+    }
+
+    /* ============================================================
+       DEMO GRID HELPERS
+       ============================================================ */
+    .demo-grid {
+      display: grid;
+      gap: var(--space-4);
+    }
+    .demo-grid-2 { grid-template-columns: 1fr 1fr; }
+    .demo-grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .demo-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      align-items: center;
+    }
+
+    /* ============================================================
+       COLOR PALETTE
+       ============================================================ */
+    .color-swatches {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: var(--space-3);
+    }
+
+    .color-swatch {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .color-swatch-block {
+      height: 64px;
+    }
+
+    .color-swatch-info {
+      background: var(--color-bg-card);
+      padding: var(--space-2) var(--space-3);
+      border: 1px solid var(--color-border);
+      border-top: none;
+    }
+
+    .color-swatch-name {
+      font-size: var(--text-xs);
+      font-weight: var(--weight-semibold);
+      color: var(--color-text);
+    }
+
+    .color-swatch-value {
+      font-size: var(--text-xs);
+      color: var(--color-text-faint);
+      font-family: var(--font-mono);
+    }
+
+    /* ============================================================
+       TYPOGRAPHY SCALE
+       ============================================================ */
+    .type-scale-row {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-6);
+      padding: var(--space-4) 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .type-scale-row:last-child { border-bottom: none; }
+
+    .type-scale-meta {
+      min-width: 120px;
+      font-size: var(--text-xs);
+      color: var(--color-text-faint);
+      font-family: var(--font-mono);
+    }
+
+    .type-scale-meta strong {
+      display: block;
+      color: var(--color-text-muted);
+      font-size: var(--text-xs);
+      font-weight: var(--weight-semibold);
+    }
+
+    /* ============================================================
+       CARD COMPONENTS
+       ============================================================ */
+    .card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .card-title {
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      color: var(--color-text);
+      margin-bottom: var(--space-2);
+    }
+
+    .card-body {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      line-height: var(--leading-normal);
+    }
+
+    .card-footer {
+      margin-top: var(--space-4);
+      padding-top: var(--space-4);
+      border-top: 1px solid var(--color-border);
+      font-size: var(--text-sm);
+      color: var(--color-text-faint);
+    }
+
+    /* Stat Card */
+    .stat-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5) var(--space-6);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .stat-card-label {
+      font-size: var(--text-xs);
+      font-weight: var(--weight-semibold);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--color-text-faint);
+      margin-bottom: var(--space-2);
+    }
+
+    .stat-card-value {
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-text);
+      line-height: var(--leading-tight);
+      margin-bottom: var(--space-1);
+    }
+
+    .stat-card-change {
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+    }
+
+    .stat-card-change.up   { color: var(--color-green); }
+    .stat-card-change.down { color: var(--color-red); }
+
+    /* ============================================================
+       TABS
+       ============================================================ */
+    .tabs {
+      border-bottom: 1px solid var(--color-border);
+      display: flex;
+      gap: 0;
+      margin-bottom: var(--space-6);
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      padding: var(--space-3) var(--space-4);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      color: var(--color-text-muted);
+      cursor: pointer;
+      transition: color var(--transition-base), border-color var(--transition-base);
+      margin-bottom: -1px;
+    }
+
+    .tab-btn:hover { color: var(--color-text); }
+
+    .tab-btn.active {
+      color: var(--color-accent);
+      border-bottom-color: var(--color-accent);
+    }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* ============================================================
+       TABLE
+       ============================================================ */
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border);
+      box-shadow: var(--shadow-sm);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--text-sm);
+      background: var(--color-bg-card);
+    }
+
+    thead tr {
+      background: var(--color-bg-alt);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    th {
+      padding: var(--space-3) var(--space-4);
+      text-align: left;
+      font-size: var(--text-xs);
+      font-weight: var(--weight-semibold);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--color-text-faint);
+    }
+
+    td {
+      padding: var(--space-3) var(--space-4);
+      color: var(--color-text-muted);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    tbody tr:last-child td { border-bottom: none; }
+
+    tbody tr:hover { background: var(--color-bg); }
+
+    /* ============================================================
+       CODE BLOCKS
+       ============================================================ */
+    .code-block {
+      background: var(--color-bg-code);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+
+    .code-block-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-3) var(--space-4);
+      background: #2a2a2a;
+      border-bottom: 1px solid #333;
+    }
+
+    .code-block-lang {
+      font-size: var(--text-xs);
+      font-weight: var(--weight-semibold);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #888;
+    }
+
+    .code-block-copy {
+      font-size: var(--text-xs);
+      color: #888;
+      background: none;
+      border: 1px solid #444;
+      border-radius: var(--radius-sm);
+      padding: 2px 8px;
+      cursor: pointer;
+      transition: color var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .code-block-copy:hover { color: #ccc; border-color: #666; }
+
+    pre {
+      margin: 0;
+      padding: var(--space-5);
+      overflow-x: auto;
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+      line-height: 1.7;
+    }
+
+    code {
+      font-family: var(--font-mono);
+      font-size: 0.9em;
+      background: var(--color-bg-alt);
+      padding: 1px 5px;
+      border-radius: 3px;
+      color: var(--color-text);
+    }
+
+    .code-block pre code {
+      background: none;
+      padding: 0;
+      font-size: inherit;
+    }
+
+    /* Syntax colors */
+    .tok-keyword  { color: #c792ea; }
+    .tok-string   { color: #c3e88d; }
+    .tok-comment  { color: #546e7a; font-style: italic; }
+    .tok-number   { color: #f78c6c; }
+    .tok-function { color: #82aaff; }
+    .tok-property { color: #ffcb6b; }
+    .tok-operator { color: #89ddff; }
+    .tok-plain    { color: #eeffff; }
+
+    /* ============================================================
+       BADGES
+       ============================================================ */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-1);
+      padding: 2px var(--space-2);
+      border-radius: var(--radius-full);
+      font-size: var(--text-xs);
+      font-weight: var(--weight-semibold);
+      line-height: 1.4;
+    }
+
+    .badge-default  { background: var(--color-bg-alt);    color: var(--color-text-muted); border: 1px solid var(--color-border); }
+    .badge-accent   { background: var(--color-accent-soft); color: var(--color-accent); }
+    .badge-green    { background: var(--color-green-soft);  color: var(--color-green); }
+    .badge-blue     { background: var(--color-blue-soft);   color: var(--color-blue); }
+    .badge-yellow   { background: var(--color-yellow-soft); color: var(--color-yellow); }
+    .badge-red      { background: var(--color-red-soft);    color: var(--color-red); }
+
+    .badge-dot::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    /* ============================================================
+       BUTTONS
+       ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-md);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      font-family: var(--font-sans);
+      cursor: pointer;
+      text-decoration: none;
+      transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+      border: 1px solid transparent;
+      white-space: nowrap;
+      line-height: 1.4;
+    }
+
+    .btn:focus-visible {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 2px;
+    }
+
+    .btn-primary {
+      background: var(--color-accent);
+      color: #fff;
+      border-color: var(--color-accent);
+    }
+    .btn-primary:hover {
+      background: var(--color-accent-hover);
+      border-color: var(--color-accent-hover);
+    }
+
+    .btn-secondary {
+      background: var(--color-bg-card);
+      color: var(--color-text);
+      border-color: var(--color-border-strong);
+    }
+    .btn-secondary:hover {
+      background: var(--color-bg-alt);
+      border-color: var(--color-border-strong);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--color-text-muted);
+      border-color: transparent;
+    }
+    .btn-ghost:hover {
+      background: var(--color-bg-alt);
+      color: var(--color-text);
+    }
+
+    .btn-sm {
+      padding: var(--space-1) var(--space-3);
+      font-size: var(--text-xs);
+    }
+
+    .btn-lg {
+      padding: var(--space-3) var(--space-6);
+      font-size: var(--text-base);
+    }
+
+    /* ============================================================
+       TOGGLES & SLIDERS
+       ============================================================ */
+    /* Toggle switch */
+    .toggle-wrap {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .toggle-track {
+      position: relative;
+      width: 40px;
+      height: 22px;
+      background: var(--color-border-strong);
+      border-radius: var(--radius-full);
+      transition: background var(--transition-base);
+      flex-shrink: 0;
+    }
+
+    .toggle-track::after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 16px;
+      height: 16px;
+      background: #fff;
+      border-radius: 50%;
+      transition: transform var(--transition-base);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+
+    input[type="checkbox"].toggle-input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    input[type="checkbox"].toggle-input:checked + .toggle-track {
+      background: var(--color-accent);
+    }
+
+    input[type="checkbox"].toggle-input:checked + .toggle-track::after {
+      transform: translateX(18px);
+    }
+
+    .toggle-label {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+
+    /* Range slider */
+    .slider-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .slider-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .slider-label {
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      color: var(--color-text);
+    }
+
+    .slider-value {
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--color-accent);
+      font-family: var(--font-mono);
+    }
+
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 4px;
+      border-radius: var(--radius-full);
+      background: var(--color-border);
+      outline: none;
+      cursor: pointer;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      cursor: pointer;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+      transition: transform var(--transition-fast);
+    }
+
+    input[type="range"]::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+
+    input[type="range"]::-moz-range-thumb {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      border: none;
+      cursor: pointer;
+    }
+
+    /* ============================================================
+       ALERTS / CALLOUTS
+       ============================================================ */
+    .alert {
+      display: flex;
+      gap: var(--space-3);
+      padding: var(--space-4);
+      border-radius: var(--radius-md);
+      font-size: var(--text-sm);
+      border-left: 3px solid;
+    }
+
+    .alert-icon {
+      font-size: var(--text-lg);
+      flex-shrink: 0;
+      line-height: 1.4;
+    }
+
+    .alert-content {}
+    .alert-title {
+      font-weight: var(--weight-semibold);
+      margin-bottom: var(--space-1);
+    }
+    .alert-body { line-height: var(--leading-normal); }
+
+    .alert-info {
+      background: var(--color-blue-soft);
+      border-color: var(--color-blue);
+      color: var(--color-blue);
+    }
+
+    .alert-success {
+      background: var(--color-green-soft);
+      border-color: var(--color-green);
+      color: var(--color-green);
+    }
+
+    .alert-warning {
+      background: var(--color-yellow-soft);
+      border-color: var(--color-yellow);
+      color: var(--color-yellow);
+    }
+
+    .alert-error {
+      background: var(--color-red-soft);
+      border-color: var(--color-red);
+      color: var(--color-red);
+    }
+
+    .alert-body { color: inherit; opacity: 0.85; }
+
+    /* ============================================================
+       DATA VISUALIZATION — SVG BAR CHART
+       ============================================================ */
+    .chart-wrap {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .chart-title {
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--color-text);
+      margin-bottom: var(--space-5);
+    }
+
+    .chart-svg {
+      width: 100%;
+      height: auto;
+      overflow: visible;
+    }
+
+    .chart-axis-label {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      fill: var(--color-text-faint);
+    }
+
+    .chart-bar {
+      transition: opacity 0.15s ease;
+    }
+
+    .chart-bar:hover { opacity: 0.8; }
+
+    .chart-value-label {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 600;
+      fill: var(--color-text-muted);
+    }
+
+    /* ============================================================
+       USAGE / HOW-TO SECTION
+       ============================================================ */
+    .usage-card {
+      background: linear-gradient(135deg, var(--color-accent-soft) 0%, var(--color-bg-card) 60%);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-8);
+    }
+
+    .usage-step {
+      display: flex;
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+    }
+
+    .usage-step:last-child { margin-bottom: 0; }
+
+    .usage-step-num {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      color: #fff;
+      font-size: var(--text-xs);
+      font-weight: var(--weight-bold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .usage-step-content {}
+    .usage-step-title {
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--color-text);
+      margin-bottom: var(--space-1);
+    }
+    .usage-step-desc {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      line-height: var(--leading-normal);
+    }
+
+    /* ============================================================
+       UTILITIES
+       ============================================================ */
+    .text-muted   { color: var(--color-text-muted); }
+    .text-faint   { color: var(--color-text-faint); }
+    .text-accent  { color: var(--color-accent); }
+    .text-sm      { font-size: var(--text-sm); }
+    .text-xs      { font-size: var(--text-xs); }
+    .font-mono    { font-family: var(--font-mono); }
+    .font-semibold { font-weight: var(--weight-semibold); }
+
+    .mt-4  { margin-top: var(--space-4); }
+    .mt-6  { margin-top: var(--space-6); }
+    .mt-8  { margin-top: var(--space-8); }
+    .mb-4  { margin-bottom: var(--space-4); }
+    .mb-6  { margin-bottom: var(--space-6); }
+
+    /* ============================================================
+       RESPONSIVE
+       ============================================================ */
+    @media (max-width: 768px) {
+      .ds-layout {
+        grid-template-columns: 1fr;
+      }
+      .ds-sidebar {
+        position: static;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--color-border);
+      }
+      .ds-main {
+        padding: var(--space-8) var(--space-5);
+      }
+      .demo-grid-2,
+      .demo-grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="ds-layout">
+
+  <!-- SIDEBAR NAV -->
+  <aside class="ds-sidebar">
+    <div class="ds-sidebar-logo">HTML Design<span>System</span></div>
+
+    <nav>
+      <div class="ds-nav-section">
+        <div class="ds-nav-label">Foundation</div>
+        <a class="ds-nav-link" href="#colors">Colors</a>
+        <a class="ds-nav-link" href="#typography">Typography</a>
+        <a class="ds-nav-link" href="#spacing">Spacing &amp; Radius</a>
+      </div>
+      <div class="ds-nav-section">
+        <div class="ds-nav-label">Components</div>
+        <a class="ds-nav-link" href="#cards">Cards</a>
+        <a class="ds-nav-link" href="#tabs">Tabs</a>
+        <a class="ds-nav-link" href="#tables">Tables</a>
+        <a class="ds-nav-link" href="#code">Code Blocks</a>
+        <a class="ds-nav-link" href="#badges">Badges</a>
+        <a class="ds-nav-link" href="#buttons">Buttons</a>
+        <a class="ds-nav-link" href="#controls">Toggles &amp; Sliders</a>
+        <a class="ds-nav-link" href="#alerts">Alerts</a>
+        <a class="ds-nav-link" href="#charts">Data Viz</a>
+      </div>
+      <div class="ds-nav-section">
+        <div class="ds-nav-label">Usage</div>
+        <a class="ds-nav-link" href="#how-to-use">How to Use</a>
+        <a class="ds-nav-link" href="#css-vars">CSS Variables</a>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="ds-main">
+
+    <!-- HERO -->
+    <div class="ds-hero">
+      <div class="ds-hero-eyebrow">Claude Code · HTML Output</div>
+      <h1>HTML Design System</h1>
+      <p>A cohesive visual language for Claude-generated HTML output files. Reference this system when generating specs, reports, code reviews, and interactive tools.</p>
+    </div>
+
+    <!-- ── COLORS ───────────────────────────────────────────── -->
+    <section class="ds-section" id="colors">
+      <div class="ds-section-header">
+        <h2>Colors</h2>
+        <span class="ds-section-tag">Foundation</span>
+      </div>
+
+      <h4 class="mb-4">Backgrounds</h4>
+      <div class="color-swatches mb-6">
+        <div class="color-swatch">
+          <div class="color-swatch-block" style="background:#f5f2ed;border:1px solid #dedad2;border-bottom:none;"></div>
+          <div class="color-swatch-info"><div class="color-swatch-name">Background</div><div class="color-swatch-value">#f5f2ed</div></div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch-block" style="background:#eceae4;"></div>
+          <div class="color-swatch-info"><div class="color-swatch-name">Background Alt</div><div class="color-swatch-value">#eceae4</div></div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch-block" style="background:#ffffff;border:1px solid #dedad2;border-bottom:none;"></div>
+          <div class="color-swatch-info"><div class="color-swatch-name">Card</div><div class="color-swatch-value">#ffffff</div></div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch-block" style="background:#1e1e1e;"></div>
+          <div class="color-swatch-info"><div class="color-swatch-name">Code BG</div><div class="color-swatch-value">#1e1e1e</div></div>
+        </div>
+      </div>
+
+      <h4 class="mb-4">Text &amp; Borders</h4>
+      <div class="color-swatches mb-6">
+        <div class="color-swatch">
+          <div class="color-swatch-block" style="background:#1a1a18;"></div>
+          <div class="color-swatch-info"><div class="color-swatch-name">Text</div><div class="color-swatch-value">#1a1a18</div></div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch-block" style="background:#6b6a63;"></div>
+          <div class="color-swatch-info"><div class="color-swatch-name">Text Muted</div><div class="color-swatch-value">#6b6a63</div></div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch-block" style="background:#a09f97;"></div>
+          <div class="color-swatch-info"><div class="color-swatch-name">Text Faint</div><div class="color-swatch-value">#a09f97</div></div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch-block" style="background:#dedad2;"></div>
+          <div class="color-swatch-info"><div class="color-swatch-name">Border</div><div class="color-swatch-value">#dedad2</div></div>
+        </div>
+      </div>
+
+      <h4 class="mb-4">Accent &amp; Semantic</h4>
+      <div class="color-swatches">
+        <div class="color-swatch">
+          <div class="color-swatch-block" style="background:#d95f2b;"></div>
+          <div class="color-swatch-info"><div class="color-swatch-name">Accent</div><div class="color-swatch-value">#d95f2b</div></div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch-block" style="background:#3a6b4a;"></div>
+          <div class="color-swatch-info"><div class="color-swatch-name">Green</div><div class="color-swatch-value">#3a6b4a</div></div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch-block" style="background:#2d5a8e;"></div>
+          <div class="color-swatch-info"><div class="color-swatch-name">Blue</div><div class="color-swatch-value">#2d5a8e</div></div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch-block" style="background:#8a6a00;"></div>
+          <div class="color-swatch-info"><div class="color-swatch-name">Yellow</div><div class="color-swatch-value">#8a6a00</div></div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch-block" style="background:#b03a2e;"></div>
+          <div class="color-swatch-info"><div class="color-swatch-name">Red</div><div class="color-swatch-value">#b03a2e</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TYPOGRAPHY ────────────────────────────────────────── -->
+    <section class="ds-section" id="typography">
+      <div class="ds-section-header">
+        <h2>Typography</h2>
+        <span class="ds-section-tag">Foundation</span>
+      </div>
+
+      <div class="mb-6">
+        <div class="type-scale-row">
+          <div class="type-scale-meta"><strong>4xl / Bold</strong>2.25rem · 36px</div>
+          <h1 style="font-size:2.25rem;">The quick brown fox</h1>
+        </div>
+        <div class="type-scale-row">
+          <div class="type-scale-meta"><strong>3xl / Bold</strong>1.875rem · 30px</div>
+          <h2 style="font-size:1.875rem;">The quick brown fox</h2>
+        </div>
+        <div class="type-scale-row">
+          <div class="type-scale-meta"><strong>2xl / Semibold</strong>1.5rem · 24px</div>
+          <h2>The quick brown fox</h2>
+        </div>
+        <div class="type-scale-row">
+          <div class="type-scale-meta"><strong>xl / Semibold</strong>1.25rem · 20px</div>
+          <h3>The quick brown fox</h3>
+        </div>
+        <div class="type-scale-row">
+          <div class="type-scale-meta"><strong>lg / Medium</strong>1.125rem · 18px</div>
+          <h4>The quick brown fox</h4>
+        </div>
+        <div class="type-scale-row">
+          <div class="type-scale-meta"><strong>base</strong>1rem · 16px</div>
+          <p style="margin:0;">The quick brown fox jumps over the lazy dog.</p>
+        </div>
+        <div class="type-scale-row">
+          <div class="type-scale-meta"><strong>sm</strong>0.875rem · 14px</div>
+          <p style="font-size:0.875rem;margin:0;">The quick brown fox jumps over the lazy dog.</p>
+        </div>
+        <div class="type-scale-row">
+          <div class="type-scale-meta"><strong>xs</strong>0.75rem · 12px</div>
+          <p style="font-size:0.75rem;margin:0;">The quick brown fox jumps over the lazy dog.</p>
+        </div>
+        <div class="type-scale-row">
+          <div class="type-scale-meta"><strong>mono / sm</strong>0.875rem</div>
+          <code style="background:none;padding:0;font-size:0.875rem;color:var(--color-text-muted);">const answer = 42;</code>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SPACING ───────────────────────────────────────────── -->
+    <section class="ds-section" id="spacing">
+      <div class="ds-section-header">
+        <h2>Spacing &amp; Radius</h2>
+        <span class="ds-section-tag">Foundation</span>
+      </div>
+
+      <div class="demo-row mb-6" style="align-items:flex-end;">
+        <div style="text-align:center;">
+          <div style="background:var(--color-accent-soft);border:1px solid var(--color-accent);width:4px;height:4px;border-radius:2px;"></div>
+          <div class="text-xs text-faint font-mono mt-4">1 · 4px</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="background:var(--color-accent-soft);border:1px solid var(--color-accent);width:8px;height:8px;"></div>
+          <div class="text-xs text-faint font-mono mt-4">2 · 8px</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="background:var(--color-accent-soft);border:1px solid var(--color-accent);width:12px;height:12px;"></div>
+          <div class="text-xs text-faint font-mono mt-4">3 · 12px</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="background:var(--color-accent-soft);border:1px solid var(--color-accent);width:16px;height:16px;"></div>
+          <div class="text-xs text-faint font-mono mt-4">4 · 16px</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="background:var(--color-accent-soft);border:1px solid var(--color-accent);width:24px;height:24px;"></div>
+          <div class="text-xs text-faint font-mono mt-4">6 · 24px</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="background:var(--color-accent-soft);border:1px solid var(--color-accent);width:32px;height:32px;"></div>
+          <div class="text-xs text-faint font-mono mt-4">8 · 32px</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="background:var(--color-accent-soft);border:1px solid var(--color-accent);width:48px;height:48px;"></div>
+          <div class="text-xs text-faint font-mono mt-4">12 · 48px</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="background:var(--color-accent-soft);border:1px solid var(--color-accent);width:64px;height:64px;"></div>
+          <div class="text-xs text-faint font-mono mt-4">16 · 64px</div>
+        </div>
+      </div>
+
+      <h4 class="mb-4">Border Radius</h4>
+      <div class="demo-row">
+        <div style="text-align:center;">
+          <div style="width:48px;height:48px;background:var(--color-bg-alt);border:1px solid var(--color-border);border-radius:4px;"></div>
+          <div class="text-xs text-faint font-mono mt-4">sm · 4px</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="width:48px;height:48px;background:var(--color-bg-alt);border:1px solid var(--color-border);border-radius:8px;"></div>
+          <div class="text-xs text-faint font-mono mt-4">md · 8px</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="width:48px;height:48px;background:var(--color-bg-alt);border:1px solid var(--color-border);border-radius:12px;"></div>
+          <div class="text-xs text-faint font-mono mt-4">lg · 12px</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="width:48px;height:48px;background:var(--color-bg-alt);border:1px solid var(--color-border);border-radius:16px;"></div>
+          <div class="text-xs text-faint font-mono mt-4">xl · 16px</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="width:48px;height:48px;background:var(--color-bg-alt);border:1px solid var(--color-border);border-radius:9999px;"></div>
+          <div class="text-xs text-faint font-mono mt-4">full</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CARDS ─────────────────────────────────────────────── -->
+    <section class="ds-section" id="cards">
+      <div class="ds-section-header">
+        <h2>Cards</h2>
+        <span class="ds-section-tag">Component</span>
+      </div>
+
+      <h4 class="mb-4">Info Card</h4>
+      <div class="demo-grid demo-grid-2 mb-6">
+        <div class="card">
+          <div class="card-title">Authentication Service</div>
+          <div class="card-body">Handles OAuth 2.0 flows, session management, and token refresh. Integrates with the user directory via gRPC.</div>
+          <div class="card-footer">Last updated 3 days ago · auth-service v2.4.1</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Background Workers</div>
+          <div class="card-body">Celery-based task queue processing email delivery, report generation, and async webhook dispatch.</div>
+          <div class="card-footer">4 workers active · Queue depth: 12</div>
+        </div>
+      </div>
+
+      <h4 class="mb-4">Stat Cards</h4>
+      <div class="demo-grid demo-grid-3">
+        <div class="stat-card">
+          <div class="stat-card-label">Total Requests</div>
+          <div class="stat-card-value">2.4M</div>
+          <div class="stat-card-change up">↑ 12.3% vs last week</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-label">Error Rate</div>
+          <div class="stat-card-value">0.14%</div>
+          <div class="stat-card-change down">↓ 0.03% vs last week</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-label">P95 Latency</div>
+          <div class="stat-card-value">187ms</div>
+          <div class="stat-card-change up">↑ 23ms vs last week</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TABS ──────────────────────────────────────────────── -->
+    <section class="ds-section" id="tabs">
+      <div class="ds-section-header">
+        <h2>Tabs</h2>
+        <span class="ds-section-tag">Component</span>
+      </div>
+
+      <div>
+        <div class="tabs" role="tablist">
+          <button class="tab-btn active" role="tab" onclick="switchTab(this, 'tab-overview')">Overview</button>
+          <button class="tab-btn" role="tab" onclick="switchTab(this, 'tab-details')">Implementation</button>
+          <button class="tab-btn" role="tab" onclick="switchTab(this, 'tab-history')">History</button>
+        </div>
+        <div id="tab-overview" class="tab-panel active">
+          <div class="card">
+            <div class="card-title">Overview Panel</div>
+            <div class="card-body">This is the first tab panel. Use tabs to organize long-form content across multiple logical sections without requiring the user to scroll past everything at once.</div>
+          </div>
+        </div>
+        <div id="tab-details" class="tab-panel">
+          <div class="card">
+            <div class="card-title">Implementation Panel</div>
+            <div class="card-body">Second panel content. Works well for spec documents, code reviews, and report pages with clearly distinct sections.</div>
+          </div>
+        </div>
+        <div id="tab-history" class="tab-panel">
+          <div class="card">
+            <div class="card-title">History Panel</div>
+            <div class="card-body">Third panel. Each tab panel is independently scrollable so the user doesn't lose their tab position.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TABLES ────────────────────────────────────────────── -->
+    <section class="ds-section" id="tables">
+      <div class="ds-section-header">
+        <h2>Tables</h2>
+        <span class="ds-section-tag">Component</span>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Service</th>
+              <th>Owner</th>
+              <th>Status</th>
+              <th>Requests/s</th>
+              <th>P99 Latency</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="font-semibold" style="color:var(--color-text);">auth-service</td>
+              <td>Platform</td>
+              <td><span class="badge badge-green badge-dot">Healthy</span></td>
+              <td class="font-mono" style="font-size:var(--text-sm);">1,204</td>
+              <td class="font-mono" style="font-size:var(--text-sm);">48ms</td>
+            </tr>
+            <tr>
+              <td class="font-semibold" style="color:var(--color-text);">payments-api</td>
+              <td>Fintech</td>
+              <td><span class="badge badge-yellow badge-dot">Degraded</span></td>
+              <td class="font-mono" style="font-size:var(--text-sm);">387</td>
+              <td class="font-mono" style="font-size:var(--text-sm);">312ms</td>
+            </tr>
+            <tr>
+              <td class="font-semibold" style="color:var(--color-text);">search-indexer</td>
+              <td>Data</td>
+              <td><span class="badge badge-green badge-dot">Healthy</span></td>
+              <td class="font-mono" style="font-size:var(--text-sm);">2,910</td>
+              <td class="font-mono" style="font-size:var(--text-sm);">22ms</td>
+            </tr>
+            <tr>
+              <td class="font-semibold" style="color:var(--color-text);">notification-worker</td>
+              <td>Platform</td>
+              <td><span class="badge badge-red badge-dot">Down</span></td>
+              <td class="font-mono" style="font-size:var(--text-sm);">0</td>
+              <td class="font-mono" style="font-size:var(--text-sm);">—</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ── CODE BLOCKS ───────────────────────────────────────── -->
+    <section class="ds-section" id="code">
+      <div class="ds-section-header">
+        <h2>Code Blocks</h2>
+        <span class="ds-section-tag">Component</span>
+      </div>
+
+      <div class="code-block">
+        <div class="code-block-header">
+          <span class="code-block-lang">TypeScript</span>
+          <button class="code-block-copy" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code><span class="tok-keyword">async function</span> <span class="tok-function">fetchUserProfile</span>(<span class="tok-property">userId</span><span class="tok-operator">:</span> <span class="tok-keyword">string</span>)<span class="tok-operator">:</span> <span class="tok-keyword">Promise</span><span class="tok-operator">&lt;</span><span class="tok-keyword">User</span><span class="tok-operator">&gt;</span> {
+  <span class="tok-comment">// Check cache first to avoid redundant DB hits</span>
+  <span class="tok-keyword">const</span> <span class="tok-property">cached</span> <span class="tok-operator">=</span> <span class="tok-keyword">await</span> <span class="tok-function">cache</span>.<span class="tok-function">get</span>(<span class="tok-string">`user:</span><span class="tok-operator">${</span><span class="tok-property">userId</span><span class="tok-operator">}</span><span class="tok-string">`</span>);
+  <span class="tok-keyword">if</span> (<span class="tok-property">cached</span>) <span class="tok-keyword">return</span> <span class="tok-property">cached</span>;
+
+  <span class="tok-keyword">const</span> <span class="tok-property">user</span> <span class="tok-operator">=</span> <span class="tok-keyword">await</span> <span class="tok-property">db</span>.<span class="tok-property">users</span>.<span class="tok-function">findUnique</span>({
+    <span class="tok-property">where</span>: { <span class="tok-property">id</span>: <span class="tok-property">userId</span> },
+    <span class="tok-property">include</span>: { <span class="tok-property">profile</span>: <span class="tok-keyword">true</span>, <span class="tok-property">roles</span>: <span class="tok-keyword">true</span> }
+  });
+
+  <span class="tok-keyword">if</span> (<span class="tok-operator">!</span><span class="tok-property">user</span>) <span class="tok-keyword">throw new</span> <span class="tok-function">NotFoundError</span>(<span class="tok-string">`User </span><span class="tok-operator">${</span><span class="tok-property">userId</span><span class="tok-operator">}</span><span class="tok-string"> not found`</span>);
+
+  <span class="tok-keyword">await</span> <span class="tok-function">cache</span>.<span class="tok-function">set</span>(<span class="tok-string">`user:</span><span class="tok-operator">${</span><span class="tok-property">userId</span><span class="tok-operator">}</span><span class="tok-string">`</span>, <span class="tok-property">user</span>, { <span class="tok-property">ttl</span>: <span class="tok-number">300</span> });
+  <span class="tok-keyword">return</span> <span class="tok-property">user</span>;
+}</code></pre>
+      </div>
+    </section>
+
+    <!-- ── BADGES ────────────────────────────────────────────── -->
+    <section class="ds-section" id="badges">
+      <div class="ds-section-header">
+        <h2>Badges</h2>
+        <span class="ds-section-tag">Component</span>
+      </div>
+
+      <h4 class="mb-4">Filled variants</h4>
+      <div class="demo-row mb-6">
+        <span class="badge badge-default">Default</span>
+        <span class="badge badge-accent">Accent</span>
+        <span class="badge badge-green">Success</span>
+        <span class="badge badge-blue">Info</span>
+        <span class="badge badge-yellow">Warning</span>
+        <span class="badge badge-red">Error</span>
+      </div>
+
+      <h4 class="mb-4">With status dot</h4>
+      <div class="demo-row">
+        <span class="badge badge-green badge-dot">Healthy</span>
+        <span class="badge badge-yellow badge-dot">Degraded</span>
+        <span class="badge badge-red badge-dot">Down</span>
+        <span class="badge badge-blue badge-dot">In Review</span>
+        <span class="badge badge-default badge-dot">Pending</span>
+      </div>
+    </section>
+
+    <!-- ── BUTTONS ───────────────────────────────────────────── -->
+    <section class="ds-section" id="buttons">
+      <div class="ds-section-header">
+        <h2>Buttons</h2>
+        <span class="ds-section-tag">Component</span>
+      </div>
+
+      <h4 class="mb-4">Variants</h4>
+      <div class="demo-row mb-6">
+        <button class="btn btn-primary">Primary</button>
+        <button class="btn btn-secondary">Secondary</button>
+        <button class="btn btn-ghost">Ghost</button>
+      </div>
+
+      <h4 class="mb-4">Sizes</h4>
+      <div class="demo-row mb-6">
+        <button class="btn btn-primary btn-lg">Large</button>
+        <button class="btn btn-primary">Default</button>
+        <button class="btn btn-primary btn-sm">Small</button>
+      </div>
+
+      <h4 class="mb-4">With icons (inline SVG)</h4>
+      <div class="demo-row">
+        <button class="btn btn-primary">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zm1 7V3.5a1 1 0 0 0-2 0V8a1 1 0 0 0 .29.71l2.5 2.5a1 1 0 0 0 1.42-1.42L9 7z"/></svg>
+          Schedule
+        </button>
+        <button class="btn btn-secondary">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M13.5 3h-11A1.5 1.5 0 0 0 1 4.5v7A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5v-7A1.5 1.5 0 0 0 13.5 3zM8 9.5 2.5 5.5h11L8 9.5z"/></svg>
+          Export
+        </button>
+        <button class="btn btn-ghost">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 5zm0 6a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5z"/></svg>
+          More
+        </button>
+      </div>
+    </section>
+
+    <!-- ── TOGGLES & SLIDERS ─────────────────────────────────── -->
+    <section class="ds-section" id="controls">
+      <div class="ds-section-header">
+        <h2>Toggles &amp; Sliders</h2>
+        <span class="ds-section-tag">Component</span>
+      </div>
+
+      <h4 class="mb-4">Toggle switches</h4>
+      <div style="display:flex;flex-direction:column;gap:var(--space-3);margin-bottom:var(--space-6);">
+        <label class="toggle-wrap">
+          <input type="checkbox" class="toggle-input" id="tog1" checked>
+          <div class="toggle-track"></div>
+          <span class="toggle-label">Enable notifications</span>
+        </label>
+        <label class="toggle-wrap">
+          <input type="checkbox" class="toggle-input" id="tog2">
+          <div class="toggle-track"></div>
+          <span class="toggle-label">Dark mode</span>
+        </label>
+        <label class="toggle-wrap">
+          <input type="checkbox" class="toggle-input" id="tog3" checked>
+          <div class="toggle-track"></div>
+          <span class="toggle-label">Auto-save drafts</span>
+        </label>
+      </div>
+
+      <h4 class="mb-4">Range sliders</h4>
+      <div style="display:flex;flex-direction:column;gap:var(--space-5);max-width:480px;">
+        <div class="slider-wrap">
+          <div class="slider-header">
+            <span class="slider-label">Temperature</span>
+            <span class="slider-value" id="temp-val">0.7</span>
+          </div>
+          <input type="range" min="0" max="2" step="0.1" value="0.7" oninput="document.getElementById('temp-val').textContent=parseFloat(this.value).toFixed(1)">
+        </div>
+        <div class="slider-wrap">
+          <div class="slider-header">
+            <span class="slider-label">Max tokens</span>
+            <span class="slider-value" id="tokens-val">2048</span>
+          </div>
+          <input type="range" min="256" max="8192" step="256" value="2048" oninput="document.getElementById('tokens-val').textContent=this.value">
+        </div>
+      </div>
+    </section>
+
+    <!-- ── ALERTS ────────────────────────────────────────────── -->
+    <section class="ds-section" id="alerts">
+      <div class="ds-section-header">
+        <h2>Alerts &amp; Callouts</h2>
+        <span class="ds-section-tag">Component</span>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:var(--space-3);">
+        <div class="alert alert-info">
+          <span class="alert-icon">ℹ</span>
+          <div class="alert-content">
+            <div class="alert-title">Info</div>
+            <div class="alert-body">This migration requires a maintenance window of approximately 15 minutes. Schedule during off-peak hours.</div>
+          </div>
+        </div>
+        <div class="alert alert-success">
+          <span class="alert-icon">✓</span>
+          <div class="alert-content">
+            <div class="alert-title">Success</div>
+            <div class="alert-body">Deployment completed successfully. 3 instances updated, 0 errors, 0 rollbacks.</div>
+          </div>
+        </div>
+        <div class="alert alert-warning">
+          <span class="alert-icon">⚠</span>
+          <div class="alert-content">
+            <div class="alert-title">Warning</div>
+            <div class="alert-body">The <code>legacyAuth</code> flag is deprecated and will be removed in v4.0. Migrate to OAuth 2.0 before the upgrade.</div>
+          </div>
+        </div>
+        <div class="alert alert-error">
+          <span class="alert-icon">✕</span>
+          <div class="alert-content">
+            <div class="alert-title">Error</div>
+            <div class="alert-body">Connection to payments-db timed out after 30s. Retries exhausted. Check VPC peering configuration.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── DATA VIZ ──────────────────────────────────────────── -->
+    <section class="ds-section" id="charts">
+      <div class="ds-section-header">
+        <h2>Data Visualization</h2>
+        <span class="ds-section-tag">Component</span>
+      </div>
+
+      <div class="demo-grid demo-grid-2">
+        <!-- Bar Chart -->
+        <div class="chart-wrap">
+          <div class="chart-title">Weekly deployments</div>
+          <svg class="chart-svg" viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg">
+            <!-- Y axis lines -->
+            <line x1="40" y1="20" x2="290" y2="20" stroke="#dedad2" stroke-width="1"/>
+            <line x1="40" y1="55" x2="290" y2="55" stroke="#dedad2" stroke-width="1"/>
+            <line x1="40" y1="90" x2="290" y2="90" stroke="#dedad2" stroke-width="1"/>
+            <line x1="40" y1="125" x2="290" y2="125" stroke="#dedad2" stroke-width="1"/>
+            <line x1="40" y1="155" x2="290" y2="155" stroke="#dedad2" stroke-width="1"/>
+            <!-- Y labels -->
+            <text x="32" y="24" class="chart-axis-label" text-anchor="end">40</text>
+            <text x="32" y="59" class="chart-axis-label" text-anchor="end">30</text>
+            <text x="32" y="94" class="chart-axis-label" text-anchor="end">20</text>
+            <text x="32" y="129" class="chart-axis-label" text-anchor="end">10</text>
+            <text x="32" y="159" class="chart-axis-label" text-anchor="end">0</text>
+            <!-- Bars: Mon=22, Tue=35, Wed=18, Thu=40, Fri=28, Sat=9, Sun=5 -->
+            <!-- Bar height maps: 0->155, 40->20, scale=(155-20)/40=3.375 per unit -->
+            <rect class="chart-bar" x="50"  y="81"  width="26" height="74" fill="#d95f2b" rx="3"/>
+            <rect class="chart-bar" x="90"  y="37"  width="26" height="118" fill="#d95f2b" rx="3" opacity="0.85"/>
+            <rect class="chart-bar" x="130" y="94"  width="26" height="61" fill="#d95f2b" rx="3" opacity="0.75"/>
+            <rect class="chart-bar" x="170" y="20"  width="26" height="135" fill="#d95f2b" rx="3" opacity="0.9"/>
+            <rect class="chart-bar" x="210" y="61"  width="26" height="94" fill="#d95f2b" rx="3" opacity="0.8"/>
+            <rect class="chart-bar" x="250" y="125" width="26" height="30" fill="#d95f2b" rx="3" opacity="0.5"/>
+            <!-- Value labels -->
+            <text x="63"  y="76"  class="chart-value-label" text-anchor="middle">22</text>
+            <text x="103" y="32"  class="chart-value-label" text-anchor="middle">35</text>
+            <text x="143" y="89"  class="chart-value-label" text-anchor="middle">18</text>
+            <text x="183" y="15"  class="chart-value-label" text-anchor="middle">40</text>
+            <text x="223" y="56"  class="chart-value-label" text-anchor="middle">28</text>
+            <text x="263" y="120" class="chart-value-label" text-anchor="middle">9</text>
+            <!-- X axis labels -->
+            <text x="63"  y="170" class="chart-axis-label" text-anchor="middle">Mon</text>
+            <text x="103" y="170" class="chart-axis-label" text-anchor="middle">Tue</text>
+            <text x="143" y="170" class="chart-axis-label" text-anchor="middle">Wed</text>
+            <text x="183" y="170" class="chart-axis-label" text-anchor="middle">Thu</text>
+            <text x="223" y="170" class="chart-axis-label" text-anchor="middle">Fri</text>
+            <text x="263" y="170" class="chart-axis-label" text-anchor="middle">Sat</text>
+          </svg>
+        </div>
+
+        <!-- Horizontal bar / progress chart -->
+        <div class="chart-wrap">
+          <div class="chart-title">Test coverage by module</div>
+          <svg class="chart-svg" viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg">
+            <!-- rows: label, value% -->
+            <!-- auth 91% -->
+            <text x="0" y="28" class="chart-axis-label" style="font-size:11px;fill:#6b6a63;">auth</text>
+            <rect x="60" y="16" width="228" height="10" fill="#eceae4" rx="5"/>
+            <rect x="60" y="16" width="207" height="10" fill="#3a6b4a" rx="5"/>
+            <text x="294" y="28" class="chart-axis-label" text-anchor="end" style="fill:#3a6b4a;font-weight:600;">91%</text>
+            <!-- payments 74% -->
+            <text x="0" y="58" class="chart-axis-label" style="font-size:11px;fill:#6b6a63;">payments</text>
+            <rect x="60" y="46" width="228" height="10" fill="#eceae4" rx="5"/>
+            <rect x="60" y="46" width="169" height="10" fill="#d95f2b" rx="5"/>
+            <text x="294" y="58" class="chart-axis-label" text-anchor="end" style="fill:#d95f2b;font-weight:600;">74%</text>
+            <!-- search 88% -->
+            <text x="0" y="88" class="chart-axis-label" style="font-size:11px;fill:#6b6a63;">search</text>
+            <rect x="60" y="76" width="228" height="10" fill="#eceae4" rx="5"/>
+            <rect x="60" y="76" width="201" height="10" fill="#3a6b4a" rx="5"/>
+            <text x="294" y="88" class="chart-axis-label" text-anchor="end" style="fill:#3a6b4a;font-weight:600;">88%</text>
+            <!-- workers 52% -->
+            <text x="0" y="118" class="chart-axis-label" style="font-size:11px;fill:#6b6a63;">workers</text>
+            <rect x="60" y="106" width="228" height="10" fill="#eceae4" rx="5"/>
+            <rect x="60" y="106" width="119" height="10" fill="#8a6a00" rx="5"/>
+            <text x="294" y="118" class="chart-axis-label" text-anchor="end" style="fill:#8a6a00;font-weight:600;">52%</text>
+            <!-- notifications 31% -->
+            <text x="0" y="148" class="chart-axis-label" style="font-size:11px;fill:#6b6a63;">notifs</text>
+            <rect x="60" y="136" width="228" height="10" fill="#eceae4" rx="5"/>
+            <rect x="60" y="136" width="71" height="10" fill="#b03a2e" rx="5"/>
+            <text x="294" y="148" class="chart-axis-label" text-anchor="end" style="fill:#b03a2e;font-weight:600;">31%</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── HOW TO USE ─────────────────────────────────────────── -->
+    <section class="ds-section" id="how-to-use">
+      <div class="ds-section-header">
+        <h2>How to Use This System</h2>
+        <span class="ds-section-tag">Usage</span>
+      </div>
+
+      <div class="usage-card">
+        <div class="usage-step">
+          <div class="usage-step-num">1</div>
+          <div class="usage-step-content">
+            <div class="usage-step-title">Reference in your prompt</div>
+            <div class="usage-step-desc">Start any Claude prompt with: <em>"Generate an HTML file using the design system at <code>design-system.html</code>. Copy its CSS variables block and use its component classes."</em></div>
+          </div>
+        </div>
+        <div class="usage-step">
+          <div class="usage-step-num">2</div>
+          <div class="usage-step-content">
+            <div class="usage-step-title">Use the /html slash command</div>
+            <div class="usage-step-desc">The <code>/html</code> command in Claude Code automatically applies this design system. Try <code>/html spec</code>, <code>/html review</code>, or <code>/html report</code> followed by your content.</div>
+          </div>
+        </div>
+        <div class="usage-step">
+          <div class="usage-step-num">3</div>
+          <div class="usage-step-content">
+            <div class="usage-step-title">Copy the CSS variables block</div>
+            <div class="usage-step-desc">The <code>:root { ... }</code> block at the top of this file's <code>&lt;style&gt;</code> tag is the single source of truth. Paste it into any new HTML file and reference the tokens throughout.</div>
+          </div>
+        </div>
+        <div class="usage-step">
+          <div class="usage-step-num">4</div>
+          <div class="usage-step-content">
+            <div class="usage-step-title">Stay self-contained</div>
+            <div class="usage-step-desc">All generated files must be standalone HTML with no external CDN or stylesheet dependencies. Inline all CSS and JavaScript. This ensures files open correctly anywhere — browser, Claude artifact viewer, email.</div>
+          </div>
+        </div>
+        <div class="usage-step">
+          <div class="usage-step-num">5</div>
+          <div class="usage-step-content">
+            <div class="usage-step-title">Prefer SVG over ASCII for diagrams</div>
+            <div class="usage-step-desc">Use inline <code>&lt;svg&gt;</code> for all charts, flow diagrams, and architecture sketches. SVG scales perfectly at any resolution and is fully styleable with CSS variables.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CSS VARS REFERENCE ─────────────────────────────────── -->
+    <section class="ds-section" id="css-vars">
+      <div class="ds-section-header">
+        <h2>CSS Variables Reference</h2>
+        <span class="ds-section-tag">Usage</span>
+      </div>
+
+      <div class="alert alert-info mb-6">
+        <span class="alert-icon">ℹ</span>
+        <div class="alert-content">
+          <div class="alert-title">Copy this block into any new HTML file</div>
+          <div class="alert-body">Paste the <code>:root { ... }</code> block inside a <code>&lt;style&gt;</code> tag. Use the variable names throughout your CSS instead of hard-coded values.</div>
+        </div>
+      </div>
+
+      <div class="code-block">
+        <div class="code-block-header">
+          <span class="code-block-lang">CSS</span>
+          <button class="code-block-copy" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code><span class="tok-keyword">:root</span> {
+  <span class="tok-comment">/* Backgrounds */</span>
+  <span class="tok-property">--color-bg</span><span class="tok-operator">:</span>           <span class="tok-string">#f5f2ed</span>;
+  <span class="tok-property">--color-bg-alt</span><span class="tok-operator">:</span>       <span class="tok-string">#eceae4</span>;
+  <span class="tok-property">--color-bg-card</span><span class="tok-operator">:</span>      <span class="tok-string">#ffffff</span>;
+  <span class="tok-property">--color-bg-code</span><span class="tok-operator">:</span>      <span class="tok-string">#1e1e1e</span>;
+
+  <span class="tok-comment">/* Text */</span>
+  <span class="tok-property">--color-text</span><span class="tok-operator">:</span>         <span class="tok-string">#1a1a18</span>;
+  <span class="tok-property">--color-text-muted</span><span class="tok-operator">:</span>   <span class="tok-string">#6b6a63</span>;
+  <span class="tok-property">--color-text-faint</span><span class="tok-operator">:</span>   <span class="tok-string">#a09f97</span>;
+  <span class="tok-property">--color-border</span><span class="tok-operator">:</span>       <span class="tok-string">#dedad2</span>;
+
+  <span class="tok-comment">/* Accent &amp; Semantic */</span>
+  <span class="tok-property">--color-accent</span><span class="tok-operator">:</span>       <span class="tok-string">#d95f2b</span>;
+  <span class="tok-property">--color-accent-soft</span><span class="tok-operator">:</span>  <span class="tok-string">#faeee7</span>;
+  <span class="tok-property">--color-green</span><span class="tok-operator">:</span>        <span class="tok-string">#3a6b4a</span>;
+  <span class="tok-property">--color-blue</span><span class="tok-operator">:</span>         <span class="tok-string">#2d5a8e</span>;
+  <span class="tok-property">--color-yellow</span><span class="tok-operator">:</span>       <span class="tok-string">#8a6a00</span>;
+  <span class="tok-property">--color-red</span><span class="tok-operator">:</span>          <span class="tok-string">#b03a2e</span>;
+
+  <span class="tok-comment">/* Type */</span>
+  <span class="tok-property">--font-sans</span><span class="tok-operator">:</span>   <span class="tok-string">-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif</span>;
+  <span class="tok-property">--font-mono</span><span class="tok-operator">:</span>   <span class="tok-string">"SF Mono", "Fira Code", Consolas, monospace</span>;
+  <span class="tok-property">--text-xs</span><span class="tok-operator">:</span>     <span class="tok-number">0.75rem</span>;
+  <span class="tok-property">--text-sm</span><span class="tok-operator">:</span>     <span class="tok-number">0.875rem</span>;
+  <span class="tok-property">--text-base</span><span class="tok-operator">:</span>   <span class="tok-number">1rem</span>;
+  <span class="tok-property">--text-lg</span><span class="tok-operator">:</span>     <span class="tok-number">1.125rem</span>;
+  <span class="tok-property">--text-xl</span><span class="tok-operator">:</span>     <span class="tok-number">1.25rem</span>;
+  <span class="tok-property">--text-2xl</span><span class="tok-operator">:</span>    <span class="tok-number">1.5rem</span>;
+  <span class="tok-property">--text-3xl</span><span class="tok-operator">:</span>    <span class="tok-number">1.875rem</span>;
+  <span class="tok-property">--text-4xl</span><span class="tok-operator">:</span>    <span class="tok-number">2.25rem</span>;
+
+  <span class="tok-comment">/* Spacing */</span>
+  <span class="tok-property">--space-1</span><span class="tok-operator">:</span>  <span class="tok-number">0.25rem</span>;
+  <span class="tok-property">--space-2</span><span class="tok-operator">:</span>  <span class="tok-number">0.5rem</span>;
+  <span class="tok-property">--space-3</span><span class="tok-operator">:</span>  <span class="tok-number">0.75rem</span>;
+  <span class="tok-property">--space-4</span><span class="tok-operator">:</span>  <span class="tok-number">1rem</span>;
+  <span class="tok-property">--space-6</span><span class="tok-operator">:</span>  <span class="tok-number">1.5rem</span>;
+  <span class="tok-property">--space-8</span><span class="tok-operator">:</span>  <span class="tok-number">2rem</span>;
+
+  <span class="tok-comment">/* Radii */</span>
+  <span class="tok-property">--radius-sm</span><span class="tok-operator">:</span>  <span class="tok-number">4px</span>;
+  <span class="tok-property">--radius-md</span><span class="tok-operator">:</span>  <span class="tok-number">8px</span>;
+  <span class="tok-property">--radius-lg</span><span class="tok-operator">:</span>  <span class="tok-number">12px</span>;
+  <span class="tok-property">--radius-full</span><span class="tok-operator">:</span> <span class="tok-number">9999px</span>;
+
+  <span class="tok-comment">/* Shadows */</span>
+  <span class="tok-property">--shadow-sm</span><span class="tok-operator">:</span>  <span class="tok-number">0 1px 3px</span> <span class="tok-function">rgba</span>(<span class="tok-number">0,0,0,0.07</span>);
+  <span class="tok-property">--shadow-md</span><span class="tok-operator">:</span>  <span class="tok-number">0 4px 12px</span> <span class="tok-function">rgba</span>(<span class="tok-number">0,0,0,0.08</span>);
+}</code></pre>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+  // Tabs
+  function switchTab(btn, panelId) {
+    const tabsEl = btn.closest('.tabs');
+    const section = tabsEl.parentElement;
+    tabsEl.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    section.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(panelId).classList.add('active');
+  }
+
+  // Copy code
+  function copyCode(btn) {
+    const pre = btn.closest('.code-block').querySelector('pre');
+    const text = pre.innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      const orig = btn.textContent;
+      btn.textContent = 'Copied!';
+      btn.style.color = '#82aaff';
+      setTimeout(() => { btn.textContent = orig; btn.style.color = ''; }, 1800);
+    });
+  }
+</script>
+
+</body>
+</html>
