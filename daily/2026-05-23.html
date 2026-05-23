@@ -59,7 +59,7 @@ body {
   color:#f5f2ed;
   padding:var(--space-16) var(--space-6) var(--space-12);
 }
-.hero-inner { max-width:900px; margin:0 auto; }
+.hero-inner { max-width:1100px; margin:0 auto; }
 .hero-badge {
   display:inline-block;
   font-size:var(--text-xs);
@@ -83,7 +83,7 @@ body {
   font-size:var(--text-lg);
   color:#cfcbc2;
   font-weight:var(--weight-normal);
-  max-width:640px;
+  max-width:720px;
   margin-bottom:var(--space-6);
 }
 .hero-meta {
@@ -108,7 +108,7 @@ body {
   border-bottom:1px solid var(--color-border);
 }
 .toc-inner {
-  max-width:900px; margin:0 auto;
+  max-width:1100px; margin:0 auto;
   padding:var(--space-3) var(--space-6);
   display:flex; gap:var(--space-1);
   overflow-x:auto; scrollbar-width:none;
@@ -127,7 +127,7 @@ body {
 .toc a.active { background:var(--color-accent-soft); color:var(--color-accent); font-weight:var(--weight-semibold); }
 
 /* Main */
-main { max-width:900px; margin:0 auto; padding:var(--space-12) var(--space-6) var(--space-16); }
+main { max-width:1100px; margin:0 auto; padding:var(--space-12) var(--space-6) var(--space-16); }
 
 section { margin-bottom:var(--space-16); scroll-margin-top:80px; }
 
@@ -164,6 +164,7 @@ h2 {
   color:var(--color-text-muted);
   line-height:var(--leading-normal);
   margin-bottom:var(--space-6);
+  max-width:720px;
 }
 
 /* Situation cards */
@@ -216,7 +217,7 @@ h2 {
 .bubble-row.parent { justify-content:flex-start; }
 .bubble-row.child  { justify-content:flex-end; }
 .bubble {
-  max-width:78%;
+  max-width:min(78%,680px);
   padding:var(--space-4) var(--space-5);
   border-radius:var(--radius-lg);
   background:var(--color-bg-card);
@@ -251,7 +252,7 @@ h2 {
 /* Expressions grid */
 .expr-grid {
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
   gap:var(--space-4);
 }
 .expr-card {
@@ -332,6 +333,7 @@ h2 {
   font-size:var(--text-base);
   color:var(--color-text);
   line-height:var(--leading-normal);
+  max-width:780px;
 }
 .tip-text code {
   font-family:var(--font-mono);
@@ -344,7 +346,7 @@ h2 {
 
 /* Footer */
 footer {
-  max-width:900px; margin:0 auto;
+  max-width:1100px; margin:0 auto;
   padding:var(--space-8) var(--space-6) var(--space-12);
   border-top:1px solid var(--color-border);
   color:var(--color-text-faint);
