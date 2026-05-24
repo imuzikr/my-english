@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>오늘의 생활 영어 — 주말 외출 준비</title>
+<meta name="description" content="부모와 아이의 짧은 대화 3가지 — 어디 갈지 정하기, 옷 챙기고 짐 싸기, 출발 직전. 핵심 표현·바꿔 말하기·연습 포인트까지.">
+<meta name="english-level" content="beginner">
+<meta name="english-topic" content="Daily Conversation">
+<style>
+  :root {
+    --color-background-primary: #ffffff;
+    --color-background-secondary: #f7f6f3;
+    --color-border-tertiary: #e5e3dd;
+    --color-text-primary: #1f1f1e;
+    --color-text-secondary: #6b6a64;
+    --color-text-tertiary: #9b9a93;
+    --border-radius-lg: 12px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-background-primary: #1f1e1c;
+      --color-background-secondary: #26251f;
+      --color-border-tertiary: #3a3936;
+      --color-text-primary: #f1efe9;
+      --color-text-secondary: #aeada6;
+      --color-text-tertiary: #7e7d76;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+    background: transparent;
+    padding: 14px;
+    max-width: 680px;
+    margin: 0 auto;
+    color: var(--color-text-primary);
+    line-height: 1.55;
+  }
+  .wrap { display: flex; flex-direction: column; gap: 12px; }
+
+  /* Header */
+  .header {
+    background: var(--color-background-primary);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-lg);
+    padding: 18px 20px 16px;
+  }
+  .top-badge {
+    display: inline-block;
+    background: #EAF3DE;
+    color: #3B6D11;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 999px;
+    margin-bottom: 10px;
+    letter-spacing: 0.2px;
+  }
+  .header-title {
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: 3px;
+  }
+  .header-sub {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+  }
+
+  /* Scene card */
+  .card {
+    background: var(--color-background-primary);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-lg);
+    padding: 16px 18px;
+  }
+  .scene-badge {
+    display: inline-block;
+    background: #EAF3DE;
+    color: #3B6D11;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+  }
+  .line { margin-bottom: 12px; }
+  .line:last-child { margin-bottom: 0; }
+  .line-head { display: flex; align-items: center; gap: 8px; margin-bottom: 3px; }
+  .speaker {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 9px;
+    border-radius: 999px;
+    flex-shrink: 0;
+  }
+  .sp-p { background: #E6F1FB; color: #185FA5; }
+  .sp-c { background: #FAECE7; color: #993C1D; }
+  .en-text {
+    font-size: 14px;
+    color: var(--color-text-primary);
+    font-weight: 400;
+  }
+  .ko-text {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    margin-left: 0;
+    line-height: 1.5;
+  }
+
+  /* Section card (secondary) */
+  .section-card {
+    background: var(--color-background-secondary);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-lg);
+    padding: 16px 18px;
+  }
+  .section-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 12px;
+  }
+
+  /* Key expressions */
+  .expr-row {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 9px;
+  }
+  .expr-row:last-child { margin-bottom: 0; }
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #3B6D11;
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+  .expr-body { flex: 1; }
+  .expr-en {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+  }
+  .expr-ko {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    margin-top: 1px;
+  }
+
+  /* Swap */
+  .swap-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 6px;
+    margin-bottom: 9px;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+  .swap-row:last-child { margin-bottom: 0; }
+  .swap-orig { color: var(--color-text-secondary); }
+  .swap-arrow { color: var(--color-text-tertiary); margin: 0 2px; }
+  .swap-alt { color: #185FA5; font-weight: 500; }
+
+  /* Tips */
+  .tip-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-size: 13px;
+    color: var(--color-text-primary);
+    line-height: 1.6;
+  }
+  .tip-row:last-child { margin-bottom: 0; }
+  .tip-num {
+    min-width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #EAF3DE;
+    color: #3B6D11;
+    font-size: 11px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+</style>
+<link rel="manifest" href="/my-english/manifest.json">
+<meta name="theme-color" content="#3b82f6">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="My English">
+<link rel="apple-touch-icon" href="/my-english/icons/apple-touch-icon.png">
+<script>
+if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/my-english/sw.js').catch(function(){});});}
+</script>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="header">
+    <div class="top-badge">오늘의 생활 영어</div>
+    <div class="header-title">주말 외출 준비</div>
+    <div class="header-sub">Getting ready for a weekend outing</div>
+  </div>
+
+  <!-- 상황 1 -->
+  <div class="card">
+    <div class="scene-badge">상황 1 — 어디 갈지 정하기</div>
+    <div class="line">
+      <div class="line-head">
+        <span class="speaker sp-p">Parent</span>
+        <span class="en-text">It's a nice day out. Let's go somewhere.</span>
+      </div>
+      <div class="ko-text">날씨 좋다. 우리 어디 나가자.</div>
+    </div>
+    <div class="line">
+      <div class="line-head">
+        <span class="speaker sp-c">Child</span>
+        <span class="en-text">Where are we going?</span>
+      </div>
+      <div class="ko-text">어디 가요?</div>
+    </div>
+    <div class="line">
+      <div class="line-head">
+        <span class="speaker sp-p">Parent</span>
+        <span class="en-text">How about the park? We can ride bikes.</span>
+      </div>
+      <div class="ko-text">공원 어때? 자전거 탈 수 있잖아.</div>
+    </div>
+    <div class="line">
+      <div class="line-head">
+        <span class="speaker sp-c">Child</span>
+        <span class="en-text">Sounds good. Let's do that!</span>
+      </div>
+      <div class="ko-text">좋아요. 그러자!</div>
+    </div>
+  </div>
+
+  <!-- 상황 2 -->
+  <div class="card">
+    <div class="scene-badge">상황 2 — 옷 챙기고 짐 싸기</div>
+    <div class="line">
+      <div class="line-head">
+        <span class="speaker sp-p">Parent</span>
+        <span class="en-text">Go change into something comfy.</span>
+      </div>
+      <div class="ko-text">편한 옷으로 갈아입어.</div>
+    </div>
+    <div class="line">
+      <div class="line-head">
+        <span class="speaker sp-c">Child</span>
+        <span class="en-text">Do I need a jacket?</span>
+      </div>
+      <div class="ko-text">재킷 입어야 해요?</div>
+    </div>
+    <div class="line">
+      <div class="line-head">
+        <span class="speaker sp-p">Parent</span>
+        <span class="en-text">Yeah, it might get chilly later.</span>
+      </div>
+      <div class="ko-text">응, 이따 좀 쌀쌀할 수도 있어.</div>
+    </div>
+    <div class="line">
+      <div class="line-head">
+        <span class="speaker sp-c">Child</span>
+        <span class="en-text">Got it. I'll grab my water bottle too.</span>
+      </div>
+      <div class="ko-text">알겠어요. 물병도 챙길게요.</div>
+    </div>
+  </div>
+
+  <!-- 상황 3 -->
+  <div class="card">
+    <div class="scene-badge">상황 3 — 출발 직전</div>
+    <div class="line">
+      <div class="line-head">
+        <span class="speaker sp-p">Parent</span>
+        <span class="en-text">Are you ready to go? Did you bring everything?</span>
+      </div>
+      <div class="ko-text">다 됐어? 다 챙겼어?</div>
+    </div>
+    <div class="line">
+      <div class="line-head">
+        <span class="speaker sp-c">Child</span>
+        <span class="en-text">I think so. Wait — where are my sneakers?</span>
+      </div>
+      <div class="ko-text">그런 것 같아요. 어, 내 운동화 어디 있지?</div>
+    </div>
+    <div class="line">
+      <div class="line-head">
+        <span class="speaker sp-p">Parent</span>
+        <span class="en-text">By the door. Come on, let's head out.</span>
+      </div>
+      <div class="ko-text">현관 앞에 있어. 자, 나가자.</div>
+    </div>
+  </div>
+
+  <!-- 핵심 표현 -->
+  <div class="section-card">
+    <div class="section-title">핵심 표현</div>
+    <div class="expr-row">
+      <div class="dot"></div>
+      <div class="expr-body">
+        <div class="expr-en">Let's go somewhere.</div>
+        <div class="expr-ko">어디 나가자.</div>
+      </div>
+    </div>
+    <div class="expr-row">
+      <div class="dot"></div>
+      <div class="expr-body">
+        <div class="expr-en">It might get chilly later.</div>
+        <div class="expr-ko">이따 좀 쌀쌀할 수도 있어.</div>
+      </div>
+    </div>
+    <div class="expr-row">
+      <div class="dot"></div>
+      <div class="expr-body">
+        <div class="expr-en">Did you bring everything?</div>
+        <div class="expr-ko">다 챙겼어?</div>
+      </div>
+    </div>
+    <div class="expr-row">
+      <div class="dot"></div>
+      <div class="expr-body">
+        <div class="expr-en">Let's head out.</div>
+        <div class="expr-ko">자, 나가자.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 바꿔 말하기 -->
+  <div class="section-card">
+    <div class="section-title">바꿔 말하기</div>
+    <div class="swap-row">
+      <span class="swap-orig">Let's go somewhere.</span>
+      <span class="swap-arrow">→</span>
+      <span class="swap-alt">Let's get out of the house.</span>
+    </div>
+    <div class="swap-row">
+      <span class="swap-orig">It might get chilly later.</span>
+      <span class="swap-arrow">→</span>
+      <span class="swap-alt">It could get cold later.</span>
+    </div>
+    <div class="swap-row">
+      <span class="swap-orig">Did you bring everything?</span>
+      <span class="swap-arrow">→</span>
+      <span class="swap-alt">Do you have everything?</span>
+    </div>
+    <div class="swap-row">
+      <span class="swap-orig">Let's head out.</span>
+      <span class="swap-arrow">→</span>
+      <span class="swap-alt">Let's get going.</span>
+    </div>
+  </div>
+
+  <!-- 짧은 연습 포인트 -->
+  <div class="section-card">
+    <div class="section-title">짧은 연습 포인트</div>
+    <div class="tip-row">
+      <div class="tip-num">1</div>
+      <div>부모와 아이가 역할을 바꿔 읽어보세요. 아이가 <span style="font-weight:500;">"It might get chilly later."</span> 같은 어른스러운 표현을 연습할 좋은 기회입니다.</div>
+    </div>
+    <div class="tip-row">
+      <div class="tip-num">2</div>
+      <div>실제 외출 직전에 <span style="font-weight:500;">"Did you bring everything?"</span>를 부모가 한 번, 아이가 한 번씩 서로에게 물어보세요. 자연스럽게 입에 붙습니다.</div>
+    </div>
+    <div class="tip-row">
+      <div class="tip-num">3</div>
+      <div>현관을 나서면서 <span style="font-weight:500;">"Let's head out!"</span>을 외치는 작은 루틴을 만들어 보세요. 짧은 표현일수록 반복이 가장 효과적입니다.</div>
+    </div>
+  </div>
+
+</div>
+
+<a id="back-to-index" href="../index.html" aria-label="목록으로" title="목록으로"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path d="M8.5 15L3 10l5.5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 10h14" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></a>
+<style>
+#back-to-index{position:fixed;bottom:1.5rem;left:1.5rem;width:44px;height:44px;background:#3b82f6;color:#fff;border-radius:9999px;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 16px rgba(0,0,0,.18);transition:background .15s,transform .15s;z-index:800;}
+#back-to-index:hover{background:#2563eb;transform:translateX(-2px);}
+@media(max-width:600px){#back-to-index{bottom:1rem;left:1rem;}}
+</style>
+</body>
+</html>
