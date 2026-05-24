@@ -299,8 +299,11 @@ const CACHE = 'my-app-v2'; // v1 → v2로 올리면 v1 캐시 전부 삭제
 
 ### 필수
 
-- [ ] `manifest.json`이 루트에 있고 `<link rel="manifest">` 로 연결됨
-- [ ] `sw.js`가 루트에 있고 `navigator.serviceWorker.register('/sw.js')` 로 등록됨
+- [ ] `manifest.json`이 `<link rel="manifest" href="...">`로 정확히 연결됨 (위치는 어디든 무관)
+- [ ] `sw.js`가 제어하려는 범위의 최상위 경로에 위치하고, 같은 경로로 `navigator.serviceWorker.register(...)` 등록됨
+  - 도메인 루트 배포: `/sw.js` + `register('/sw.js')`
+  - 서브패스 배포(`/app/` 등): `/app/sw.js` + `register('/app/sw.js')`
+- [ ] `manifest.json`의 `start_url`과 `scope`가 실제 배포 경로와 일치함
 - [ ] HTTPS로 서비스됨 (Service Worker는 HTTPS 또는 localhost에서만 작동)
 - [ ] `display: standalone` 설정됨
 - [ ] 192×192, 512×512 아이콘 제공됨
