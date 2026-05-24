@@ -1,0 +1,32 @@
+{
+  "name": "My English — 매일 영어 학습",
+  "short_name": "My English",
+  "description": "부모와 아이의 짧은 대화로 매일 익히는 생활 영어",
+  "start_url": "/my-english/",
+  "scope": "/my-english/",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#3b82f6",
+  "lang": "ko",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

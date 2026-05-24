@@ -42,6 +42,16 @@
   .quiz-result { margin-top: 1rem; font-weight: 600; display: none; }
   footer { text-align: center; padding: 2rem; color: var(--muted); font-size: .8rem; border-top: 1px solid var(--border); margin-top: 2rem; }
 </style>
+<link rel="manifest" href="/my-english/manifest.json">
+<meta name="theme-color" content="#3b82f6">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="My English">
+<link rel="apple-touch-icon" href="/my-english/icons/apple-touch-icon.png">
+<script>
+if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/my-english/sw.js').catch(function(){});});}
+</script>
 </head>
 <body>
 

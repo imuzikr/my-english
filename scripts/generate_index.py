@@ -99,6 +99,29 @@ def collect_files():
 
 BACK_BUTTON_MARKER = 'id="back-to-index"'
 
+PWA_MARKER = 'rel="manifest"'
+PWA_HEAD_SNIPPET = """<link rel="manifest" href="/my-english/manifest.json">
+<meta name="theme-color" content="#3b82f6">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="My English">
+<link rel="apple-touch-icon" href="/my-english/icons/apple-touch-icon.png">
+<script>
+if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/my-english/sw.js').catch(function(){});});}
+</script>
+"""
+
+
+def inject_pwa_meta(path: Path) -> bool:
+    text = path.read_text(encoding="utf-8", errors="ignore")
+    if PWA_MARKER in text:
+        return False
+    if "</head>" not in text:
+        return False
+    path.write_text(text.replace("</head>", PWA_HEAD_SNIPPET + "</head>", 1), encoding="utf-8")
+    return True
+
 
 def inject_back_button(path: Path) -> bool:
     text = path.read_text(encoding="utf-8", errors="ignore")
@@ -182,6 +205,17 @@ def build_main_index(files: list) -> str:
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>My English — 매일 영어 학습</title>
+<meta name="description" content="부모와 아이의 짧은 대화로 매일 익히는 생활 영어">
+<link rel="manifest" href="/my-english/manifest.json">
+<meta name="theme-color" content="#3b82f6">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="My English">
+<link rel="apple-touch-icon" href="/my-english/icons/apple-touch-icon.png">
+<script>
+if('serviceWorker' in navigator){{window.addEventListener('load',function(){{navigator.serviceWorker.register('/my-english/sw.js').catch(function(){{}});}});}}
+</script>
 <style>
 {SHARED_CSS}
 header{{background:var(--bg-card);border-bottom:1px solid var(--border);padding:1.25rem 2rem;display:flex;align-items:center;gap:1rem}}
@@ -246,14 +280,19 @@ function applyFilter() {{
 
 if __name__ == "__main__":
     injected = 0
+    pwa_injected = 0
     if DAILY_DIR.exists():
         for html in DAILY_DIR.glob("*.html"):
             if html.name in SKIP:
                 continue
             if inject_back_button(html):
                 injected += 1
+            if inject_pwa_meta(html):
+                pwa_injected += 1
     if injected:
         print(f"Injected back button into {injected} file(s)")
+    if pwa_injected:
+        print(f"Injected PWA meta into {pwa_injected} file(s)")
 
     files = collect_files()
 
