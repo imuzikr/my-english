@@ -7,7 +7,7 @@
  * Bump CACHE version to invalidate old caches on next visit.
  */
 
-const CACHE = 'my-english-v1';
+const CACHE = 'my-english-v2';
 const SCOPE = '/my-english/';
 
 const CORE_ASSETS = [
