@@ -179,26 +179,38 @@ h2 {
 .situation.s2 { border-left-color:var(--color-blue); }
 .situation.s3 { border-left-color:var(--color-green); }
 
-.scene-strip {
-  display:inline-flex;
+.scene-card {
+  display:flex;
   align-items:center;
-  gap:var(--space-2);
+  gap:var(--space-4);
+  margin-bottom:var(--space-6);
+}
+.scene-icon-card {
+  width:52px; height:52px;
+  border-radius:14px;
+  display:inline-flex; align-items:center; justify-content:center;
+  flex-shrink:0;
+  transition:transform var(--transition-base);
+}
+.scene-icon-card svg { display:block; }
+.situation.s1 .scene-icon-card { background:var(--color-accent-soft); color:var(--color-accent); }
+.situation.s2 .scene-icon-card { background:var(--color-blue-soft);   color:var(--color-blue); }
+.situation.s3 .scene-icon-card { background:var(--color-green-soft);  color:var(--color-green); }
+.situation:hover .scene-icon-card { transform:scale(1.04); }
+.scene-meta { display:flex; flex-direction:column; gap:2px; min-width:0; }
+.scene-label {
+  font-size:var(--text-sm);
+  font-weight:var(--weight-semibold);
+  color:var(--color-text);
+  letter-spacing:-0.005em;
+}
+.scene-desc {
   font-size:var(--text-xs);
   font-weight:var(--weight-semibold);
   text-transform:uppercase;
-  letter-spacing:0.06em;
+  letter-spacing:0.08em;
   color:var(--color-text-muted);
-  background:var(--color-bg-alt);
-  padding:var(--space-2) var(--space-3);
-  border-radius:var(--radius-full);
-  margin-bottom:var(--space-5);
 }
-.scene-icon { display:inline-flex; align-items:center; }
-.scene-icon svg { display:block; }
-.situation.s1 .scene-icon { color:var(--color-accent); }
-.situation.s2 .scene-icon { color:var(--color-blue); }
-.situation.s3 .scene-icon { color:var(--color-green); }
-.scene-sep { color:var(--color-text-faint); font-weight:var(--weight-normal); }
 
 /* Overview card */
 .overview-card {
@@ -366,7 +378,9 @@ footer {
   .tip-card { grid-template-columns:1fr; gap:var(--space-2); padding:var(--space-5); }
   .tip-num { font-size:var(--text-2xl); }
   .situation { padding:var(--space-6) var(--space-5); }
-  .scene-strip { flex-wrap:wrap; gap:var(--space-1) var(--space-2); }
+  .scene-card { gap:var(--space-3); }
+  .scene-icon-card { width:44px; height:44px; border-radius:12px; }
+  .scene-icon-card svg { width:22px; height:22px; }
 }
 </style>
 <link rel="manifest" href="/my-english/manifest.json">
@@ -470,18 +484,17 @@ if('serviceWorker' in navigator){window.addEventListener('load',function(){navig
   </section>
 
   <section id="situation-1" class="situation s1">
-    <div class="scene-strip">
-      <span class="scene-icon" aria-hidden="true">
-        <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M2 7l6-5 6 5v7a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V7z"/>
-          <path d="M6 15v-5h4v5"/>
+    <div class="scene-card">
+      <div class="scene-icon-card" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 21c-3.5-4-7-7.5-7-11a7 7 0 0 1 14 0c0 3.5-3.5 7-7 11z"/>
+          <circle cx="12" cy="10" r="2.5"/>
         </svg>
-      </span>
-      <span>거실</span>
-      <span class="scene-sep">·</span>
-      <span>10:00 AM</span>
-      <span class="scene-sep">·</span>
-      <span>4 turns</span>
+      </div>
+      <div class="scene-meta">
+        <div class="scene-label">거실 · 10:00 AM</div>
+        <div class="scene-desc">대화 4 turns · 행선지 정하기</div>
+      </div>
     </div>
     <div class="section-header">
       <span class="section-num">02</span>
@@ -524,19 +537,20 @@ if('serviceWorker' in navigator){window.addEventListener('load',function(){navig
   </section>
 
   <section id="situation-2" class="situation s2">
-    <div class="scene-strip">
-      <span class="scene-icon" aria-hidden="true">
-        <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M8 2l-2 2h4l-2-2z"/>
-          <path d="M3 6h10l-1 8H4L3 6z"/>
-          <path d="M6 4l-3 2M10 4l3 2"/>
+    <div class="scene-card">
+      <div class="scene-icon-card" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 10v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V10a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4z"/>
+          <path d="M9 6V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/>
+          <path d="M8 14h8"/>
+          <path d="M9 14v3"/>
+          <path d="M15 14v3"/>
         </svg>
-      </span>
-      <span>방</span>
-      <span class="scene-sep">·</span>
-      <span>10:20 AM</span>
-      <span class="scene-sep">·</span>
-      <span>4 turns</span>
+      </div>
+      <div class="scene-meta">
+        <div class="scene-label">방 · 10:20 AM</div>
+        <div class="scene-desc">대화 4 turns · 옷 챙기고 짐 싸기</div>
+      </div>
     </div>
     <div class="section-header">
       <span class="section-num">03</span>
@@ -579,18 +593,20 @@ if('serviceWorker' in navigator){window.addEventListener('load',function(){navig
   </section>
 
   <section id="situation-3" class="situation s3">
-    <div class="scene-strip">
-      <span class="scene-icon" aria-hidden="true">
-        <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3" y="2" width="10" height="12" rx="1"/>
-          <circle cx="10.5" cy="8" r="0.6" fill="currentColor"/>
+    <div class="scene-card">
+      <div class="scene-icon-card" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h8"/>
+          <path d="M14 3v18"/>
+          <circle cx="11" cy="12" r="0.6" fill="currentColor" stroke="none"/>
+          <path d="M14 12h6"/>
+          <path d="M17 9l3 3-3 3"/>
         </svg>
-      </span>
-      <span>현관</span>
-      <span class="scene-sep">·</span>
-      <span>10:45 AM</span>
-      <span class="scene-sep">·</span>
-      <span>3 turns</span>
+      </div>
+      <div class="scene-meta">
+        <div class="scene-label">현관 · 10:45 AM</div>
+        <div class="scene-desc">대화 3 turns · 출발 직전</div>
+      </div>
     </div>
     <div class="section-header">
       <span class="section-num">04</span>
