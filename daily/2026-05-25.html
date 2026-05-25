@@ -224,9 +224,21 @@ h2 {
 
 /* Dialogue */
 .dialogue { display:flex; flex-direction:column; gap:var(--space-3); }
-.bubble-row { display:flex; }
+.bubble-row { display:flex; align-items:flex-start; gap:var(--space-3); }
 .bubble-row.parent { justify-content:flex-start; }
 .bubble-row.child  { justify-content:flex-end; }
+.dial-icon {
+  flex-shrink:0;
+  width:38px; height:38px;
+  border-radius:11px;
+  display:flex; align-items:center; justify-content:center;
+  margin-top:2px;
+  transition:transform var(--transition-base);
+}
+.bubble-row:hover .dial-icon { transform:scale(1.08); }
+.s1 .dial-icon { background:var(--color-accent-soft); color:var(--color-accent); }
+.s2 .dial-icon { background:var(--color-blue-soft);   color:var(--color-blue); }
+.s3 .dial-icon { background:var(--color-green-soft);  color:var(--color-green); }
 .bubble {
   max-width:78%;
   padding:var(--space-4) var(--space-5);
@@ -381,6 +393,8 @@ footer {
   .scene-card { gap:var(--space-3); }
   .scene-icon-card { width:44px; height:44px; border-radius:12px; }
   .scene-icon-card svg { width:22px; height:22px; }
+  .dial-icon { width:34px; height:34px; border-radius:9px; }
+  .dial-icon svg { width:18px; height:18px; }
 }
 </style>
 <link rel="manifest" href="/my-english/manifest.json">
@@ -506,6 +520,12 @@ if('serviceWorker' in navigator){window.addEventListener('load',function(){navig
 
     <div class="dialogue">
       <div class="bubble-row parent">
+        <div class="dial-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+          </svg>
+        </div>
         <div class="bubble parent">
           <div class="bubble-speaker">Parent</div>
           <div class="bubble-en">It's a nice day out. Let's go somewhere.</div>
@@ -518,8 +538,24 @@ if('serviceWorker' in navigator){window.addEventListener('load',function(){navig
           <div class="bubble-en">Where are we going?</div>
           <div class="bubble-ko">어디 가요?</div>
         </div>
+        <div class="dial-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/>
+            <line x1="9" y1="3" x2="9" y2="18"/>
+            <line x1="15" y1="6" x2="15" y2="21"/>
+          </svg>
+        </div>
       </div>
       <div class="bubble-row parent">
+        <div class="dial-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="18.5" cy="17.5" r="3.5"/>
+            <circle cx="5.5" cy="17.5" r="3.5"/>
+            <circle cx="15" cy="5" r="1" fill="currentColor" stroke="none"/>
+            <path d="M12 17.5 8.5 11l3.5-4h3l2 5h2"/>
+            <path d="M8.5 11H4"/>
+          </svg>
+        </div>
         <div class="bubble parent">
           <div class="bubble-speaker">Parent</div>
           <div class="bubble-en">How about the park? We can ride bikes.</div>
@@ -531,6 +567,11 @@ if('serviceWorker' in navigator){window.addEventListener('load',function(){navig
           <div class="bubble-speaker">Child</div>
           <div class="bubble-en">Sounds good. Let's do that!</div>
           <div class="bubble-ko">좋아요. 그러자!</div>
+        </div>
+        <div class="dial-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6 9 17l-5-5"/>
+          </svg>
         </div>
       </div>
     </div>
@@ -562,6 +603,11 @@ if('serviceWorker' in navigator){window.addEventListener('load',function(){navig
 
     <div class="dialogue">
       <div class="bubble-row parent">
+        <div class="dial-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/>
+          </svg>
+        </div>
         <div class="bubble parent">
           <div class="bubble-speaker">Parent</div>
           <div class="bubble-en">Go change into something comfy.</div>
@@ -574,8 +620,20 @@ if('serviceWorker' in navigator){window.addEventListener('load',function(){navig
           <div class="bubble-en">Do I need a jacket?</div>
           <div class="bubble-ko">재킷 입어야 해요?</div>
         </div>
+        <div class="dial-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 8c0-1 .5-2 2-3l3 3c.5-2 2-3.5 5-3.5S16.5 6 17 8l3-3c1.5 1 2 2 2 3v1a2 2 0 0 1-2 2h-1v9a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-9H4a2 2 0 0 1-2-2V8z"/>
+          </svg>
+        </div>
       </div>
       <div class="bubble-row parent">
+        <div class="dial-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/>
+            <path d="M9.6 4.6A2 2 0 1 1 11 8H2"/>
+            <path d="M12.6 19.4A2 2 0 1 0 14 16H2"/>
+          </svg>
+        </div>
         <div class="bubble parent">
           <div class="bubble-speaker">Parent</div>
           <div class="bubble-en">Yeah, it might get chilly later.</div>
@@ -587,6 +645,11 @@ if('serviceWorker' in navigator){window.addEventListener('load',function(){navig
           <div class="bubble-speaker">Child</div>
           <div class="bubble-en">Got it. I'll grab my water bottle too.</div>
           <div class="bubble-ko">알겠어요. 물병도 챙길게요.</div>
+        </div>
+        <div class="dial-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+          </svg>
         </div>
       </div>
     </div>
@@ -618,6 +681,13 @@ if('serviceWorker' in navigator){window.addEventListener('load',function(){navig
 
     <div class="dialogue">
       <div class="bubble-row parent">
+        <div class="dial-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="8" y="2" width="8" height="4" rx="1"/>
+            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+            <path d="m9 14 2 2 4-4"/>
+          </svg>
+        </div>
         <div class="bubble parent">
           <div class="bubble-speaker">Parent</div>
           <div class="bubble-en">Are you ready to go? Did you bring everything?</div>
@@ -630,8 +700,25 @@ if('serviceWorker' in navigator){window.addEventListener('load',function(){navig
           <div class="bubble-en">I think so. Wait — where are my sneakers?</div>
           <div class="bubble-ko">그런 것 같아요. 어, 내 운동화 어디 있지?</div>
         </div>
+        <div class="dial-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 18a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v2z"/>
+            <path d="M10 10 4.72 15.28"/>
+            <path d="M7.64 10 4.72 12.93"/>
+            <path d="M22 15c-1.68 0-3.64-.5-5-1.5-1.36 1-3.32 1.5-5 1.5s-3.64-.5-5-1.5c-1.36 1-3.32 1.5-5 1.5"/>
+          </svg>
+        </div>
       </div>
       <div class="bubble-row parent">
+        <div class="dial-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M13 4h3a2 2 0 0 1 2 2v14"/>
+            <path d="M2 20h3"/>
+            <path d="M13 20h9"/>
+            <path d="M13 4.562v16.157a1 1 0 0 1-1.279.961L4 18.876a1 1 0 0 1-.721-.961V5.116a1 1 0 0 1 .748-.961l7-2.116A1 1 0 0 1 13 3.062"/>
+            <circle cx="11" cy="12" r="0.7" fill="currentColor" stroke="none"/>
+          </svg>
+        </div>
         <div class="bubble parent">
           <div class="bubble-speaker">Parent</div>
           <div class="bubble-en">By the door. Come on, let's head out.</div>
