@@ -214,7 +214,7 @@ def build_main_index(files: list) -> str:
 <meta name="apple-mobile-web-app-title" content="My English">
 <link rel="apple-touch-icon" href="/my-english/icons/apple-touch-icon.png">
 <script>
-if('serviceWorker' in navigator){{window.addEventListener('load',function(){{navigator.serviceWorker.register('/my-english/sw.js',{updateViaCache:'none'}).catch(function(){{}});}});}}
+if('serviceWorker' in navigator){{window.addEventListener('load',function(){{navigator.serviceWorker.register('/my-english/sw.js',{{updateViaCache:'none'}}).catch(function(){{}});}});}}
 </script>
 <style>
 {SHARED_CSS}
