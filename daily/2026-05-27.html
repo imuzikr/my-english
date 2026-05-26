@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026-05-27 · 오늘의 생활 영어 — 저녁 식사 · 목욕 · 잠자리</title>
+<meta name="description" content="부모와 아이의 짧은 대화 3가지 — 저녁 식사, 목욕 시간, 잠자리 준비. 핵심 표현·바꿔 말하기·연습 포인트까지.">
+<meta name="english-level" content="beginner">
+<meta name="english-topic" content="Daily Conversation">
+<style>
+:root {
+  --bg:          #ffffff;
+  --bg-sub:      #f7f8f9;
+  --text:        #1a1a1a;
+  --text-muted:  #6b7280;
+  --text-faint:  #9ca3af;
+  --border:      #e5e7eb;
+  --border-s:    rgba(0,0,0,0.04);
+  --green:       #3b6d11;
+  --green-soft:  #eaf3de;
+  --blue:        #185fa5;
+  --blue-soft:   #e5eef7;
+  --orange:      #c2521f;
+  --orange-soft: #faeee7;
+  --r:           12px;
+  --shadow:      0 1px 4px rgba(0,0,0,0.06), 0 0 0 0.5px rgba(0,0,0,0.04);
+  --shadow-md:   0 4px 14px rgba(0,0,0,0.08), 0 0 0 0.5px rgba(0,0,0,0.04);
+  --transition:  160ms ease;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:          #1e1e1e;
+    --bg-sub:      #272727;
+    --text:        #f0f0f0;
+    --text-muted:  #9ca3af;
+    --text-faint:  #6b7280;
+    --border:      #3a3a3a;
+    --border-s:    rgba(255,255,255,0.04);
+    --green:       #7fbf3c;
+    --green-soft:  rgba(63,110,20,0.25);
+    --blue:        #5b9fde;
+    --blue-soft:   rgba(29,82,160,0.25);
+    --orange:      #e8784a;
+    --orange-soft: rgba(194,82,31,0.25);
+    --shadow:      0 1px 4px rgba(0,0,0,0.3), 0 0 0 0.5px rgba(255,255,255,0.04);
+    --shadow-md:   0 4px 14px rgba(0,0,0,0.4), 0 0 0 0.5px rgba(255,255,255,0.04);
+  }
+}
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { font-size:16px; }
+body {
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans-serif;
+  background:var(--bg-sub);
+  color:var(--text);
+  padding:16px 16px 48px;
+  -webkit-font-smoothing:antialiased;
+}
+#progress {
+  position:fixed; top:0; left:0; height:2px; width:0%;
+  background:var(--green); z-index:200;
+  transition:width 80ms linear;
+}
+.widget { max-width:600px; margin:0 auto; display:flex; flex-direction:column; gap:10px; }
+
+/* Header */
+.header { background:var(--bg); border:0.5px solid var(--border); border-radius:var(--r); padding:18px 20px; box-shadow:var(--shadow); }
+.badge { display:inline-flex; align-items:center; gap:5px; background:var(--green-soft); color:var(--green); font-size:11px; font-weight:700; letter-spacing:0.3px; padding:3px 10px; border-radius:20px; margin-bottom:10px; }
+.header-date { font-size:11px; color:var(--text-faint); margin-bottom:4px; }
+.header-title { font-size:20px; font-weight:800; color:var(--text); line-height:1.25; letter-spacing:-0.3px; }
+.header-sub { font-size:13px; color:var(--text-muted); margin-top:4px; }
+
+/* Situation card */
+.card { background:var(--bg); border:0.5px solid var(--border); border-radius:var(--r); overflow:hidden; box-shadow:var(--shadow); }
+.card-head { display:flex; align-items:center; gap:12px; padding:14px 18px; border-bottom:1px solid var(--border); }
+.scene-icon { flex-shrink:0; width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center; }
+.card.s1 .scene-icon { background:var(--orange-soft); color:var(--orange); }
+.card.s2 .scene-icon { background:var(--blue-soft);   color:var(--blue); }
+.card.s3 .scene-icon { background:var(--green-soft);  color:var(--green); }
+.scene-badge { display:inline-block; font-size:10px; font-weight:700; letter-spacing:0.3px; padding:2px 8px; border-radius:20px; margin-bottom:3px; }
+.card.s1 .scene-badge { background:var(--orange-soft); color:var(--orange); }
+.card.s2 .scene-badge { background:var(--blue-soft);   color:var(--blue); }
+.card.s3 .scene-badge { background:var(--green-soft);  color:var(--green); }
+.scene-title { font-size:14px; font-weight:700; color:var(--text); line-height:1.3; }
+.scene-meta { font-size:11px; color:var(--text-faint); margin-top:1px; }
+
+/* Dialogue */
+.dialogue { display:flex; flex-direction:column; gap:0; padding:8px 0; }
+.dial-row { display:flex; align-items:center; gap:10px; padding:8px 16px; transition:background var(--transition); }
+.dial-row:hover { background:var(--border-s); }
+.dial-row.child { flex-direction:row-reverse; }
+.dial-icon { flex-shrink:0; width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center; }
+.card.s1 .dial-icon { background:var(--orange-soft); color:var(--orange); }
+.card.s2 .dial-icon { background:var(--blue-soft);   color:var(--blue); }
+.card.s3 .dial-icon { background:var(--green-soft);  color:var(--green); }
+.dial-bubble { flex:1; min-width:0; }
+.dial-row.child .dial-bubble { text-align:right; }
+.dial-speaker { font-size:10px; font-weight:700; letter-spacing:0.3px; text-transform:uppercase; margin-bottom:2px; }
+.dial-row.parent .dial-speaker { color:var(--blue); }
+.dial-row.child  .dial-speaker { color:var(--orange); }
+.dial-en { font-size:14px; font-weight:500; color:var(--text); line-height:1.45; }
+.dial-ko { font-size:12px; color:var(--text-muted); margin-top:2px; line-height:1.4; }
+
+/* Section card */
+.section-card { background:var(--bg); border:0.5px solid var(--border); border-radius:var(--r); padding:16px 20px; box-shadow:var(--shadow); }
+.section-title { font-size:12px; font-weight:700; color:var(--green); letter-spacing:0.4px; text-transform:uppercase; margin-bottom:12px; display:flex; align-items:center; gap:6px; }
+
+/* Key expressions */
+.key-list { display:flex; flex-direction:column; gap:8px; }
+.key-item { display:flex; align-items:baseline; gap:8px; }
+.dot { color:var(--green); font-size:9px; flex-shrink:0; }
+.key-en { font-size:14px; font-weight:500; color:var(--text); }
+.key-ko { font-size:12px; color:var(--text-muted); margin-left:3px; }
+.key-item.highlight .key-en { color:var(--orange); }
+.key-badge { display:inline-block; background:var(--orange-soft); color:var(--orange); font-size:10px; font-weight:700; padding:1px 6px; border-radius:4px; margin-left:6px; vertical-align:middle; }
+
+/* Paraphrases */
+.alt-list { display:flex; flex-direction:column; gap:8px; }
+.alt-row { font-size:13px; color:var(--text); line-height:1.55; }
+.alt-from { color:var(--text-muted); }
+.alt-arrow { color:var(--text-faint); margin:0 5px; }
+.alt-to { color:var(--blue); font-weight:500; }
+
+/* Tips */
+.tip-list { display:flex; flex-direction:column; gap:10px; }
+.tip-item { display:flex; gap:10px; align-items:flex-start; }
+.tip-num { flex-shrink:0; width:20px; height:20px; background:var(--green-soft); color:var(--green); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; margin-top:1px; }
+.tip-text { font-size:13px; color:var(--text); line-height:1.65; }
+.tip-text code { font-family:'SF Mono','Fira Code',Consolas,monospace; font-size:0.9em; background:var(--green-soft); color:var(--green); padding:1px 5px; border-radius:4px; }
+
+/* Back */
+#back { position:fixed; bottom:16px; left:16px; width:40px; height:40px; background:var(--bg); color:var(--green); border:0.5px solid var(--border); border-radius:50%; display:flex; align-items:center; justify-content:center; text-decoration:none; box-shadow:var(--shadow-md); transition:all var(--transition); z-index:300; }
+#back:hover { background:var(--green); color:#fff; border-color:var(--green); transform:translateX(-2px); }
+
+@media(max-width:480px){
+  body { padding:12px 12px 48px; }
+  .header { padding:16px; }
+  .dial-icon { width:36px; height:36px; border-radius:9px; }
+  .dial-icon svg { width:18px; height:18px; }
+}
+</style>
+<link rel="manifest" href="/my-english/manifest.json">
+<meta name="theme-color" content="#3b6d11">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="My English">
+<link rel="apple-touch-icon" href="/my-english/icons/apple-touch-icon.png">
+<script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/my-english/sw.js',{updateViaCache:'none'}).catch(function(){});});}</script>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<div class="widget">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="badge">
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      오늘의 생활 영어
+    </div>
+    <div class="header-date">2026.05.27 · TUE</div>
+    <div class="header-title">저녁 식사 · 목욕 · 잠자리</div>
+    <div class="header-sub">Dinner · Bath Time · Bedtime Routine</div>
+  </div>
+
+  <!-- Situation 1: 저녁 식사 -->
+  <div class="card s1">
+    <div class="card-head">
+      <div class="scene-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 11l19-9-9 19-2-8-8-2z"/>
+        </svg>
+      </div>
+      <div class="scene-info">
+        <span class="scene-badge">상황 1</span>
+        <div class="scene-title">저녁 식사</div>
+        <div class="scene-meta">식탁 · 6:30 PM · 4 turns</div>
+      </div>
+    </div>
+    <div class="dialogue">
+      <div class="dial-row parent">
+        <div class="dial-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+            <line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/>
+          </svg>
+        </div>
+        <div class="dial-bubble">
+          <div class="dial-speaker">Parent</div>
+          <div class="dial-en">Dinner's ready. Come to the table!</div>
+          <div class="dial-ko">저녁 됐어. 식탁으로 와!</div>
+        </div>
+      </div>
+      <div class="dial-row child">
+        <div class="dial-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <div class="dial-bubble">
+          <div class="dial-speaker">Child</div>
+          <div class="dial-en">Just a minute! I'm almost done.</div>
+          <div class="dial-ko">잠깐만요! 거의 다 됐어요.</div>
+        </div>
+      </div>
+      <div class="dial-row parent">
+        <div class="dial-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+        </div>
+        <div class="dial-bubble">
+          <div class="dial-speaker">Parent</div>
+          <div class="dial-en">Now, please. The food's getting cold.</div>
+          <div class="dial-ko">지금 와. 음식 식잖아.</div>
+        </div>
+      </div>
+      <div class="dial-row child">
+        <div class="dial-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6 9 17l-5-5"/>
+          </svg>
+        </div>
+        <div class="dial-bubble">
+          <div class="dial-speaker">Child</div>
+          <div class="dial-en">Okay, coming!</div>
+          <div class="dial-ko">네, 가요!</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Situation 2: 목욕 -->
+  <div class="card s2">
+    <div class="card-head">
+      <div class="scene-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 6 6.5 3.5a1.5 1.5 0 0 0-1-.5C4 3 4 3.5 4 4v2a1 1 0 0 1-1 1H2a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1H7V6"/>
+          <path d="M2 12v5a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5"/>
+          <path d="M8 18v2"/><path d="M16 18v2"/>
+        </svg>
+      </div>
+      <div class="scene-info">
+        <span class="scene-badge">상황 2</span>
+        <div class="scene-title">목욕 시간</div>
+        <div class="scene-meta">욕실 · 7:30 PM · 4 turns</div>
+      </div>
+    </div>
+    <div class="dialogue">
+      <div class="dial-row parent">
+        <div class="dial-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+          </svg>
+        </div>
+        <div class="dial-bubble">
+          <div class="dial-speaker">Parent</div>
+          <div class="dial-en">Time for your bath. Go get in the shower.</div>
+          <div class="dial-ko">목욕할 시간이야. 어서 샤워하러 가.</div>
+        </div>
+      </div>
+      <div class="dial-row child">
+        <div class="dial-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/>
+            <path d="M9.6 4.6A2 2 0 1 1 11 8H2"/>
+            <path d="M12.6 19.4A2 2 0 1 0 14 16H2"/>
+          </svg>
+        </div>
+        <div class="dial-bubble">
+          <div class="dial-speaker">Child</div>
+          <div class="dial-en">Do I have to? I showered yesterday.</div>
+          <div class="dial-ko">꼭 해야 해요? 어제 했잖아요.</div>
+        </div>
+      </div>
+      <div class="dial-row parent">
+        <div class="dial-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+        </div>
+        <div class="dial-bubble">
+          <div class="dial-speaker">Parent</div>
+          <div class="dial-en">Yes. You played outside today. Go on.</div>
+          <div class="dial-ko">응. 오늘 밖에서 놀았잖아. 어서.</div>
+        </div>
+      </div>
+      <div class="dial-row child">
+        <div class="dial-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6 9 17l-5-5"/>
+          </svg>
+        </div>
+        <div class="dial-bubble">
+          <div class="dial-speaker">Child</div>
+          <div class="dial-en">Fine. Can I have a quick one?</div>
+          <div class="dial-ko">알겠어요. 빨리 해도 돼요?</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Situation 3: 잠자리 -->
+  <div class="card s3">
+    <div class="card-head">
+      <div class="scene-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </div>
+      <div class="scene-info">
+        <span class="scene-badge">상황 3</span>
+        <div class="scene-title">잠자리 준비</div>
+        <div class="scene-meta">침실 · 8:30 PM · 3 turns</div>
+      </div>
+    </div>
+    <div class="dialogue">
+      <div class="dial-row parent">
+        <div class="dial-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </div>
+        <div class="dial-bubble">
+          <div class="dial-speaker">Parent</div>
+          <div class="dial-en">Lights out in ten minutes. Start wrapping up.</div>
+          <div class="dial-ko">10분 후에 불 끌 거야. 마무리 시작해.</div>
+        </div>
+      </div>
+      <div class="dial-row child">
+        <div class="dial-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+          </svg>
+        </div>
+        <div class="dial-bubble">
+          <div class="dial-speaker">Child</div>
+          <div class="dial-en">Can you read me a story first?</div>
+          <div class="dial-ko">먼저 책 읽어줄 수 있어요?</div>
+        </div>
+      </div>
+      <div class="dial-row parent">
+        <div class="dial-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6 9 17l-5-5"/>
+          </svg>
+        </div>
+        <div class="dial-bubble">
+          <div class="dial-speaker">Parent</div>
+          <div class="dial-en">Sure. One short one. Brush your teeth first.</div>
+          <div class="dial-ko">그래. 짧은 거 하나. 이부터 닦아.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Key Expressions -->
+  <div class="section-card">
+    <div class="section-title">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      핵심 표현
+    </div>
+    <div class="key-list">
+      <div class="key-item highlight">
+        <span class="dot">●</span>
+        <span>
+          <span class="key-en">Lights out in ten minutes.</span>
+          <span class="key-badge">오늘의 표현</span>
+          <br><span class="key-ko">10분 후에 불 끌 거야. (취침 예고할 때)</span>
+        </span>
+      </div>
+      <div class="key-item">
+        <span class="dot">●</span>
+        <span><span class="key-en">Dinner's ready.</span><span class="key-ko"> — 저녁 됐어.</span></span>
+      </div>
+      <div class="key-item">
+        <span class="dot">●</span>
+        <span><span class="key-en">The food's getting cold.</span><span class="key-ko"> — 음식 식잖아.</span></span>
+      </div>
+      <div class="key-item">
+        <span class="dot">●</span>
+        <span><span class="key-en">Start wrapping up.</span><span class="key-ko"> — 마무리 시작해. (하던 거 끝내)</span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Paraphrases -->
+  <div class="section-card">
+    <div class="section-title">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+      바꿔 말하기
+    </div>
+    <div class="alt-list">
+      <div class="alt-row">
+        <span class="alt-from">Lights out in ten minutes.</span>
+        <span class="alt-arrow">→</span>
+        <span class="alt-to">Bedtime in ten minutes.</span>
+      </div>
+      <div class="alt-row">
+        <span class="alt-from">Dinner's ready.</span>
+        <span class="alt-arrow">→</span>
+        <span class="alt-to">Food's on the table.</span>
+      </div>
+      <div class="alt-row">
+        <span class="alt-from">The food's getting cold.</span>
+        <span class="alt-arrow">→</span>
+        <span class="alt-to">It's going to get cold.</span>
+      </div>
+      <div class="alt-row">
+        <span class="alt-from">Can you read me a story?</span>
+        <span class="alt-arrow">→</span>
+        <span class="alt-to">Will you read to me tonight?</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Practice Tips -->
+  <div class="section-card">
+    <div class="section-title">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      짧은 연습 포인트
+    </div>
+    <div class="tip-list">
+      <div class="tip-item">
+        <div class="tip-num">1</div>
+        <div class="tip-text"><code>Lights out in ~ minutes.</code> 패턴으로 취침 시간을 예고하세요. "Lights out in five." / "Lights out at nine." 처럼 응용할 수 있습니다.</div>
+      </div>
+      <div class="tip-item">
+        <div class="tip-num">2</div>
+        <div class="tip-text">저녁 식사 알림은 <code>Dinner's ready!</code> 한 마디로 충분합니다. 매일 저녁 이 표현으로 시작해 보세요.</div>
+      </div>
+      <div class="tip-item">
+        <div class="tip-num">3</div>
+        <div class="tip-text">잠자리에서 <code>Can you read me a story?</code>를 아이가 직접 말하게 해보세요. "Can you ___?" 패턴으로 요청 표현을 자연스럽게 익힐 수 있습니다.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<a id="back" href="../index.html" aria-label="목록으로" title="목록으로">
+  <svg viewBox="0 0 20 20" fill="none" width="16" height="16">
+    <path d="M8.5 15L3 10l5.5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M3 10h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+</a>
+<style>
+#back { position:fixed; bottom:16px; left:16px; width:40px; height:40px; background:var(--bg); color:var(--green); border:0.5px solid var(--border); border-radius:50%; display:flex; align-items:center; justify-content:center; text-decoration:none; box-shadow:var(--shadow-md); transition:all var(--transition); z-index:300; }
+#back:hover { background:var(--green); color:#fff; border-color:var(--green); transform:translateX(-2px); }
+</style>
+
+<script>
+(function(){
+  const bar = document.getElementById('progress');
+  function tick(){
+    const h = document.documentElement;
+    const max = h.scrollHeight - h.clientHeight;
+    bar.style.width = max > 0 ? (h.scrollTop / max * 100) + '%' : '0%';
+  }
+  window.addEventListener('scroll', tick, { passive:true });
+  tick();
+})();
+</script>
+
+</body>
+</html>
