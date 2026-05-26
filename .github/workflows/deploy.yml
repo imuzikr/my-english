@@ -28,6 +28,11 @@ jobs:
       - name: Generate index.html
         run: python3 scripts/generate_index.py
 
+      - name: Bump SW cache version
+        run: |
+          STAMP=$(date -u +"%Y%m%d-%H%M")
+          sed -i "s/const CACHE = '[^']*'/const CACHE = 'my-english-${STAMP}'/" sw.js
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
