@@ -1,13 +1,13 @@
 /* My English — Service Worker
  * Strategy:
  *   - HTML pages: Network First (always try fresh, fall back to cache offline)
- *   - Static assets (icons, manifest, css, fonts): Cache First
+ *   - Static assets (icons, manifest): Cache First
  *   - All other GETs in scope: Stale While Revalidate
  * Scope: /my-english/
  * Bump CACHE version to invalidate old caches on next visit.
  */
 
-const CACHE = 'my-english-v2';
+const CACHE = 'my-english-20260526';
 const SCOPE = '/my-english/';
 
 const CORE_ASSETS = [
