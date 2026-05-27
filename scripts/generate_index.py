@@ -2,6 +2,7 @@
 """Generates main index for daily English learning HTML files."""
 
 import re
+from html import escape
 from pathlib import Path
 from datetime import datetime
 
@@ -44,13 +45,14 @@ a{text-decoration:none;color:inherit}
 
 def get_meta(path: Path, key: str, default: str = "") -> str:
     text = path.read_text(encoding="utf-8", errors="ignore")
+    key_pattern = re.escape(key)
     m = re.search(
-        rf'<meta\s+name=["\'{key}["\']\s+content=["\'](.*?)["\']',
+        rf'<meta\s+name=["\']{key_pattern}["\']\s+content=["\'](.*?)["\']',
         text, re.IGNORECASE
     )
     if not m:
         m = re.search(
-            rf'<meta\s+content=["\'](.*?)["\']\s+name=["\']{key}["\']',
+            rf'<meta\s+content=["\'](.*?)["\']\s+name=["\']{key_pattern}["\']',
             text, re.IGNORECASE
         )
     return m.group(1).strip() if m else default
@@ -159,13 +161,22 @@ def level_badge(level: str) -> str:
 
 def render_card(f: dict, idx: int) -> str:
     c1, c2 = GRADIENTS[idx % len(GRADIENTS)]
-    date_str = f"<span style='font-size:.8rem;color:var(--text-faint)'>{f['date']}</span>" if f["date"] else ""
-    desc_str = f"<p style='font-size:.85rem;color:var(--text-muted);line-height:1.6;margin-top:.25rem'>{f['description']}</p>" if f["description"] else ""
+    title = escape(f["title"])
+    data_title = escape(f["title"].lower(), quote=True)
+    date = escape(f["date"])
+    description = escape(f["description"])
+    level = escape(f["level"], quote=True)
+    topic = escape(f["topic"])
+    data_topic = escape(f["topic"].lower(), quote=True)
+    path = escape(f["path"], quote=True)
+
+    date_str = f"<span style='font-size:.8rem;color:var(--text-faint)'>{date}</span>" if date else ""
+    desc_str = f"<p style='font-size:.85rem;color:var(--text-muted);line-height:1.6;margin-top:.25rem'>{description}</p>" if description else ""
     badge = level_badge(f["level"])
-    topic_str = f"<span style='font-size:.75rem;color:var(--accent);background:var(--accent-soft);padding:2px 8px;border-radius:6px'>{f['topic']}</span>" if f["topic"] else ""
+    topic_str = f"<span style='font-size:.75rem;color:var(--accent);background:var(--accent-soft);padding:2px 8px;border-radius:6px'>{topic}</span>" if topic else ""
 
     if f["og_image"]:
-        og_img = f["og_image"]
+        og_img = escape(f["og_image"], quote=True)
         thumb = (
             f"<div style='width:100%;height:160px;overflow:hidden;flex-shrink:0;position:relative'>"
             f"<img src='../{og_img}' alt='' loading='lazy' style='position:absolute;inset:0;width:100%;height:100%;object-fit:cover'>"
@@ -179,15 +190,15 @@ def render_card(f: dict, idx: int) -> str:
         )
 
     return f"""
-<div class="card-wrap" data-title="{f['title'].lower()}" data-level="{f['level']}" data-topic="{f['topic'].lower()}">
-  <a class="card" href="{f['path']}">
+<div class="card-wrap" data-title="{data_title}" data-level="{level}" data-topic="{data_topic}">
+  <a class="card" href="{path}">
     {thumb}
     <div style='padding:1rem 1.25rem;display:flex;flex-direction:column;gap:.5rem'>
       <div style='display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.25rem'>
         {date_str}
         <div style='display:flex;gap:.4rem;flex-wrap:wrap'>{topic_str}{badge}</div>
       </div>
-      <h3 style='font-size:1rem;font-weight:600;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden'>{f['title']}</h3>
+      <h3 style='font-size:1rem;font-weight:600;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden'>{title}</h3>
     </div>
   </a>
   {desc_str}
