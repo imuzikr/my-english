@@ -4,7 +4,7 @@
 import re
 from html import escape
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timezone
 
 ROOT = Path(__file__).parent.parent
 DAILY_DIR = ROOT / "daily"
@@ -206,7 +206,7 @@ def render_card(f: dict, idx: int) -> str:
 
 
 def build_main_index(files: list) -> str:
-    generated = datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")
+    generated = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     total = len(files)
     cards_html = "".join(render_card(f, i) for i, f in enumerate(files))
 
@@ -309,4 +309,4 @@ if __name__ == "__main__":
 
     main_out = ROOT / "index.html"
     main_out.write_text(build_main_index(files), encoding="utf-8")
-    print(f"Generated index.html — {len(files)} lessons")
+    print(f"Generated index.html - {len(files)} lessons")
