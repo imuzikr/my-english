@@ -70,17 +70,21 @@ section { margin-bottom:var(--space-10); }
 .section-title::before { content:""; width:6px; height:1.35em; background:var(--color-accent); border-radius:var(--radius-full); }
 .dialogue-card, .note-card { background:var(--color-bg-card); border:1px solid var(--color-border); border-radius:var(--radius-xl); padding:var(--space-6); box-shadow:var(--shadow-sm); margin-bottom:var(--space-5); }
 .dialogue-card h3 { font-size:var(--text-xl); margin-bottom:var(--space-4); }
-.bubble-row { display:flex; margin:var(--space-3) 0; }
+.dialogue { display:flex; flex-direction:column; gap:var(--space-4); }
+.bubble-row { display:flex; }
 .bubble-row.parent { justify-content:flex-start; }
 .bubble-row.child { justify-content:flex-end; }
-.bubble { max-width:min(78%,640px); padding:var(--space-4); border-radius:var(--radius-xl); border:1px solid var(--color-border); background:#fff; box-shadow:var(--shadow-sm); }
-.bubble.parent { border-bottom-left-radius:var(--radius-md); }
-.bubble.child { border-bottom-right-radius:var(--radius-md); background:var(--color-accent-soft); border-color:#f4ddd0; }
-.bubble-speaker { font-size:var(--text-xs); font-weight:var(--weight-bold); text-transform:uppercase; letter-spacing:.08em; margin-bottom:var(--space-2); }
-.bubble.parent .bubble-speaker { color:var(--color-blue); }
-.bubble.child .bubble-speaker { color:var(--color-accent); }
-.bubble-en { font-size:var(--text-lg); font-weight:var(--weight-semibold); margin-bottom:var(--space-1); }
-.bubble-ko { color:var(--color-text-muted); }
+.dial-card { display:flex; align-items:center; gap:14px; max-width:min(88%,700px); background:var(--color-bg-card); border:1px solid var(--color-border); border-radius:20px; padding:13px 20px 13px 13px; box-shadow:var(--shadow-sm); transition:transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease; }
+.dial-card:hover { transform:translateY(-2px); box-shadow:var(--shadow-md); border-color:var(--color-border-strong); }
+.bubble-row.parent .dial-card { border-bottom-left-radius:var(--radius-md); }
+.bubble-row.child .dial-card { border-bottom-right-radius:var(--radius-md); background:var(--color-accent-soft); border-color:#f4ddd0; }
+.dial-icon { flex:0 0 auto; width:58px; height:58px; border-radius:15px; display:flex; align-items:center; justify-content:center; color:var(--color-blue); background:var(--color-blue-soft); }
+.bubble-row.child .dial-icon { color:var(--color-accent); background:#fff7f2; }
+.dial-icon svg { width:26px; height:26px; }
+.dial-body { flex:1; min-width:0; }
+.dial-speaker { font-size:var(--text-xs); font-weight:var(--weight-bold); text-transform:uppercase; letter-spacing:.08em; color:var(--color-text-muted); margin-bottom:var(--space-1); }
+.dial-en { font-size:var(--text-lg); font-weight:var(--weight-semibold); color:var(--color-text); line-height:1.35; margin-bottom:var(--space-1); }
+.dial-ko { color:var(--color-text-muted); }
 .line { padding:var(--space-4); border-radius:var(--radius-lg); margin:var(--space-3) 0; border:1px solid var(--color-border); background:#fff; }
 .speaker { display:inline-block; font-size:var(--text-xs); font-weight:var(--weight-bold); text-transform:uppercase; letter-spacing:.08em; padding:2px 8px; border-radius:var(--radius-full); margin-bottom:var(--space-2); }
 .english { font-size:var(--text-lg); font-weight:var(--weight-semibold); margin-bottom:var(--space-1); }
@@ -93,7 +97,7 @@ li { margin:.45rem 0; }
 #back-to-index{position:fixed;bottom:1.5rem;left:1.5rem;width:44px;height:44px;background:#3b82f6;color:#fff;border-radius:9999px;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 16px rgba(0,0,0,.18);transition:background .15s,transform .15s;z-index:800;}
 #back-to-index:hover{background:#2563eb;transform:translateX(-2px);}
 footer { color:var(--color-text-faint); text-align:center; padding:var(--space-8); border-top:1px solid var(--color-border); }
-@media(max-width:640px){ .hero{padding:var(--space-12) var(--space-5) var(--space-8)} .hero-title{font-size:var(--text-3xl)} main{padding:var(--space-8) var(--space-4)} .dialogue-card,.note-card{padding:var(--space-5)} .bubble{max-width:90%;} #back-to-index{bottom:1rem;left:1rem;} }
+@media(max-width:640px){ .hero{padding:var(--space-12) var(--space-5) var(--space-8)} .hero-title{font-size:var(--text-3xl)} main{padding:var(--space-8) var(--space-4)} .dialogue-card,.note-card{padding:var(--space-5)} .dial-card{max-width:94%; gap:12px; padding:10px 14px 10px 10px; border-radius:16px;} .dial-icon{width:48px;height:48px;border-radius:12px;} .dial-icon svg{width:22px;height:22px;} #back-to-index{bottom:1rem;left:1rem;} }
 """
 
 PWA_HEAD = """<link rel=\"manifest\" href=\"/my-english/manifest.json\">
@@ -165,6 +169,27 @@ def render_note_items(items: list[str]) -> str:
     return f"<ul>{lis}</ul>"
 
 
+def speaker_icon(speaker: str) -> str:
+    """Small inline icons for dialogue bubbles, matching the repository's card style."""
+    if speaker.lower() == "child":
+        return (
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" '
+            'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+            '<circle cx="12" cy="12" r="10"/>'
+            '<path d="M8 14s1.4 2 4 2 4-2 4-2"/>'
+            '<path d="M9 9h.01M15 9h.01"/>'
+            '</svg>'
+        )
+    return (
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" '
+        'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+        '<circle cx="12" cy="12" r="10"/>'
+        '<path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>'
+        '<path d="M12 17h.01"/>'
+        '</svg>'
+    )
+
+
 def render(raw: str, lesson_date: str, title: str) -> str:
     dialogues, notes = parse_sections(raw)
     page_title = f"{lesson_date} · 오늘의 생활 영어 — {title}"
@@ -181,11 +206,12 @@ def render(raw: str, lesson_date: str, title: str) -> str:
             korean = escape(item["korean"])
             if cls in {"parent", "child"}:
                 line_html.append(
-                    f'<div class="bubble-row {cls}"><div class="bubble {cls}">'
-                    f'<div class="bubble-speaker">{speaker}</div>'
-                    f'<div class="bubble-en">{english}</div>'
-                    f'{f"<div class=\"bubble-ko\">{korean}</div>" if korean else ""}'
-                    f'</div></div>'
+                    f'<div class="bubble-row {cls}"><div class="dial-card">'
+                    f'<div class="dial-icon">{speaker_icon(item["speaker"])}</div>'
+                    f'<div class="dial-body"><div class="dial-speaker">{speaker}</div>'
+                    f'<div class="dial-en">{english}</div>'
+                    f'{f"<div class=\"dial-ko\">{korean}</div>" if korean else ""}'
+                    f'</div></div></div>'
                 )
             else:
                 line_html.append(
@@ -195,7 +221,7 @@ def render(raw: str, lesson_date: str, title: str) -> str:
                 )
         dialogue_html.append(
             f'<section id="situation-{idx}"><h2 class="section-title">{escape(dialogue["title"])}</h2>'
-            f'<div class="dialogue-card">{"".join(line_html)}</div></section>'
+            f'<div class="dialogue-card"><div class="dialogue">{"".join(line_html)}</div></div></section>'
         )
 
     if not dialogue_html:
