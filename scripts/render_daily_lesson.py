@@ -70,10 +70,19 @@ section { margin-bottom:var(--space-10); }
 .section-title::before { content:""; width:6px; height:1.35em; background:var(--color-accent); border-radius:var(--radius-full); }
 .dialogue-card, .note-card { background:var(--color-bg-card); border:1px solid var(--color-border); border-radius:var(--radius-xl); padding:var(--space-6); box-shadow:var(--shadow-sm); margin-bottom:var(--space-5); }
 .dialogue-card h3 { font-size:var(--text-xl); margin-bottom:var(--space-4); }
+.bubble-row { display:flex; margin:var(--space-3) 0; }
+.bubble-row.parent { justify-content:flex-start; }
+.bubble-row.child { justify-content:flex-end; }
+.bubble { max-width:min(78%,640px); padding:var(--space-4); border-radius:var(--radius-xl); border:1px solid var(--color-border); background:#fff; box-shadow:var(--shadow-sm); }
+.bubble.parent { border-bottom-left-radius:var(--radius-md); }
+.bubble.child { border-bottom-right-radius:var(--radius-md); background:var(--color-accent-soft); border-color:#f4ddd0; }
+.bubble-speaker { font-size:var(--text-xs); font-weight:var(--weight-bold); text-transform:uppercase; letter-spacing:.08em; margin-bottom:var(--space-2); }
+.bubble.parent .bubble-speaker { color:var(--color-blue); }
+.bubble.child .bubble-speaker { color:var(--color-accent); }
+.bubble-en { font-size:var(--text-lg); font-weight:var(--weight-semibold); margin-bottom:var(--space-1); }
+.bubble-ko { color:var(--color-text-muted); }
 .line { padding:var(--space-4); border-radius:var(--radius-lg); margin:var(--space-3) 0; border:1px solid var(--color-border); background:#fff; }
 .speaker { display:inline-block; font-size:var(--text-xs); font-weight:var(--weight-bold); text-transform:uppercase; letter-spacing:.08em; padding:2px 8px; border-radius:var(--radius-full); margin-bottom:var(--space-2); }
-.parent .speaker { color:var(--color-blue); background:var(--color-blue-soft); }
-.child .speaker { color:var(--color-green); background:var(--color-green-soft); }
 .english { font-size:var(--text-lg); font-weight:var(--weight-semibold); margin-bottom:var(--space-1); }
 .korean { color:var(--color-text-muted); }
 ul { padding-left:1.25rem; }
@@ -84,7 +93,7 @@ li { margin:.45rem 0; }
 #back-to-index{position:fixed;bottom:1.5rem;left:1.5rem;width:44px;height:44px;background:#3b82f6;color:#fff;border-radius:9999px;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 16px rgba(0,0,0,.18);transition:background .15s,transform .15s;z-index:800;}
 #back-to-index:hover{background:#2563eb;transform:translateX(-2px);}
 footer { color:var(--color-text-faint); text-align:center; padding:var(--space-8); border-top:1px solid var(--color-border); }
-@media(max-width:640px){ .hero{padding:var(--space-12) var(--space-5) var(--space-8)} .hero-title{font-size:var(--text-3xl)} main{padding:var(--space-8) var(--space-4)} .dialogue-card,.note-card{padding:var(--space-5)} #back-to-index{bottom:1rem;left:1rem;} }
+@media(max-width:640px){ .hero{padding:var(--space-12) var(--space-5) var(--space-8)} .hero-title{font-size:var(--text-3xl)} main{padding:var(--space-8) var(--space-4)} .dialogue-card,.note-card{padding:var(--space-5)} .bubble{max-width:90%;} #back-to-index{bottom:1rem;left:1rem;} }
 """
 
 PWA_HEAD = """<link rel=\"manifest\" href=\"/my-english/manifest.json\">
@@ -166,15 +175,24 @@ def render(raw: str, lesson_date: str, title: str) -> str:
     for idx, dialogue in enumerate(dialogues, start=1):
         line_html = []
         for item in dialogue["lines"]:
-            cls = item["speaker"].lower() if item["speaker"] else "line"
+            cls = item["speaker"].lower()
             speaker = escape(item["speaker"] or "Line")
             english = escape(item["english"])
             korean = escape(item["korean"])
-            line_html.append(
-                f'<div class="line {cls}"><span class="speaker">{speaker}</span>'
-                f'<p class="english">{english}</p>'
-                f'{f"<p class=\"korean\">{korean}</p>" if korean else ""}</div>'
-            )
+            if cls in {"parent", "child"}:
+                line_html.append(
+                    f'<div class="bubble-row {cls}"><div class="bubble {cls}">'
+                    f'<div class="bubble-speaker">{speaker}</div>'
+                    f'<div class="bubble-en">{english}</div>'
+                    f'{f"<div class=\"bubble-ko\">{korean}</div>" if korean else ""}'
+                    f'</div></div>'
+                )
+            else:
+                line_html.append(
+                    f'<div class="line"><span class="speaker">{speaker}</span>'
+                    f'<p class="english">{english}</p>'
+                    f'{f"<p class=\"korean\">{korean}</p>" if korean else ""}</div>'
+                )
         dialogue_html.append(
             f'<section id="situation-{idx}"><h2 class="section-title">{escape(dialogue["title"])}</h2>'
             f'<div class="dialogue-card">{"".join(line_html)}</div></section>'
