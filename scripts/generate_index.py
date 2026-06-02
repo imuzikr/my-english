@@ -84,6 +84,8 @@ def collect_files():
     for html in sorted(DAILY_DIR.glob("*.html"), reverse=True):
         if html.name in SKIP:
             continue
+        if not re.match(r"\d{4}-\d{2}-\d{2}\.html$", html.name):
+            continue
         level = get_meta(html, "english-level").lower()
         topic = get_meta(html, "english-topic")
         files.append({
