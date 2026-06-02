@@ -169,23 +169,68 @@ def render_note_items(items: list[str]) -> str:
     return f"<ul>{lis}</ul>"
 
 
-def speaker_icon(speaker: str) -> str:
-    """Small inline icons for dialogue bubbles, matching the repository's card style."""
-    if speaker.lower() == "child":
-        return (
-            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" '
-            'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
-            '<circle cx="12" cy="12" r="10"/>'
-            '<path d="M8 14s1.4 2 4 2 4-2 4-2"/>'
-            '<path d="M9 9h.01M15 9h.01"/>'
-            '</svg>'
-        )
+ICONS = {
+    "bag": '<path d="M6 7h12l1 15H5L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/>',
+    "book": '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>',
+    "paper": '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5"/>',
+    "pen": '<path d="m18 2 4 4L8 20l-6 2 2-6L18 2z"/><path d="m14 6 4 4"/>',
+    "shirt": '<path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46 2 9l4 1.5V22h12V10.5L22 9l-1.62-5.54z"/>',
+    "water": '<path d="M12 2C8 7 6 10.5 6 14a6 6 0 0 0 12 0c0-3.5-2-7-6-12z"/><path d="M9 15a3 3 0 0 0 3 3"/>',
+    "snack": '<path d="M3 11h18"/><path d="M5 11l2 10h10l2-10"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',
+    "wash": '<path d="M4 12h16"/><path d="M6 12v5a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4v-5"/><path d="M8 8c0-2 1-4 4-4s4 2 4 4"/><path d="M9 15h.01M12 16h.01M15 15h.01"/>',
+    "sun": '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>',
+    "walk": '<path d="M13 4a2 2 0 1 0-2 2 2 2 0 0 0 2-2z"/><path d="M8 22l2-7-2-3 3-4 3 2 2 4"/><path d="M14 22l-2-5 2-5"/>',
+    "home": '<path d="M3 12l9-9 9 9"/><path d="M9 21V12h6v9"/>',
+    "read": '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M8 7h8M8 11h8"/>',
+    "homework": '<path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h8M8 16h5"/>',
+    "timer": '<circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2"/><path d="M9 2h6"/>',
+    "soccer": '<circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="M14.83 9.17 19.07 4.93"/><path d="m4.93 19.07 4.24-4.24"/><path d="M14.83 14.83l4.24 4.24"/><circle cx="12" cy="12" r="2.5" fill="currentColor" stroke="none"/>',
+    "pickup": '<path d="M19 17H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h11l4 4v5a2 2 0 0 1-1 1.73"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/>',
+    "gate": '<path d="M4 21V9l8-5 8 5v12"/><path d="M9 21v-8h6v8"/><path d="M12 13v8"/>',
+    "check": '<path d="M20 6 9 17l-5-5"/>',
+    "rest": '<path d="M4 13h16"/><path d="M5 13v6M19 13v6"/><path d="M8 13V9a4 4 0 0 1 8 0v4"/>',
+    "parent": '<circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/>',
+    "child": '<circle cx="12" cy="12" r="10"/><path d="M8 14s1.4 2 4 2 4-2 4-2"/><path d="M9 9h.01M15 9h.01"/>',
+}
+
+ICON_RULES = [
+    ("soccer", ("soccer", "practice")),
+    ("pickup", ("pick you up", "five thirty")),
+    ("gate", ("front gate",)),
+    ("wash", ("wash", "hands")),
+    ("snack", ("snack", "watermelon", "sandwich", "cut a few pieces")),
+    ("sun", ("hot", "cold", "cool down", "cool off")),
+    ("water", ("water bottle", "drink some water", "sweaty")),
+    ("rest", ("break", "rest", "after snack")),
+    ("bag", ("bag", "pack", "put them in")),
+    ("book", ("math book", "planner")),
+    ("paper", ("paper", "permission slip")),
+    ("pen", ("signature", "sign it")),
+    ("shirt", ("t-shirt", "shirt", "pe class", "sticky")),
+    ("walk", ("walking", "walk")),
+    ("read", ("read", "sofa")),
+    ("homework", ("homework", "list")),
+    ("timer", ("timer", "ten minutes", "10 minutes")),
+    ("home", ("home",)),
+    ("check", ("done", "deal", "sounds good", "okay")),
+]
+
+
+def dialogue_icon(speaker: str, english: str, context: str = "") -> str:
+    """Pick a small inline icon from the dialogue context, with speaker fallback."""
+    haystack = f"{english} {context}".lower()
+    icon_name = ""
+    for candidate, keywords in ICON_RULES:
+        if any(keyword in haystack for keyword in keywords):
+            icon_name = candidate
+            break
+    if not icon_name:
+        icon_name = "child" if speaker.lower() == "child" else "parent"
+
     return (
         '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" '
         'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
-        '<circle cx="12" cy="12" r="10"/>'
-        '<path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>'
-        '<path d="M12 17h.01"/>'
+        f'{ICONS[icon_name]}'
         '</svg>'
     )
 
@@ -207,7 +252,7 @@ def render(raw: str, lesson_date: str, title: str) -> str:
             if cls in {"parent", "child"}:
                 line_html.append(
                     f'<div class="bubble-row {cls}"><div class="dial-card">'
-                    f'<div class="dial-icon">{speaker_icon(item["speaker"])}</div>'
+                    f'<div class="dial-icon">{dialogue_icon(item["speaker"], item["english"], dialogue["title"])}</div>'
                     f'<div class="dial-body"><div class="dial-speaker">{speaker}</div>'
                     f'<div class="dial-en">{english}</div>'
                     f'{f"<div class=\"dial-ko\">{korean}</div>" if korean else ""}'
