@@ -387,7 +387,31 @@ footer {
 <meta name="apple-mobile-web-app-title" content="My English">
 <link rel="apple-touch-icon" href="/my-english/icons/apple-touch-icon.png">
 <script>
-if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/my-english/sw.js',{updateViaCache:'none'}).catch(function(){});});}
+(function(){
+  if(!('serviceWorker' in navigator)) return;
+  var refreshing = false;
+  navigator.serviceWorker.addEventListener('controllerchange', function(){
+    if(refreshing) return;
+    refreshing = true;
+    window.location.reload();
+  });
+  window.addEventListener('load', function(){
+    navigator.serviceWorker.register('/my-english/sw.js', { updateViaCache: 'none' })
+      .then(function(reg){
+        if(reg.waiting) reg.waiting.postMessage({ type: 'SKIP_WAITING' });
+        reg.addEventListener('updatefound', function(){
+          var worker = reg.installing;
+          if(!worker) return;
+          worker.addEventListener('statechange', function(){
+            if(worker.state === 'installed' && navigator.serviceWorker.controller){
+              worker.postMessage({ type: 'SKIP_WAITING' });
+            }
+          });
+        });
+      })
+      .catch(function(){});
+  });
+})();
 </script>
 </head>
 <body>
