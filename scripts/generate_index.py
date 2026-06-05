@@ -4,7 +4,7 @@
 import re
 from html import escape
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timezone
 
 ROOT = Path(__file__).parent.parent
 DAILY_DIR = ROOT / "daily"
@@ -84,6 +84,8 @@ def collect_files():
     for html in sorted(DAILY_DIR.glob("*.html"), reverse=True):
         if html.name in SKIP:
             continue
+        if not re.match(r"\d{4}-\d{2}-\d{2}\.html$", html.name):
+            continue
         level = get_meta(html, "english-level").lower()
         topic = get_meta(html, "english-topic")
         files.append({
@@ -102,6 +104,38 @@ def collect_files():
 BACK_BUTTON_MARKER = 'id="back-to-index"'
 
 PWA_MARKER = 'rel="manifest"'
+SERVICE_WORKER_SCRIPT_RE = re.compile(
+    r"<script>\s*if\('serviceWorker' in navigator\).*?</script>\s*",
+    re.DOTALL,
+)
+PWA_SCRIPT_SNIPPET = """<script>
+(function(){
+  if(!('serviceWorker' in navigator)) return;
+  var refreshing = false;
+  navigator.serviceWorker.addEventListener('controllerchange', function(){
+    if(refreshing) return;
+    refreshing = true;
+    window.location.reload();
+  });
+  window.addEventListener('load', function(){
+    navigator.serviceWorker.register('/my-english/sw.js', { updateViaCache: 'none' })
+      .then(function(reg){
+        if(reg.waiting) reg.waiting.postMessage({ type: 'SKIP_WAITING' });
+        reg.addEventListener('updatefound', function(){
+          var worker = reg.installing;
+          if(!worker) return;
+          worker.addEventListener('statechange', function(){
+            if(worker.state === 'installed' && navigator.serviceWorker.controller){
+              worker.postMessage({ type: 'SKIP_WAITING' });
+            }
+          });
+        });
+      })
+      .catch(function(){});
+  });
+})();
+</script>
+"""
 PWA_HEAD_SNIPPET = """<link rel="manifest" href="/my-english/manifest.json">
 <meta name="theme-color" content="#3b82f6">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -109,15 +143,16 @@ PWA_HEAD_SNIPPET = """<link rel="manifest" href="/my-english/manifest.json">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="My English">
 <link rel="apple-touch-icon" href="/my-english/icons/apple-touch-icon.png">
-<script>
-if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/my-english/sw.js',{updateViaCache:'none'}).catch(function(){});});}
-</script>
-"""
+""" + PWA_SCRIPT_SNIPPET
 
 
 def inject_pwa_meta(path: Path) -> bool:
     text = path.read_text(encoding="utf-8", errors="ignore")
     if PWA_MARKER in text:
+        updated = SERVICE_WORKER_SCRIPT_RE.sub(PWA_SCRIPT_SNIPPET, text, count=1)
+        if updated != text:
+            path.write_text(updated, encoding="utf-8")
+            return True
         return False
     if "</head>" not in text:
         return False
@@ -206,7 +241,7 @@ def render_card(f: dict, idx: int) -> str:
 
 
 def build_main_index(files: list) -> str:
-    generated = datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")
+    generated = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     total = len(files)
     cards_html = "".join(render_card(f, i) for i, f in enumerate(files))
 
@@ -217,16 +252,7 @@ def build_main_index(files: list) -> str:
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>My English — 매일 영어 학습</title>
 <meta name="description" content="부모와 아이의 짧은 대화로 매일 익히는 생활 영어">
-<link rel="manifest" href="/my-english/manifest.json">
-<meta name="theme-color" content="#3b82f6">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="My English">
-<link rel="apple-touch-icon" href="/my-english/icons/apple-touch-icon.png">
-<script>
-if('serviceWorker' in navigator){{window.addEventListener('load',function(){{navigator.serviceWorker.register('/my-english/sw.js',{{updateViaCache:'none'}}).catch(function(){{}});}});}}
-</script>
+{PWA_HEAD_SNIPPET}
 <style>
 {SHARED_CSS}
 header{{background:var(--bg-card);border-bottom:1px solid var(--border);padding:1.25rem 2rem;display:flex;align-items:center;gap:1rem}}
@@ -309,4 +335,4 @@ if __name__ == "__main__":
 
     main_out = ROOT / "index.html"
     main_out.write_text(build_main_index(files), encoding="utf-8")
-    print(f"Generated index.html — {len(files)} lessons")
+    print(f"Generated index.html - {len(files)} lessons")

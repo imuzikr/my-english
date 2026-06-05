@@ -1,18 +1,16 @@
 /* My English — Service Worker
  * Strategy:
- *   - HTML pages: Network First (always try fresh, fall back to cache offline)
+ *   - HTML pages: Network Only (prevents stale lesson lists in installed/PWA views)
  *   - Static assets (icons, manifest): Cache First
  *   - All other GETs in scope: Stale While Revalidate
  * Scope: /my-english/
  * Bump CACHE version to invalidate old caches on next visit.
  */
 
-const CACHE = 'my-english-20260526';
+const CACHE = 'my-english-20260604';
 const SCOPE = '/my-english/';
 
 const CORE_ASSETS = [
-  '/my-english/',
-  '/my-english/index.html',
   '/my-english/manifest.json',
   '/my-english/icons/icon-192.png',
   '/my-english/icons/icon-512.png',
@@ -35,6 +33,12 @@ self.addEventListener('activate', (event) => {
   );
 });
 
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
+});
+
 function isHtmlRequest(request) {
   if (request.mode === 'navigate') return true;
   const accept = request.headers.get('accept') || '';
@@ -55,7 +59,7 @@ self.addEventListener('fetch', (event) => {
   if (!url.pathname.startsWith(SCOPE)) return;
 
   if (isHtmlRequest(request)) {
-    event.respondWith(networkFirst(request));
+    event.respondWith(networkOnly(request));
     return;
   }
   if (isStaticAsset(url)) {
@@ -65,18 +69,14 @@ self.addEventListener('fetch', (event) => {
   event.respondWith(staleWhileRevalidate(request));
 });
 
-async function networkFirst(request) {
-  const cache = await caches.open(CACHE);
+async function networkOnly(request) {
   try {
-    const fresh = await fetch(request);
-    if (fresh && fresh.status === 200) cache.put(request, fresh.clone());
-    return fresh;
+    return await fetch(request, { cache: 'no-store' });
   } catch (err) {
-    const cached = await cache.match(request);
-    if (cached) return cached;
-    const fallback = await cache.match('/my-english/index.html');
-    if (fallback) return fallback;
-    throw err;
+    return new Response(
+      '<!doctype html><meta charset="utf-8"><title>Offline</title><body style="font-family:system-ui;padding:2rem"><h1>Offline</h1><p>인터넷 연결을 확인한 뒤 다시 열어 주세요.</p></body>',
+      { status: 503, headers: { 'Content-Type': 'text/html; charset=utf-8' } }
+    );
   }
 }
 
