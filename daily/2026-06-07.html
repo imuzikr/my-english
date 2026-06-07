@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026-06-07 · 오늘의 생활 영어 — 숙제 &amp; 저녁 루틴</title>
+<meta name="description" content="부모와 아이의 짧은 대화 3가지 — 숙제 시작하기, 수학 문제 도움 요청, 저녁 집안일 돕기. 핵심 표현·바꿔 말하기·연습 포인트까지.">
+<meta name="english-level" content="beginner">
+<meta name="english-topic" content="Daily Conversation">
+<style>
+:root {
+  --color-bg:#f5f2ed; --color-bg-alt:#eceae4; --color-bg-card:#ffffff;
+  --color-bg-code:#1e1e1e;
+  --color-text:#1a1a18; --color-text-muted:#6b6a63; --color-text-faint:#a09f97;
+  --color-border:#dedad2; --color-border-strong:#b8b5ac;
+  --color-accent:#d95f2b; --color-accent-hover:#c2521f; --color-accent-soft:#faeee7;
+  --color-green:#3a6b4a; --color-green-soft:#e6f0e9;
+  --color-blue:#2d5a8e; --color-blue-soft:#e5eef7;
+  --color-yellow:#8a6a00; --color-yellow-soft:#fdf5d9;
+  --color-red:#b03a2e; --color-red-soft:#fdecea;
+  --font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --font-mono:"SF Mono","Fira Code",Consolas,"Liberation Mono",monospace;
+  --text-xs:0.75rem; --text-sm:0.875rem; --text-base:1rem; --text-lg:1.125rem;
+  --text-xl:1.25rem; --text-2xl:1.5rem; --text-3xl:1.875rem; --text-4xl:2.25rem;
+  --weight-normal:400; --weight-medium:500; --weight-semibold:600; --weight-bold:700;
+  --leading-tight:1.25; --leading-snug:1.4; --leading-normal:1.6; --leading-loose:1.8;
+  --space-1:0.25rem; --space-2:0.5rem; --space-3:0.75rem; --space-4:1rem;
+  --space-5:1.25rem; --space-6:1.5rem; --space-8:2rem; --space-10:2.5rem;
+  --space-12:3rem; --space-16:4rem;
+  --radius-sm:4px; --radius-md:8px; --radius-lg:12px; --radius-xl:16px; --radius-full:9999px;
+  --shadow-sm:0 1px 3px rgba(0,0,0,0.07),0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md:0 4px 12px rgba(0,0,0,0.08),0 2px 4px rgba(0,0,0,0.04);
+  --shadow-lg:0 10px 28px rgba(0,0,0,0.10),0 4px 8px rgba(0,0,0,0.05);
+  --transition-fast:100ms ease; --transition-base:180ms ease;
+}
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { font-size:16px; scroll-behavior:smooth; }
+body {
+  background:var(--color-bg); color:var(--color-text);
+  font-family:var(--font-sans); font-size:var(--text-base);
+  line-height:var(--leading-normal); -webkit-font-smoothing:antialiased;
+}
+#progress {
+  position:fixed; top:0; left:0; height:3px;
+  background:var(--color-accent); width:0%; z-index:200;
+  transition:width 80ms linear;
+}
+.hero {
+  background:linear-gradient(140deg,#2c2a26 0%,#3d3a33 100%);
+  color:#f5f2ed; padding:var(--space-16) var(--space-6) var(--space-12);
+}
+.hero-inner { max-width:900px; margin:0 auto; }
+.hero-badge {
+  display:inline-block; font-size:var(--text-xs); font-weight:var(--weight-semibold);
+  text-transform:uppercase; letter-spacing:0.12em; color:var(--color-accent);
+  background:rgba(217,95,43,0.16); padding:var(--space-1) var(--space-3);
+  border-radius:var(--radius-full); margin-bottom:var(--space-5);
+}
+.hero-title {
+  font-size:var(--text-4xl); font-weight:var(--weight-bold);
+  line-height:var(--leading-tight); letter-spacing:-0.02em; margin-bottom:var(--space-4);
+}
+.hero-lead {
+  font-size:var(--text-lg); color:#cfcbc2; font-weight:var(--weight-normal);
+  max-width:640px; margin-bottom:var(--space-6);
+}
+.hero-meta {
+  display:flex; flex-wrap:wrap; gap:var(--space-2) var(--space-4);
+  font-size:var(--text-sm); color:#a8a59d;
+}
+.hero-meta span { display:inline-flex; align-items:center; }
+.hero-meta span + span::before {
+  content:""; display:inline-block; width:3px; height:3px;
+  background:#6b6a63; border-radius:50%; margin-right:var(--space-4);
+}
+.toc {
+  position:sticky; top:0; z-index:100;
+  background:rgba(245,242,237,0.92);
+  backdrop-filter:saturate(180%) blur(8px);
+  -webkit-backdrop-filter:saturate(180%) blur(8px);
+  border-bottom:1px solid var(--color-border);
+}
+.toc-inner {
+  max-width:900px; margin:0 auto; padding:var(--space-3) var(--space-6);
+  display:flex; gap:var(--space-1); overflow-x:auto; scrollbar-width:none;
+}
+.toc-inner::-webkit-scrollbar { display:none; }
+.toc a {
+  flex-shrink:0; font-size:var(--text-sm); color:var(--color-text-muted);
+  text-decoration:none; padding:var(--space-2) var(--space-3);
+  border-radius:var(--radius-md);
+  transition:background var(--transition-fast), color var(--transition-fast);
+}
+.toc a:hover { background:var(--color-bg-alt); color:var(--color-text); }
+.toc a.active { background:var(--color-accent-soft); color:var(--color-accent); font-weight:var(--weight-semibold); }
+main { max-width:900px; margin:0 auto; padding:var(--space-12) var(--space-6) var(--space-16); }
+section { margin-bottom:var(--space-16); scroll-margin-top:80px; }
+.section-num {
+  display:inline-flex; align-items:center; justify-content:center;
+  width:32px; height:32px; font-size:var(--text-sm); font-weight:var(--weight-bold);
+  color:var(--color-accent); background:var(--color-accent-soft);
+  border-radius:var(--radius-full); margin-right:var(--space-3);
+  font-variant-numeric:tabular-nums;
+}
+.section-header {
+  display:flex; align-items:center; margin-bottom:var(--space-6);
+  padding-bottom:var(--space-4); border-bottom:1px solid var(--color-border);
+}
+h2 { font-size:var(--text-2xl); font-weight:var(--weight-bold); line-height:var(--leading-snug); letter-spacing:-0.01em; }
+.section-sub { font-size:var(--text-sm); color:var(--color-text-muted); margin-top:var(--space-1); }
+.section-intro { font-size:var(--text-base); color:var(--color-text-muted); line-height:var(--leading-normal); margin-bottom:var(--space-6); }
+.situation {
+  background:var(--color-bg-card); border:1px solid var(--color-border);
+  border-left:4px solid; border-radius:var(--radius-lg);
+  padding:var(--space-8); box-shadow:var(--shadow-sm);
+}
+.situation.s1 { border-left-color:var(--color-accent); }
+.situation.s2 { border-left-color:var(--color-blue); }
+.situation.s3 { border-left-color:var(--color-green); }
+.scene-card { display:flex; align-items:center; gap:var(--space-4); margin-bottom:var(--space-6); }
+.scene-icon-card {
+  width:52px; height:52px; border-radius:14px;
+  display:inline-flex; align-items:center; justify-content:center;
+  flex-shrink:0; transition:transform var(--transition-base);
+}
+.scene-icon-card svg { display:block; }
+.situation.s1 .scene-icon-card { background:var(--color-accent-soft); color:var(--color-accent); }
+.situation.s2 .scene-icon-card { background:var(--color-blue-soft);   color:var(--color-blue); }
+.situation.s3 .scene-icon-card { background:var(--color-green-soft);  color:var(--color-green); }
+.situation:hover .scene-icon-card { transform:scale(1.04); }
+.scene-meta { display:flex; flex-direction:column; gap:2px; min-width:0; }
+.scene-label { font-size:var(--text-sm); font-weight:var(--weight-semibold); color:var(--color-text); letter-spacing:-0.005em; }
+.scene-desc { font-size:var(--text-xs); font-weight:var(--weight-semibold); text-transform:uppercase; letter-spacing:0.08em; color:var(--color-text-muted); }
+.overview-card {
+  background:var(--color-bg-card); border:1px solid var(--color-border);
+  border-radius:var(--radius-lg); padding:var(--space-8) var(--space-6); box-shadow:var(--shadow-sm);
+}
+.flow-svg { width:100%; height:auto; display:block; }
+.dialogue { display:flex; flex-direction:column; gap:var(--space-4); }
+.bubble-row { display:flex; }
+.bubble-row.parent { justify-content:flex-start; }
+.bubble-row.child  { justify-content:flex-end; }
+.dial-card {
+  display:flex; align-items:center; gap:14px;
+  background:var(--color-bg-card); border-radius:20px;
+  padding:13px 20px 13px 13px;
+  box-shadow:0 2px 12px rgba(0,0,0,0.07), 0 1px 3px rgba(0,0,0,0.04);
+  max-width:88%;
+  transition:transform var(--transition-base), box-shadow var(--transition-base);
+}
+.dial-card:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(0,0,0,0.1), 0 2px 6px rgba(0,0,0,0.06); }
+.dial-icon { flex-shrink:0; width:58px; height:58px; border-radius:15px; display:flex; align-items:center; justify-content:center; }
+.s1 .dial-icon { background:var(--color-accent-soft); color:var(--color-accent); }
+.s2 .dial-icon { background:var(--color-blue-soft);   color:var(--color-blue); }
+.s3 .dial-icon { background:var(--color-green-soft);  color:var(--color-green); }
+.dial-body { flex:1; min-width:0; }
+.dial-en { font-size:var(--text-base); font-weight:var(--weight-semibold); color:var(--color-text); line-height:var(--leading-snug); }
+.dial-ko { font-size:var(--text-sm); color:var(--color-text-muted); margin-top:3px; line-height:var(--leading-normal); }
+.expr-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:var(--space-4); }
+.expr-card {
+  background:var(--color-bg-card); border:1px solid var(--color-border);
+  border-radius:var(--radius-lg); padding:var(--space-5); transition:all var(--transition-base);
+}
+.expr-card:hover { border-color:var(--color-border-strong); box-shadow:var(--shadow-md); transform:translateY(-2px); }
+.expr-en { font-size:var(--text-lg); font-weight:var(--weight-semibold); color:var(--color-text); margin-bottom:var(--space-2); line-height:var(--leading-snug); }
+.expr-ko { font-size:var(--text-sm); color:var(--color-text-muted); }
+.alt-list { display:flex; flex-direction:column; gap:var(--space-3); }
+.alt-row {
+  display:grid; grid-template-columns:1fr 32px 1fr; gap:var(--space-3);
+  align-items:center; background:var(--color-bg-card); border:1px solid var(--color-border);
+  border-radius:var(--radius-lg); padding:var(--space-4) var(--space-5);
+}
+.alt-from { font-size:var(--text-sm); color:var(--color-text-muted); }
+.alt-arrow { display:flex; align-items:center; justify-content:center; color:var(--color-text-faint); font-size:var(--text-lg); }
+.alt-to { font-size:var(--text-base); font-weight:var(--weight-medium); color:var(--color-green); background:var(--color-green-soft); padding:var(--space-2) var(--space-3); border-radius:var(--radius-md); }
+.tip-list { display:flex; flex-direction:column; gap:var(--space-4); }
+.tip-card {
+  display:grid; grid-template-columns:48px 1fr; gap:var(--space-4);
+  background:var(--color-bg-card); border:1px solid var(--color-border);
+  border-left:3px solid var(--color-accent); border-radius:var(--radius-lg);
+  padding:var(--space-5) var(--space-6);
+}
+.tip-num { font-size:var(--text-3xl); font-weight:var(--weight-bold); color:var(--color-accent); font-variant-numeric:tabular-nums; line-height:1; padding-top:var(--space-1); }
+.tip-text { font-size:var(--text-base); color:var(--color-text); line-height:var(--leading-normal); }
+.tip-text code { font-family:var(--font-mono); font-size:0.92em; background:var(--color-bg-alt); padding:1px 6px; border-radius:var(--radius-sm); color:var(--color-text); }
+footer {
+  max-width:900px; margin:0 auto; padding:var(--space-8) var(--space-6) var(--space-12);
+  border-top:1px solid var(--color-border); color:var(--color-text-faint);
+  font-size:var(--text-sm); text-align:center;
+}
+@media (max-width:768px) {
+  .hero { padding:var(--space-10) var(--space-5) var(--space-8); }
+  .hero-title { font-size:var(--text-3xl); }
+  .hero-lead { font-size:var(--text-base); }
+  main { padding:var(--space-8) var(--space-5) var(--space-12); }
+  section { margin-bottom:var(--space-12); }
+  h2 { font-size:var(--text-xl); }
+  .alt-row { grid-template-columns:1fr; gap:var(--space-2); }
+  .alt-arrow { transform:rotate(90deg); justify-self:start; }
+  .tip-card { grid-template-columns:1fr; gap:var(--space-2); padding:var(--space-5); }
+  .tip-num { font-size:var(--text-2xl); }
+  .situation { padding:var(--space-6) var(--space-5); }
+  .scene-card { gap:var(--space-3); }
+  .scene-icon-card { width:44px; height:44px; border-radius:12px; }
+  .scene-icon-card svg { width:22px; height:22px; }
+  .dial-card { border-radius:16px; padding:10px 14px 10px 10px; gap:12px; max-width:92%; }
+  .dial-icon { width:48px; height:48px; border-radius:12px; }
+  .dial-icon svg { width:22px; height:22px; }
+}
+</style>
+<link rel="manifest" href="/my-english/manifest.json">
+<meta name="theme-color" content="#3b82f6">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="My English">
+<link rel="apple-touch-icon" href="/my-english/icons/apple-touch-icon.png">
+<script>
+(function(){
+  if(!('serviceWorker' in navigator)) return;
+  var refreshing = false;
+  navigator.serviceWorker.addEventListener('controllerchange', function(){
+    if(refreshing) return;
+    refreshing = true;
+    window.location.reload();
+  });
+  window.addEventListener('load', function(){
+    navigator.serviceWorker.register('/my-english/sw.js', { updateViaCache: 'none' })
+      .then(function(reg){
+        if(reg.waiting) reg.waiting.postMessage({ type: 'SKIP_WAITING' });
+        reg.addEventListener('updatefound', function(){
+          var worker = reg.installing;
+          if(!worker) return;
+          worker.addEventListener('statechange', function(){
+            if(worker.state === 'installed' && navigator.serviceWorker.controller){
+              worker.postMessage({ type: 'SKIP_WAITING' });
+            }
+          });
+        });
+      })
+      .catch(function(){});
+  });
+})();
+</script>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">오늘의 생활 영어</div>
+    <h1 class="hero-title">숙제 &amp; 저녁 루틴</h1>
+    <p class="hero-lead">숙제를 시작하고, 어려운 문제를 함께 풀고, 저녁 식탁까지 함께 차리는 시간. 방과 후부터 저녁까지 부모와 아이가 나누는 대화 세 가지로 일상 영어를 익혀봅니다.</p>
+    <div class="hero-meta">
+      <span>2026.06.07</span>
+      <span>Beginner</span>
+      <span>Daily Conversation</span>
+      <span>약 4분 분량</span>
+    </div>
+  </div>
+</header>
+
+<nav class="toc" id="toc">
+  <div class="toc-inner">
+    <a href="#overview">오늘의 흐름</a>
+    <a href="#situation-1">상황 1</a>
+    <a href="#situation-2">상황 2</a>
+    <a href="#situation-3">상황 3</a>
+    <a href="#expressions">핵심 표현</a>
+    <a href="#paraphrases">바꿔 말하기</a>
+    <a href="#tips">연습 포인트</a>
+  </div>
+</nav>
+
+<main>
+
+  <section id="overview">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <div>
+        <h2>오늘의 흐름</h2>
+        <div class="section-sub">Snack, study, then set the table</div>
+      </div>
+    </div>
+    <p class="section-intro">학교에서 돌아온 후부터 저녁 식사 준비까지, 하루의 저녁 루틴을 세 장면으로 나눠 살펴봅니다. 자연스러운 일상 속에서 반복되는 표현들을 익혀보세요.</p>
+
+    <div class="overview-card">
+      <svg class="flow-svg" viewBox="0 0 820 220" xmlns="http://www.w3.org/2000/svg" aria-label="숙제 저녁 루틴 흐름도">
+        <defs>
+          <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0,10 3.5,0 7" fill="#a09f97"/>
+          </marker>
+        </defs>
+        <g>
+          <rect x="20" y="60" width="220" height="100" rx="12" fill="#ffffff" stroke="#dedad2" stroke-width="1.5"/>
+          <text x="130" y="92" text-anchor="middle" font-size="13" font-weight="600" fill="#d95f2b" font-family="-apple-system,sans-serif">상황 1</text>
+          <text x="130" y="118" text-anchor="middle" font-size="14" font-weight="600" fill="#1a1a18" font-family="-apple-system,sans-serif">숙제 시작하기</text>
+          <text x="130" y="140" text-anchor="middle" font-size="12" fill="#6b6a63" font-family="-apple-system,sans-serif">snack first → get started</text>
+        </g>
+        <line x1="248" y1="110" x2="288" y2="110" stroke="#a09f97" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <g>
+          <rect x="300" y="60" width="220" height="100" rx="12" fill="#ffffff" stroke="#dedad2" stroke-width="1.5"/>
+          <text x="410" y="92" text-anchor="middle" font-size="13" font-weight="600" fill="#d95f2b" font-family="-apple-system,sans-serif">상황 2</text>
+          <text x="410" y="118" text-anchor="middle" font-size="14" font-weight="600" fill="#1a1a18" font-family="-apple-system,sans-serif">숙제 도움 요청</text>
+          <text x="410" y="140" text-anchor="middle" font-size="12" fill="#6b6a63" font-family="-apple-system,sans-serif">I don't get this → together</text>
+        </g>
+        <line x1="528" y1="110" x2="568" y2="110" stroke="#a09f97" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <g>
+          <rect x="580" y="60" width="220" height="100" rx="12" fill="#ffffff" stroke="#dedad2" stroke-width="1.5"/>
+          <text x="690" y="92" text-anchor="middle" font-size="13" font-weight="600" fill="#d95f2b" font-family="-apple-system,sans-serif">상황 3</text>
+          <text x="690" y="118" text-anchor="middle" font-size="14" font-weight="600" fill="#1a1a18" font-family="-apple-system,sans-serif">저녁 집안일 돕기</text>
+          <text x="690" y="140" text-anchor="middle" font-size="12" fill="#6b6a63" font-family="-apple-system,sans-serif">set the table → what else?</text>
+        </g>
+        <line x1="20" y1="190" x2="800" y2="190" stroke="#dedad2" stroke-width="1"/>
+        <text x="20"  y="208" text-anchor="start"  font-size="11" fill="#a09f97" font-family="-apple-system,sans-serif">하교 후</text>
+        <text x="410" y="208" text-anchor="middle" font-size="11" fill="#a09f97" font-family="-apple-system,sans-serif">숙제 시간</text>
+        <text x="800" y="208" text-anchor="end"    font-size="11" fill="#a09f97" font-family="-apple-system,sans-serif">저녁 식사 준비</text>
+      </svg>
+    </div>
+  </section>
+
+  <section id="situation-1" class="situation s1">
+    <div class="scene-card">
+      <div class="scene-icon-card" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 20h9"/>
+          <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+        </svg>
+      </div>
+      <div class="scene-meta">
+        <div class="scene-label">방·책상 · 하교 후</div>
+        <div class="scene-desc">대화 4 turns · 숙제 시작하기</div>
+      </div>
+    </div>
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <div>
+        <h2>상황 1 · 숙제 시작하기</h2>
+        <div class="section-sub">간식 먹고 숙제 시작하기</div>
+      </div>
+    </div>
+
+    <div class="dialogue">
+      <div class="bubble-row parent">
+        <div class="dial-card">
+          <div class="dial-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+              <line x1="12" y1="17" x2="12.01" y2="17"/>
+            </svg>
+          </div>
+          <div class="dial-body">
+            <div class="dial-en">Did you finish your homework yet?</div>
+            <div class="dial-ko">숙제 다 했어?</div>
+          </div>
+        </div>
+      </div>
+      <div class="bubble-row child">
+        <div class="dial-card">
+          <div class="dial-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"/>
+              <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </div>
+          <div class="dial-body">
+            <div class="dial-en">Not yet. I just got home.</div>
+            <div class="dial-ko">아직요. 방금 집에 왔잖아요.</div>
+          </div>
+        </div>
+      </div>
+      <div class="bubble-row parent">
+        <div class="dial-card">
+          <div class="dial-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+              <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+              <line x1="6" y1="1" x2="6" y2="4"/>
+              <line x1="10" y1="1" x2="10" y2="4"/>
+              <line x1="14" y1="1" x2="14" y2="4"/>
+            </svg>
+          </div>
+          <div class="dial-body">
+            <div class="dial-en">Have a snack first, then get started.</div>
+            <div class="dial-ko">간식 먼저 먹고 시작해.</div>
+          </div>
+        </div>
+      </div>
+      <div class="bubble-row child">
+        <div class="dial-card">
+          <div class="dial-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 6 9 17l-5-5"/>
+            </svg>
+          </div>
+          <div class="dial-body">
+            <div class="dial-en">Okay. Can I have some juice too?</div>
+            <div class="dial-ko">알겠어요. 주스도 마셔도 돼요?</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="situation-2" class="situation s2">
+    <div class="scene-card">
+      <div class="scene-icon-card" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="4" y="2" width="16" height="20" rx="2"/>
+          <line x1="8" y1="10" x2="16" y2="10"/>
+          <line x1="8" y1="14" x2="16" y2="14"/>
+          <line x1="8" y1="18" x2="12" y2="18"/>
+        </svg>
+      </div>
+      <div class="scene-meta">
+        <div class="scene-label">방·책상 · 공부 중</div>
+        <div class="scene-desc">대화 4 turns · 수학 문제 도움 요청</div>
+      </div>
+    </div>
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <div>
+        <h2>상황 2 · 숙제 도움 요청</h2>
+        <div class="section-sub">모르는 문제 같이 풀어보기</div>
+      </div>
+    </div>
+
+    <div class="dialogue">
+      <div class="bubble-row child">
+        <div class="dial-card">
+          <div class="dial-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+              <line x1="12" y1="17" x2="12.01" y2="17"/>
+            </svg>
+          </div>
+          <div class="dial-body">
+            <div class="dial-en">Dad, I don't get this math problem.</div>
+            <div class="dial-ko">아빠, 이 수학 문제 모르겠어요.</div>
+          </div>
+        </div>
+      </div>
+      <div class="bubble-row parent">
+        <div class="dial-card">
+          <div class="dial-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </div>
+          <div class="dial-body">
+            <div class="dial-en">Let me take a look. Show me which part.</div>
+            <div class="dial-ko">어디 보자. 어느 부분인지 보여줘.</div>
+          </div>
+        </div>
+      </div>
+      <div class="bubble-row child">
+        <div class="dial-card">
+          <div class="dial-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="8" x2="12" y2="12"/>
+              <line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+          </div>
+          <div class="dial-body">
+            <div class="dial-en">This one. I've tried three times already.</div>
+            <div class="dial-ko">이거요. 벌써 세 번이나 해봤어요.</div>
+          </div>
+        </div>
+      </div>
+      <div class="bubble-row parent">
+        <div class="dial-card">
+          <div class="dial-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <div class="dial-body">
+            <div class="dial-en">Good effort. Let's figure it out together.</div>
+            <div class="dial-ko">잘 했네. 같이 풀어보자.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="situation-3" class="situation s3">
+    <div class="scene-card">
+      <div class="scene-icon-card" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 2h18"/>
+          <path d="M3 22h18"/>
+          <path d="M8 6v12"/>
+          <path d="M16 6v12"/>
+          <path d="M3 12h18"/>
+        </svg>
+      </div>
+      <div class="scene-meta">
+        <div class="scene-label">주방·식탁 · 저녁 준비</div>
+        <div class="scene-desc">대화 4 turns · 저녁 집안일 돕기</div>
+      </div>
+    </div>
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <div>
+        <h2>상황 3 · 저녁 집안일 돕기</h2>
+        <div class="section-sub">식탁 차리고 더 할 일 찾기</div>
+      </div>
+    </div>
+
+    <div class="dialogue">
+      <div class="bubble-row parent">
+        <div class="dial-card">
+          <div class="dial-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 2h18"/>
+              <path d="M3 22h18"/>
+              <path d="M8 6v12"/>
+              <path d="M16 6v12"/>
+              <path d="M3 12h18"/>
+            </svg>
+          </div>
+          <div class="dial-body">
+            <div class="dial-en">Can you help me set the table?</div>
+            <div class="dial-ko">식탁 차리는 것 좀 도와줄 수 있어?</div>
+          </div>
+        </div>
+      </div>
+      <div class="bubble-row child">
+        <div class="dial-card">
+          <div class="dial-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+          </div>
+          <div class="dial-body">
+            <div class="dial-en">Sure! Where do the chopsticks go?</div>
+            <div class="dial-ko">네! 젓가락은 어디에 놓아요?</div>
+          </div>
+        </div>
+      </div>
+      <div class="bubble-row parent">
+        <div class="dial-card">
+          <div class="dial-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 12l9-9 9 9"/>
+              <path d="M9 21V12h6v9"/>
+            </svg>
+          </div>
+          <div class="dial-body">
+            <div class="dial-en">On the right side of the bowl.</div>
+            <div class="dial-ko">그릇 오른쪽에 놓아.</div>
+          </div>
+        </div>
+      </div>
+      <div class="bubble-row child">
+        <div class="dial-card">
+          <div class="dial-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="8" x2="12" y2="16"/>
+              <line x1="8" y1="12" x2="16" y2="12"/>
+            </svg>
+          </div>
+          <div class="dial-body">
+            <div class="dial-en">Done! What else can I do?</div>
+            <div class="dial-ko">다 했어요! 또 뭐 할까요?</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="expressions">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <div>
+        <h2>핵심 표현</h2>
+        <div class="section-sub">오늘 대화에서 꼭 기억할 네 가지</div>
+      </div>
+    </div>
+
+    <div class="expr-grid">
+      <div class="expr-card">
+        <div class="expr-en">Did you finish your homework yet?</div>
+        <div class="expr-ko">숙제 다 했어? <em style="color:var(--color-text-faint)">— "yet"을 붙이면 "이미 ~했어?"의 뉘앙스</em></div>
+      </div>
+      <div class="expr-card">
+        <div class="expr-en">Let me take a look.</div>
+        <div class="expr-ko">어디 보자. <em style="color:var(--color-text-faint)">— 뭔가를 확인하려 할 때 쓰는 자연스러운 표현</em></div>
+      </div>
+      <div class="expr-card">
+        <div class="expr-en">Let's figure it out together.</div>
+        <div class="expr-ko">같이 풀어보자. <em style="color:var(--color-text-faint)">— "figure out" = 이해하다, 해결하다</em></div>
+      </div>
+      <div class="expr-card">
+        <div class="expr-en">What else can I do?</div>
+        <div class="expr-ko">또 뭐 할까요? <em style="color:var(--color-text-faint)">— 적극적으로 더 돕겠다는 표현</em></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="paraphrases">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <div>
+        <h2>바꿔 말하기</h2>
+        <div class="section-sub">같은 의미, 다른 표현 — 어휘 폭을 넓혀봅니다</div>
+      </div>
+    </div>
+
+    <div class="alt-list">
+      <div class="alt-row">
+        <div class="alt-from">Did you finish your homework yet?</div>
+        <div class="alt-arrow">→</div>
+        <div class="alt-to">Is your homework done?</div>
+      </div>
+      <div class="alt-row">
+        <div class="alt-from">Let me take a look.</div>
+        <div class="alt-arrow">→</div>
+        <div class="alt-to">Let me see.</div>
+      </div>
+      <div class="alt-row">
+        <div class="alt-from">Let's figure it out together.</div>
+        <div class="alt-arrow">→</div>
+        <div class="alt-to">Let's work on it together.</div>
+      </div>
+      <div class="alt-row">
+        <div class="alt-from">What else can I do?</div>
+        <div class="alt-arrow">→</div>
+        <div class="alt-to">Is there anything else I can help with?</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tips">
+    <div class="section-header">
+      <span class="section-num">07</span>
+      <div>
+        <h2>짧은 연습 포인트</h2>
+        <div class="section-sub">오늘 바로 입에 붙이는 세 가지 방법</div>
+      </div>
+    </div>
+
+    <div class="tip-list">
+      <div class="tip-card">
+        <div class="tip-num">01</div>
+        <div class="tip-text">부모와 아이가 역할을 바꿔 읽어보세요. 아이가 "Parent" 역할을 맡으면 <code>Did you finish your homework yet?</code>처럼 질문을 던지는 느낌을 직접 체험할 수 있습니다.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-num">02</div>
+        <div class="tip-text"><code>I don't get this.</code> / <code>Let me take a look.</code>처럼 짧고 자주 쓰이는 표현을 오늘 저녁 실제 숙제 시간에 한 번씩 써보세요.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-num">03</div>
+        <div class="tip-text">저녁 식탁 차릴 때 <code>Can you help me set the table?</code>로 시작해 보세요. 자연스러운 상황 속에서 반복하면 표현이 빠르게 몸에 익습니다.</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  My English · 매일 영어 학습 · 2026-06-07
+</footer>
+
+<a id="back-to-index" href="../index.html" aria-label="목록으로" title="목록으로">
+  <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+    <path d="M8.5 15L3 10l5.5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M3 10h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+</a>
+<style>
+#back-to-index{
+  position:fixed; bottom:1.5rem; left:1.5rem;
+  width:44px; height:44px;
+  background:var(--color-bg-card);
+  color:var(--color-accent);
+  border:1px solid var(--color-border);
+  border-radius:9999px;
+  display:flex; align-items:center; justify-content:center;
+  text-decoration:none;
+  box-shadow:var(--shadow-md);
+  transition:all var(--transition-base);
+  z-index:300;
+}
+#back-to-index:hover{
+  background:var(--color-accent);
+  color:#fff;
+  border-color:var(--color-accent);
+  transform:translateX(-2px);
+}
+@media(max-width:600px){
+  #back-to-index{ bottom:1rem; left:1rem; }
+}
+</style>
+
+<script>
+(function() {
+  const progress = document.getElementById('progress');
+  const tocLinks = Array.from(document.querySelectorAll('#toc a'));
+  const sections = tocLinks
+    .map(a => document.querySelector(a.getAttribute('href')))
+    .filter(Boolean);
+
+  function onScroll() {
+    const h = document.documentElement;
+    const scrolled = h.scrollTop;
+    const max = h.scrollHeight - h.clientHeight;
+    progress.style.width = max > 0 ? (scrolled / max * 100) + '%' : '0%';
+
+    const offset = scrolled + 120;
+    let activeIdx = 0;
+    for (let i = 0; i < sections.length; i++) {
+      if (sections[i].offsetTop <= offset) activeIdx = i;
+    }
+    tocLinks.forEach((a, i) => a.classList.toggle('active', i === activeIdx));
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+
+</body>
+</html>
