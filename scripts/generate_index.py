@@ -2,7 +2,7 @@
 """Generates main index for daily English learning HTML files."""
 
 import re
-from html import escape
+from html import escape, unescape
 from pathlib import Path
 from datetime import datetime, timezone
 
@@ -61,7 +61,8 @@ def get_meta(path: Path, key: str, default: str = "") -> str:
 def get_title(path: Path) -> str:
     text = path.read_text(encoding="utf-8", errors="ignore")
     m = re.search(r"<title>(.*?)</title>", text, re.IGNORECASE | re.DOTALL)
-    return m.group(1).strip() if m else path.stem.replace("-", " ").title()
+    raw = m.group(1).strip() if m else path.stem.replace("-", " ").title()
+    return unescape(raw)
 
 
 def get_date(path: Path) -> str:
